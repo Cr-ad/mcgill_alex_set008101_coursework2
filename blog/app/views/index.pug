@@ -52,4 +52,51 @@ block content
     span Author Name: 
     input(type=inputAuthor.type, name=inputAuthor.name)
 
+    - date = new Date()
+    - hour = date.getHours()
+
+    - if ((hour >= 6) && (hour <= 17)) {
+      h3 Day Time
+    - } else {
+      h3 Night Time
+    - }
+
+    - age = 19
+    if((age >= 16) && (age < 18))
+      h3 You can drive
+    else if age >= 18
+      h3 You can drive and vote
+    else
+      h3 You cannot vote or drive
     
+    unless age >= 16
+      h3 You'll drive at 16
+    else
+      h3 You can drive
+
+    - dayTime = (((hour >= 6) && (hour <= 17)) ? 'Day Time' : 'Night Time')
+
+    h3 #{dayTime}
+
+    - name = "Alex"
+
+    case name
+      when "Jim"
+        h3 Hi Jim
+      when "Alex"
+        h3 Hi Alex
+      default
+        h3 Hi Person
+
+    script.console.log('Hello')
+
+    - posts = ['POST 1', 'POST 2', 'POST 3']
+
+    ul
+      - for(i = 0; i < posts.length; i++) {
+          li= posts[i]
+      -}
+    
+    ul
+      each post in posts
+        li= post
