@@ -1,9 +1,28 @@
 var ObjectID = require('mongodb').ObjectId;
+var express = require('express');
+var router = new express.Router();
+var path = require('path');
 
 module.exports = function(blog_app, client) {
     
     var db = client.db('blog_db');
 
+    /*blog_app.get('/', (req, res) => {
+        res.render('index', {
+          title: 'Home Page'
+        });
+      });
+      */
+
+     blog_app.get('/test/', (req, res) => {
+        //res.send('Test Page');
+        res.render('index', { title : 'The Test Route'});
+    });
+
+    blog_app.get('/', (req, res) => {
+        //res.send('Home Page');
+        res.render('index', { title : 'The Home Route'});
+   });
 
     blog_app.get('/posts/:id', (req, res) => {
 
