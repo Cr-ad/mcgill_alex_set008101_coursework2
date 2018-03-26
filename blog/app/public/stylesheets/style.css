@@ -42,6 +42,7 @@ a {
 }
 
 .right-thumbnail {
+  margin-top: -18px;
   height: 230px;
   width: 260px;
   object-fit: cover;
@@ -55,11 +56,10 @@ a {
 
 .right-content {
   border: solid black 5px;
-  border-radius: 2px;
-  height: 250px;
   width: 260px;
   background:rgb(53, 100, 153);
   margin-bottom: 70px;
+  padding-bottom: -5px;
 }
 
 .right-content a{
