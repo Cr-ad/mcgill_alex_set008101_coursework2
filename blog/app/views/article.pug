@@ -1,0 +1,22 @@
+extends layout
+
+block content
+	h1= title
+
+
+	div.page
+		div.blog-section
+			div.blog-content
+				p.blog-title <a href="#">!{post.title}</a>
+				<a href="#"><img class="blog-thumbnail" src=!{post.thumbnail}></a>
+				p.blog-text !{post.content}
+				div.blog-footer
+					p.blog-category Category: <a href="#">!{post.category}</a>
+					p.blog-info By <a href="#">!{post.author}</a> | !{post.date}
+		div.right-section
+			div.right-content
+				p test
+			div.right-content
+				p test
+			div.right-content
+				p test
