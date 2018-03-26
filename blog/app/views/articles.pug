@@ -3,12 +3,22 @@ extends layout
 block content
 	h1= title
 
-	-for(i = 0; i < posts.length; i++){
-		div.blog-content
-			p.blog-title <a href="#">!{posts[i].title}</a>
-			<a href="#"><img class="blog-thumbnail" src=!{posts[i].thumbnail}></a>
-			p.blog-text !{posts[i].post}
-			div.blog-footer
-				p.blog-category Category: <a href="#">!{posts[i].category}</a>
-				p.blog-info By <a href="#">!{posts[i].author}</a> | !{posts[i].date}
-	-}
+
+	div.page
+		div.blog-section
+			-for(i = 0; i < posts.length; i++){
+				div.blog-content
+					p.blog-title <a href="#">!{posts[i].title}</a>
+					<a href="#"><img class="blog-thumbnail" src=!{posts[i].thumbnail}></a>
+					p.blog-text !{posts[i].post}
+					div.blog-footer
+						p.blog-category Category: <a href="#">!{posts[i].category}</a>
+						p.blog-info By <a href="#">!{posts[i].author}</a> | !{posts[i].date}
+			-}
+		div.right-section
+			div.right-content
+				p test
+			div.right-content
+				p test
+			div.right-content
+				p test

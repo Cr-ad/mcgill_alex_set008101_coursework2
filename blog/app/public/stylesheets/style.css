@@ -1,6 +1,6 @@
 body {
   margin: 0 auto;
-  width: 85%;
+  width: 95%;
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -15,6 +15,30 @@ p {
 
 a {
   color: rgb(0, 101, 141);
+}
+
+.page {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.blog-section {
+  background: black;
+  padding: 10px;
+  max-width: 50%;
+}
+
+.right-section {
+  margin-left: 100px;
+  background: rgb(187, 187, 247);
+}
+
+.right-content {
+  height: 270px;
+  width: 270px;
+  background:rgb(53, 100, 153);
+  margin-bottom: 40px;
 }
 
 .blog-content {
@@ -45,6 +69,7 @@ a {
 .blog-thumbnail {
   width: auto;
   max-height: 300px;
+  max-width: 580px;
   display: block;
   margin-left: auto;
   margin-right: auto;
