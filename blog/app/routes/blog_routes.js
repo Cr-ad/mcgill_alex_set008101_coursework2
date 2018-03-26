@@ -26,27 +26,30 @@ module.exports = function(blog_app, client) {
         let posts = [
             {
                 author: "Jim Halpert",
-                title: "Elon Musk Deletes SpaceX and Tesla Facebook Pages",
+                title: "Elon Musk Lands on Mars",
                 thumbnail: "/images/tesla_model_s.jpg",
-                post:   "Lorem ipsum dolor sit amet, maluisset salutatus ea mei, id vim erant tincidunt instructior. Probo ornatus partiendo mei eu, nonumy partiendo democritum mei ei, mollis iisque eam no. Quod aeterno malorum ei nam, mel cu partem mandamus. Sit causae iriure at, qui habeo oblique epicuri eu. Mutat facilis id pri, ea qui vocibus volutpat, eruditi noluisse per te.<br /><br />Ea cum quem quod tincidunt, mea latine efficiendi persequeris cu. No sed simul zril regione, nemore epicurei scribentur nec et, aliquid fabulas definiebas te sed. Eam ne saepe perfecto vulputate, iusto homero eu sed, id est dico oblique. Eum ad adhuc scripta. Pro enim brute ea, no nihil iisque mentitum duo, veri ludus dissentiunt ea eam. At omnes concludaturque mea, dicit lucilius reprehendunt mea et, noster animal perfecto no sea.<br /><br />Errem vocent delicatissimi eum an. Et consul denique reformidans eum, quo ea senserit pericula. At sit omnis eirmod interesset, no mei platonem reprimique, ei vix nobis fastidii qualisque. In pro natum omittantur. Mel recusabo repudiare ea.<br /><br />An duo tritani ponderum. Ei perpetua accusamus adolescens mel. Mei cu recusabo consequat, graeco regione in per, ea mel tantas eirmod reprehendunt. Duis percipitur neglegentur has ad, idque scripta vix ut. Eu minimum dignissim usu. Nec soluta corpora id.<br /><br />Illud epicuri at vis, est officiis forensibus ex. Ne wisi dicat exerci pri. Usu ut discere voluptua adolescens. Omnium placerat mel ut, te eos dicta suavitate. Ea luptatum sententiae consetetur qui, appetere vituperata ius ne.",
+                content:   "Lorem ipsum dolor sit amet, maluisset salutatus ea mei, id vim erant tincidunt instructior. Probo ornatus partiendo mei eu, nonumy partiendo democritum mei ei, mollis iisque eam no. Quod aeterno malorum ei nam, mel cu partem mandamus. Sit causae iriure at, qui habeo oblique epicuri eu. Mutat facilis id pri, ea qui vocibus volutpat, eruditi noluisse per te.<br /><br />Ea cum quem quod tincidunt, mea latine efficiendi persequeris cu. No sed simul zril regione, nemore epicurei scribentur nec et, aliquid fabulas definiebas te sed. Eam ne saepe perfecto vulputate, iusto homero eu sed, id est dico oblique. Eum ad adhuc scripta. Pro enim brute ea, no nihil iisque mentitum duo, veri ludus dissentiunt ea eam. At omnes concludaturque mea, dicit lucilius reprehendunt mea et, noster animal perfecto no sea.<br /><br />Errem vocent delicatissimi eum an. Et consul denique reformidans eum, quo ea senserit pericula. At sit omnis eirmod interesset, no mei platonem reprimique, ei vix nobis fastidii qualisque. In pro natum omittantur. Mel recusabo repudiare ea.<br /><br />An duo tritani ponderum. Ei perpetua accusamus adolescens mel. Mei cu recusabo consequat, graeco regione in per, ea mel tantas eirmod reprehendunt. Duis percipitur neglegentur has ad, idque scripta vix ut. Eu minimum dignissim usu. Nec soluta corpora id.<br /><br />Illud epicuri at vis, est officiis forensibus ex. Ne wisi dicat exerci pri. Usu ut discere voluptua adolescens. Omnium placerat mel ut, te eos dicta suavitate. Ea luptatum sententiae consetetur qui, appetere vituperata ius ne.",
                 date:   "26/03/2018",
-                category: "Technology"
+                category: "Technology",
+                tags: ["Cars", "Tesla", "Elon Musk"]
             },
             {
                 author: "Michael Scott",
                 title: "Elon Musk Deletes SpaceX and Tesla Facebook Pages",
                 thumbnail: "/images/tesla_roadster.jpg",
-                post:   "Lorem ipsum dolor sit amet, maluisset salutatus ea mei, id vim erant tincidunt instructior. Probo ornatus partiendo mei eu, nonumy partiendo democritum mei ei, mollis iisque eam no. Quod aeterno malorum ei nam, mel cu partem mandamus. Sit causae iriure at, qui habeo oblique epicuri eu. Mutat facilis id pri, ea qui vocibus volutpat, eruditi noluisse per te.<br /><br />Ea cum quem quod tincidunt, mea latine efficiendi persequeris cu. No sed simul zril regione, nemore epicurei scribentur nec et, aliquid fabulas definiebas te sed. Eam ne saepe perfecto vulputate, iusto homero eu sed, id est dico oblique. Eum ad adhuc scripta. Pro enim brute ea, no nihil iisque mentitum duo, veri ludus dissentiunt ea eam. At omnes concludaturque mea, dicit lucilius reprehendunt mea et, noster animal perfecto no sea.<br /><br />Errem vocent delicatissimi eum an. Et consul denique reformidans eum, quo ea senserit pericula. At sit omnis eirmod interesset, no mei platonem reprimique, ei vix nobis fastidii qualisque. In pro natum omittantur. Mel recusabo repudiare ea.<br /><br />An duo tritani ponderum. Ei perpetua accusamus adolescens mel. Mei cu recusabo consequat, graeco regione in per, ea mel tantas eirmod reprehendunt. Duis percipitur neglegentur has ad, idque scripta vix ut. Eu minimum dignissim usu. Nec soluta corpora id.<br /><br />Illud epicuri at vis, est officiis forensibus ex. Ne wisi dicat exerci pri. Usu ut discere voluptua adolescens. Omnium placerat mel ut, te eos dicta suavitate. Ea luptatum sententiae consetetur qui, appetere vituperata ius ne.",
+                content:   "Lorem ipsum dolor sit amet, maluisset salutatus ea mei, id vim erant tincidunt instructior. Probo ornatus partiendo mei eu, nonumy partiendo democritum mei ei, mollis iisque eam no. Quod aeterno malorum ei nam, mel cu partem mandamus. Sit causae iriure at, qui habeo oblique epicuri eu. Mutat facilis id pri, ea qui vocibus volutpat, eruditi noluisse per te.<br /><br />Ea cum quem quod tincidunt, mea latine efficiendi persequeris cu. No sed simul zril regione, nemore epicurei scribentur nec et, aliquid fabulas definiebas te sed. Eam ne saepe perfecto vulputate, iusto homero eu sed, id est dico oblique. Eum ad adhuc scripta. Pro enim brute ea, no nihil iisque mentitum duo, veri ludus dissentiunt ea eam. At omnes concludaturque mea, dicit lucilius reprehendunt mea et, noster animal perfecto no sea.<br /><br />Errem vocent delicatissimi eum an. Et consul denique reformidans eum, quo ea senserit pericula. At sit omnis eirmod interesset, no mei platonem reprimique, ei vix nobis fastidii qualisque. In pro natum omittantur. Mel recusabo repudiare ea.<br /><br />An duo tritani ponderum. Ei perpetua accusamus adolescens mel. Mei cu recusabo consequat, graeco regione in per, ea mel tantas eirmod reprehendunt. Duis percipitur neglegentur has ad, idque scripta vix ut. Eu minimum dignissim usu. Nec soluta corpora id.<br /><br />Illud epicuri at vis, est officiis forensibus ex. Ne wisi dicat exerci pri. Usu ut discere voluptua adolescens. Omnium placerat mel ut, te eos dicta suavitate. Ea luptatum sententiae consetetur qui, appetere vituperata ius ne.",
                 date:   "25/03/2018",
-                category: "Automotive"
+                category: "Automotive",
+                tags: ["Cars", "Tesla", "Elon Musk"]
             },
             {
                 author: "Pam Beasley",
-                title: "Elon Musk Deletes SpaceX and Tesla Facebook Pages",
+                title: "Elon Musk Finds Out What It Means To Be Human",
                 thumbnail: "/images/tesla_model_3.jpg",
                 content:   "Lorem ipsum dolor sit amet, maluisset salutatus ea mei, id vim erant tincidunt instructior. Probo ornatus partiendo mei eu, nonumy partiendo democritum mei ei, mollis iisque eam no. Quod aeterno malorum ei nam, mel cu partem mandamus. Sit causae iriure at, qui habeo oblique epicuri eu. Mutat facilis id pri, ea qui vocibus volutpat, eruditi noluisse per te.<br /><br />Ea cum quem quod tincidunt, mea latine efficiendi persequeris cu. No sed simul zril regione, nemore epicurei scribentur nec et, aliquid fabulas definiebas te sed. Eam ne saepe perfecto vulputate, iusto homero eu sed, id est dico oblique. Eum ad adhuc scripta. Pro enim brute ea, no nihil iisque mentitum duo, veri ludus dissentiunt ea eam. At omnes concludaturque mea, dicit lucilius reprehendunt mea et, noster animal perfecto no sea.<br /><br />Errem vocent delicatissimi eum an. Et consul denique reformidans eum, quo ea senserit pericula. At sit omnis eirmod interesset, no mei platonem reprimique, ei vix nobis fastidii qualisque. In pro natum omittantur. Mel recusabo repudiare ea.<br /><br />An duo tritani ponderum. Ei perpetua accusamus adolescens mel. Mei cu recusabo consequat, graeco regione in per, ea mel tantas eirmod reprehendunt. Duis percipitur neglegentur has ad, idque scripta vix ut. Eu minimum dignissim usu. Nec soluta corpora id.<br /><br />Illud epicuri at vis, est officiis forensibus ex. Ne wisi dicat exerci pri. Usu ut discere voluptua adolescens. Omnium placerat mel ut, te eos dicta suavitate. Ea luptatum sententiae consetetur qui, appetere vituperata ius ne.",
                 date:   "24/03/2018",
-                category: "Sports"
+                category: "Sports",
+                tags: ["Cars", "Tesla", "Elon Musk"]
             }
         ];
         res.render('articles', {
@@ -69,20 +72,38 @@ module.exports = function(blog_app, client) {
                 res.send(item);
             }
         }); */
-        
-        var post =
+        let posts = [
             {
                 author: "Jim Halpert",
-                title: "Elon Musk Deletes SpaceX and Tesla Facebook Pages",
+                title: "Elon Musk Lands on Mars",
                 thumbnail: "/images/tesla_model_s.jpg",
                 content:   "Lorem ipsum dolor sit amet, maluisset salutatus ea mei, id vim erant tincidunt instructior. Probo ornatus partiendo mei eu, nonumy partiendo democritum mei ei, mollis iisque eam no. Quod aeterno malorum ei nam, mel cu partem mandamus. Sit causae iriure at, qui habeo oblique epicuri eu. Mutat facilis id pri, ea qui vocibus volutpat, eruditi noluisse per te.<br /><br />Ea cum quem quod tincidunt, mea latine efficiendi persequeris cu. No sed simul zril regione, nemore epicurei scribentur nec et, aliquid fabulas definiebas te sed. Eam ne saepe perfecto vulputate, iusto homero eu sed, id est dico oblique. Eum ad adhuc scripta. Pro enim brute ea, no nihil iisque mentitum duo, veri ludus dissentiunt ea eam. At omnes concludaturque mea, dicit lucilius reprehendunt mea et, noster animal perfecto no sea.<br /><br />Errem vocent delicatissimi eum an. Et consul denique reformidans eum, quo ea senserit pericula. At sit omnis eirmod interesset, no mei platonem reprimique, ei vix nobis fastidii qualisque. In pro natum omittantur. Mel recusabo repudiare ea.<br /><br />An duo tritani ponderum. Ei perpetua accusamus adolescens mel. Mei cu recusabo consequat, graeco regione in per, ea mel tantas eirmod reprehendunt. Duis percipitur neglegentur has ad, idque scripta vix ut. Eu minimum dignissim usu. Nec soluta corpora id.<br /><br />Illud epicuri at vis, est officiis forensibus ex. Ne wisi dicat exerci pri. Usu ut discere voluptua adolescens. Omnium placerat mel ut, te eos dicta suavitate. Ea luptatum sententiae consetetur qui, appetere vituperata ius ne.",
                 date:   "26/03/2018",
-                category: "Technology"
-            };
-
+                category: "Technology",
+                tags: ["Cars", "Tesla", "Elon Musk"]
+            },
+            {
+                author: "Michael Scott",
+                title: "Elon Musk Deletes SpaceX and Tesla Facebook Pages",
+                thumbnail: "/images/tesla_roadster.jpg",
+                content:   "Lorem ipsum dolor sit amet, maluisset salutatus ea mei, id vim erant tincidunt instructior. Probo ornatus partiendo mei eu, nonumy partiendo democritum mei ei, mollis iisque eam no. Quod aeterno malorum ei nam, mel cu partem mandamus. Sit causae iriure at, qui habeo oblique epicuri eu. Mutat facilis id pri, ea qui vocibus volutpat, eruditi noluisse per te.<br /><br />Ea cum quem quod tincidunt, mea latine efficiendi persequeris cu. No sed simul zril regione, nemore epicurei scribentur nec et, aliquid fabulas definiebas te sed. Eam ne saepe perfecto vulputate, iusto homero eu sed, id est dico oblique. Eum ad adhuc scripta. Pro enim brute ea, no nihil iisque mentitum duo, veri ludus dissentiunt ea eam. At omnes concludaturque mea, dicit lucilius reprehendunt mea et, noster animal perfecto no sea.<br /><br />Errem vocent delicatissimi eum an. Et consul denique reformidans eum, quo ea senserit pericula. At sit omnis eirmod interesset, no mei platonem reprimique, ei vix nobis fastidii qualisque. In pro natum omittantur. Mel recusabo repudiare ea.<br /><br />An duo tritani ponderum. Ei perpetua accusamus adolescens mel. Mei cu recusabo consequat, graeco regione in per, ea mel tantas eirmod reprehendunt. Duis percipitur neglegentur has ad, idque scripta vix ut. Eu minimum dignissim usu. Nec soluta corpora id.<br /><br />Illud epicuri at vis, est officiis forensibus ex. Ne wisi dicat exerci pri. Usu ut discere voluptua adolescens. Omnium placerat mel ut, te eos dicta suavitate. Ea luptatum sententiae consetetur qui, appetere vituperata ius ne.",
+                date:   "25/03/2018",
+                category: "Automotive",
+                tags: ["Cars", "Tesla", "Elon Musk"]
+            },
+            {
+                author: "Pam Beasley",
+                title: "Elon Musk Finds Out What It Means To Be Human",
+                thumbnail: "/images/tesla_model_3.jpg",
+                content:   "Lorem ipsum dolor sit amet, maluisset salutatus ea mei, id vim erant tincidunt instructior. Probo ornatus partiendo mei eu, nonumy partiendo democritum mei ei, mollis iisque eam no. Quod aeterno malorum ei nam, mel cu partem mandamus. Sit causae iriure at, qui habeo oblique epicuri eu. Mutat facilis id pri, ea qui vocibus volutpat, eruditi noluisse per te.<br /><br />Ea cum quem quod tincidunt, mea latine efficiendi persequeris cu. No sed simul zril regione, nemore epicurei scribentur nec et, aliquid fabulas definiebas te sed. Eam ne saepe perfecto vulputate, iusto homero eu sed, id est dico oblique. Eum ad adhuc scripta. Pro enim brute ea, no nihil iisque mentitum duo, veri ludus dissentiunt ea eam. At omnes concludaturque mea, dicit lucilius reprehendunt mea et, noster animal perfecto no sea.<br /><br />Errem vocent delicatissimi eum an. Et consul denique reformidans eum, quo ea senserit pericula. At sit omnis eirmod interesset, no mei platonem reprimique, ei vix nobis fastidii qualisque. In pro natum omittantur. Mel recusabo repudiare ea.<br /><br />An duo tritani ponderum. Ei perpetua accusamus adolescens mel. Mei cu recusabo consequat, graeco regione in per, ea mel tantas eirmod reprehendunt. Duis percipitur neglegentur has ad, idque scripta vix ut. Eu minimum dignissim usu. Nec soluta corpora id.<br /><br />Illud epicuri at vis, est officiis forensibus ex. Ne wisi dicat exerci pri. Usu ut discere voluptua adolescens. Omnium placerat mel ut, te eos dicta suavitate. Ea luptatum sententiae consetetur qui, appetere vituperata ius ne.",
+                date:   "24/03/2018",
+                category: "Sports",
+                tags: ["Cars", "Tesla", "Elon Musk"]
+            }
+        ];
         res.render('article', {
             title : 'The Article Route',
-            "post": post
+            "posts": posts
         });
     });
 

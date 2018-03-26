@@ -7,15 +7,20 @@ block content
 	div.page
 		div.blog-section
 			div.blog-content
-				p.blog-title <a href="#">!{post.title}</a>
-				<a href="#"><img class="blog-thumbnail" src=!{post.thumbnail}></a>
-				p.blog-text !{post.content}
+				p.blog-title <a href="#">!{posts[0].title}</a>
+				<a href="#"><img class="blog-thumbnail" src=!{posts[0].thumbnail}></a>
+				p.blog-text !{posts[0].content}
 				div.blog-footer
-					p.blog-category Category: <a href="#">!{post.category}</a>
-					p.blog-info By <a href="#">!{post.author}</a> | !{post.date}
+					p.blog-category Category: <a href="#">!{posts[0].category}</a>
+					p.blog-info By <a href="#">!{posts[0].author}</a> | !{posts[0].date}
 		div.right-section
+
+			p.right-header RELATED ARTICLES
+
+			-for(i = 0; i < posts.length; i++){
 			div.right-content
-				p test
+				p <a href="#"><img class="right-thumbnail" src=!{posts[i].thumbnail}>!{posts[i].title}</a>
+			-}
 			div.right-content
 				p test
 			div.right-content

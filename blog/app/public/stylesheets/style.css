@@ -34,11 +34,30 @@ a {
   background: rgb(187, 187, 247);
 }
 
+.right-header {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 22px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.right-thumbnail {
+  height: 250px;
+  width: 260px;
+  object-fit: cover;
+}
+
+.right-content p {
+  text-align: left;
+  font-size: 17px;
+  font-family: 'Merriweather', serif;
+}
+
 .right-content {
-  height: 270px;
-  width: 270px;
+  height: 250px;
+  width: 260px;
   background:rgb(53, 100, 153);
-  margin-bottom: 40px;
+  margin-bottom: 70px;
 }
 
 .blog-content {
@@ -47,7 +66,7 @@ a {
   padding-right: 10px;
   max-width: 700px;
   min-width: 550px;
-  background: rgb(221, 221, 221);
+  background: white;
 }
 
 .blog-content a{
