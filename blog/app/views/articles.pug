@@ -18,7 +18,7 @@ block content
 
     -for(i = 0; i < posts.length; i++){
         div.blog-content
-                p.blog-title !{posts[i].title}
-                p.blog-text !{posts[i].post}
-                p By !{posts[i].author} | !{posts[i].date}
+            p.blog-title !{posts[i].title}
+            p.blog-text !{posts[i].post}
+            p By <a href="#">!{posts[i].author}</a> | !{posts[i].date}
     -}
