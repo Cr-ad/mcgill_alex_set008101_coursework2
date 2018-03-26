@@ -30,7 +30,7 @@ a {
 }
 
 .right-section {
-  margin-left: 100px;
+  margin-left: 70px;
   background: rgb(187, 187, 247);
 }
 
@@ -42,7 +42,7 @@ a {
 }
 
 .right-thumbnail {
-  height: 250px;
+  height: 230px;
   width: 260px;
   object-fit: cover;
 }
@@ -54,10 +54,20 @@ a {
 }
 
 .right-content {
+  border: solid black 5px;
+  border-radius: 2px;
   height: 250px;
   width: 260px;
   background:rgb(53, 100, 153);
   margin-bottom: 70px;
+}
+
+.right-content a{
+  color: rgb(0, 0, 0) !important;
+  text-decoration: none;
+}
+.right-content a:hover {
+  text-decoration: underline;
 }
 
 .blog-content {

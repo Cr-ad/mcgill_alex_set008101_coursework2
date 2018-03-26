@@ -8,17 +8,17 @@ block content
 		div.blog-section
 			-for(i = 0; i < posts.length; i++){
 				div.blog-content
-					p.blog-title <a href="#">!{posts[i].title}</a>
-					<a href="#"><img class="blog-thumbnail" src=!{posts[i].thumbnail}></a>
+					p.blog-title <a href="/articles/test">!{posts[i].title}</a>
+					<a href="/articles/test"><img class="blog-thumbnail" src=!{posts[i].thumbnail}></a>
 					p.blog-text !{posts[i].content}
 					div.blog-footer
 						p.blog-category Category: <a href="#">!{posts[i].category}</a>
 						p.blog-info By <a href="#">!{posts[i].author}</a> | !{posts[i].date}
 			-}
 		div.right-section
+			p.right-header POPULAR ARTICLES
+
+			-for(i = 0; i < posts.length; i++){
 			div.right-content
-				p test
-			div.right-content
-				p test
-			div.right-content
-				p test
+				p <a href="#"><img class="right-thumbnail" src=!{posts[i].thumbnail}>!{posts[i].title}</a>
+			-}
