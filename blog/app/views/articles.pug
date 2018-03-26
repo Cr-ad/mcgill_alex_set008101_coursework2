@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  h1= title
+
+  div
+    p Welcome to #{title}
+
+
+    p(id="3rd",
+    class="sample import").
+      Vitae aliquet varius, tortor quam pharetra odio, dignissim ultrices felis purus in lorem. Phasellus sed tincidunt tellus, at viverra turpis. Aliquam laoreet lacinia vulputate. Nunc accumsan ex vel dui iaculis, quis tempus mi ullamcorper. Vestibulum finibus posuere venenatis.
+
+    - samplePost = "Maecenas porttitor suscipit ultrices. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus eu magna congue, luctus urna non, hendrerit neque. Sed in dapibus ligula. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec tortor nunc, vestibulum ut leo quis, egestas volutpat nisl. In interdum dapibus pharetra. Integer nec arcu sollicitudin, scelerisque massa id, vulputate odio. Vestibulum finibus mauris et blandit convallis."
+
+    h1= "Sample Post"
+    p= samplePost
+
+    -for(i = 0; i < posts.length; i++){
+        div.blog-content
+            ul
+                li=posts[i].title
+                li=posts[i].post
+                li=posts[i].author
+                li=posts[i].date
+    -}

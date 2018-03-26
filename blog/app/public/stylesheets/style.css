@@ -1,4 +1,6 @@
 body {
+  margin: 0 auto;
+  width: 80%;
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -13,4 +15,9 @@ p {
 
 a {
   color: #00B7FF;
+}
+
+
+.blog-content {
+  background: #afede6;
 }

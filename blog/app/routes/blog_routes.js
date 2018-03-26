@@ -17,7 +17,39 @@ module.exports = function(blog_app, client) {
         res.render('index', { title : 'The Test Route'});
     });
 
-    // Test Route
+
+    
+    
+
+    // Articles Route
+    blog_app.get('/articles/', (req, res) => {
+        let posts = [
+            {
+                author: "Jim Halpert",
+                title: "Post 1",
+                post:   "This is a test blog post",
+                date:   "26/03/2018"
+            },
+            {
+                author: "Michael Sott",
+                title: "Post 2",
+                post:   "This is the 2nd test blog post",
+                date:   "25/03/2018"
+            },
+            {
+                author: "Pam Beasley",
+                title: "Post 3",
+                post:   "This is the 3rd test blog post",
+                date:   "24/03/2018"
+            }
+        ];
+        res.render('articles', {
+            title : 'The Articles Route',
+            "posts": posts
+        });
+    });
+
+    // Samples Route
     blog_app.get('/samples/', (req, res) => {
         res.render('samples', { title : 'The Sample Route'});
     });
