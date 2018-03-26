@@ -1,6 +1,6 @@
 body {
   margin: 0 auto;
-  width: 80%;
+  width: 85%;
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
@@ -14,23 +14,43 @@ p {
 }
 
 a {
-  color: #00B7FF;
+  color: rgb(0, 101, 141);
 }
 
 .blog-content {
   margin: 0 auto;
+  padding-left: 10px;
+  padding-right: 10px;
   width: 100%;
-  background: #afede6;
+  background: rgb(221, 221, 221);
 }
 
 .blog-title {
   text-align: center;
   font-size: 38px;
   font-family: 'Merriweather', serif;
-  
 }
 
 .blog-text {
   font-size: 20px;
   font-family: 'Quicksand', sans-serif;
 }
+
+.blog-category {
+  text-align: left;
+  font-size: 17px;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.blog-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.blog-info {
+  text-align: right;
+  font-size: 17px;
+  font-family: 'Quicksand', sans-serif;
+}
+
