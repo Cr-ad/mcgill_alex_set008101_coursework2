@@ -15,7 +15,12 @@ module.exports = function(blog_app, client) {
     // Test Route
     blog_app.get('/test/', (req, res) => {
         res.render('index', { title : 'The Test Route'});
-    });    
+    });
+
+    // Test Route
+    blog_app.get('/samples/', (req, res) => {
+        res.render('samples', { title : 'The Sample Route'});
+    });
 
     blog_app.get('/posts/:id', (req, res) => {
 

@@ -18,6 +18,7 @@ blog_app.use(bodyParser.urlencoded({ extended: true}))
 
 // view engine setup
 blog_app.set('views', path.join(__dirname, '/app/views'));
+blog_app.use(express.static(path.join(__dirname, 'app/public')));
 blog_app.set('view engine', 'pug');
 
 MongoClient.connect(db.url, (err, database) => {
