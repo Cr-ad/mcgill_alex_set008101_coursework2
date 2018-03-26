@@ -26,12 +26,12 @@ module.exports = function(blog_app, client) {
         let posts = [
             {
                 author: "Jim Halpert",
-                title: "Post 1",
-                post:   "This is a test blog post",
+                title: "Elon Musk Deletes SpaceX and Tesla Facebook Pages",
+                post:   "As the #DeleteFacebook campaign ramps up, even SpaceX and Tesla CEO Elon Musk is weighing in. The billionaire entrepreneur doesn’t have a Facebook account to delete. He’s more of an Instagram user, which is owned by Facebook. <br /><br />But on Friday, Musk said he would delete the official Facebook pages for SpaceX and Tesla. The SpaceX page was deleted soon after his comments on Twitter. <br /><br />The promise all started during an exchange on Twitter when Musk referenced an article by The Verge about Sonos pulling ads off of Facebook for a week. Musk provided a link to the story and a snarky comment, 'Wow, a whole week. Risky …'",
                 date:   "26/03/2018"
             },
             {
-                author: "Michael Sott",
+                author: "Michael Scott",
                 title: "Post 2",
                 post:   "This is the 2nd test blog post",
                 date:   "25/03/2018"
