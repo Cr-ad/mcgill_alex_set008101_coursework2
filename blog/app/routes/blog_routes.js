@@ -56,19 +56,33 @@ module.exports = function(blog_app, client) {
         var dbPosts = new Array();
 
         var cursor = db.collection('posts').find();
+        var count = 0;
+        db.collection('posts').count({}, function(error, numOfDocs) {
+            count = numOfDocs;
+        });
+        
         // Execute the each command, triggers for each document
         cursor.forEach(function(doc, index) {
             console.log(" Article Title: " + doc.title)
             // Add some validation
-            var post = {
-                author:     doc.author,
-                title:      doc.title,
-                thumbnail:  doc.thumbnail,
-                content:    doc.content,
-                date:       doc.date,
-                category:   doc.category,
-                tags:       doc.tags
+            var post;
+            try {
+                post = {
+                    author:     doc.author,
+                    title:      doc.title,
+                    thumbnail:  doc.thumbnail,
+                    content:    doc.content,
+                    date:       doc.date,
+                    category:   doc.category,
+                    tags:       doc.tags
+                }
             }
+            catch(err)
+            {
+                console.log("A blog post was invalid");
+            }
+            
+            
 
             dbPosts.push(post);
             console.log("Inner Post Count: " + dbPosts.length);
