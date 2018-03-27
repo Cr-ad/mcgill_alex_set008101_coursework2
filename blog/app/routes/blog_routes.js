@@ -52,6 +52,35 @@ module.exports = function(blog_app, client) {
                 tags: ["Cars", "Tesla", "Elon Musk"]
             }
         ];
+
+        var dbPosts = new Array();
+
+        var cursor = db.collection('posts').find();
+        // Execute the each command, triggers for each document
+        cursor.forEach(function(doc, index) {
+            console.log(" Article Title: " + doc.title)
+            // Add some validation
+            var post = {
+                author:     doc.author,
+                title:      doc.title,
+                thumbnail:  doc.thumbnail,
+                content:    doc.content,
+                date:       doc.date,
+                category:   doc.category,
+                tags:       doc.tags
+            }
+
+            dbPosts.push(post);
+            console.log("Inner Post Count: " + dbPosts.length);
+        });
+
+        console.log("Outer Post Count: " + dbPosts.length);
+
+        for(var curr in dbPosts)
+        {
+            console.log("Title: " + curr.title);
+        }
+
         res.render('articles', {
             title : 'The Articles Route',
             "posts": posts
@@ -60,18 +89,27 @@ module.exports = function(blog_app, client) {
 
     // Articles Route
     blog_app.get('/articles/test', (req, res) => {
-        /*const id = req.params.id;
-        const details = {'_id' : new ObjectID(id) };
-        db.collection('posts').findOne(details, (err, item) => {
-            if(err)
+        
+        var dbPosts = new Array();
+
+        var cursor = db.collection('posts').find();
+        // Execute the each command, triggers for each document
+        cursor.forEach(function(doc, index) {
+            console.log(" Article Title: " + doc.title)
+            dbPosts.push(doc);
+        });
+        /*
+        // Execute the each command, triggers for each document
+        cursor.each(function(err, item) {
+            // If item is null, cursor is empty
+            if (item == null)
             {
-                res.send({ 'error' : 'An error occurred' });
-            }
-            else
-            {
-                res.send(item);
-            }
+                cursor.toArray(function(err, items) {
+                    assert.ok(err != null);
+                });
+            };
         }); */
+        
         let posts = [
             {
                 author: "Jim Halpert",
