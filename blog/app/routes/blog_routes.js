@@ -146,7 +146,9 @@ module.exports = function(blog_app, client) {
             {
                 //res.send(result.ops[0]);
                 res.redirect('/');
-                alert("Blog Post Successfully Submitted!");
+                var currentDate = new Date().toLocaleString();
+                console.log(currentDate + " | Blog Post Submitted by " + post.author + ":" + post.title)
+                //alert("Blog Post Successfully Submitted!");
             }
         })
     });
