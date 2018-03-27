@@ -3,3 +3,45 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+
+  form(name="add_blog_post", method="post")
+    
+    .form-container
+      .form-heading
+        p Title:
+      .form-content
+        input(class="form-heading-input" type="text", name="title" size="47")
+    .form-container
+      .form-heading
+        p Thumbnail:
+      .form-content
+        input(class="form-heading-input" type="url", name="thumbnail" size="47")
+    .form-container
+      .form-heading
+       p Content:
+      .form-content
+        textarea(class="blog-text" name="content", cols="72", rows="25")
+    .form-container
+      .form-heading
+        p Tags:
+      .form-content
+        input(class="form-content-inputs" type="text", name="tags" size="54" placeholder="Seperate tags with commas (tag1, tag2)")
+    .form-container
+      .form-heading
+        p Category:
+      .form-content
+        input(class="form-content-inputs" type="text", name="category" size="19")
+    
+    .form-container
+      .form-heading
+        p Author:
+      .form-content
+        input(class="form-content-inputs" type="text", name="author" size="19")
+    .form-container
+      .form-heading
+        p Date:
+      .form-content
+        input(class="form-content-inputs" type="date", name="date")
+    
+    .actions
+      input(type="submit", value="Submit")

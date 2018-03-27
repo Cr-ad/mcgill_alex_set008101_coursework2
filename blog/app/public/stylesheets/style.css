@@ -23,42 +23,38 @@ a {
   justify-content: flex-end;
 }
 
-.blog-section {
-  background: black;
-  padding: 10px;
-  max-width: 50%;
-}
-
 .right-section {
   margin-left: 70px;
-  background: rgb(187, 187, 247);
+  /* background: rgb(187, 187, 247); */
 }
 
 .right-header {
   font-family: 'Quicksand', sans-serif;
-  font-size: 22px;
+  font-size: 28px;
   text-align: center;
+  margin-top: -6px;
   font-weight: bold;
 }
 
 .right-thumbnail {
-  margin-top: -18px;
+  /* margin-top: -15px; */
   height: 230px;
   width: 260px;
   object-fit: cover;
 }
 
-.right-content p {
+.right-content a {
   text-align: left;
   font-size: 17px;
   font-family: 'Merriweather', serif;
 }
 
 .right-content {
-  border: solid black 5px;
+  border: solid black 2px;
+  border-radius: 3px;
   width: 260px;
-  background:rgb(53, 100, 153);
-  margin-bottom: 70px;
+  /* background:rgb(53, 100, 153); */
+  margin-bottom: 50px;
   padding-bottom: -5px;
 }
 
@@ -68,6 +64,14 @@ a {
 }
 .right-content a:hover {
   text-decoration: underline;
+}
+
+.blog-section {
+  background: white;
+  border: solid black 2px;
+  padding: 10px;
+  padding-top: 0;
+  max-width: 50%;
 }
 
 .blog-content {
@@ -130,6 +134,43 @@ a {
 .blog-info {
   text-align: right;
   font-size: 17px;
+  font-family: 'Quicksand', sans-serif;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 0 10px 20px 0;
+}
+
+.form-heading {
+  background-color: pink;
+  width: 150px;
+  text-align: right;
+  padding-right: 20px;
+}
+
+.form-heading-input {
+  font-size: 25px;
+  font-family: 'Merriweather', serif;
+}
+
+.form-heading p {
+  display: inline;
+  text-align: right;
+  font-size: 30px;
+  font-family: 'Quicksand', sans-serif;
+  vertical-align: top;
+}
+
+.form-content {
+  background-color: plum;
+  width: 62%;
+}
+
+.form-content-inputs {
+  font-size: 26px;
   font-family: 'Quicksand', sans-serif;
 }
 
