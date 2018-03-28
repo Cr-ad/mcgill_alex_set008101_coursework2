@@ -47,7 +47,10 @@ module.exports = function(blog_app, client) {
     });
 
     // Articles Route
-    blog_app.get('/articles/test', (req, res) => {
+    blog_app.get('/articles/:category/:id', (req, res) => {
+        const category = req.params.category;
+        const id = req.params.id;
+        var selectedPost;
         var dbPosts = [];
         var cursor = db.collection('posts').find();
         // Execute the each command, triggers for each document
@@ -64,11 +67,20 @@ module.exports = function(blog_app, client) {
                 category:   doc.category,
                 tags:       doc.tags
             }
-            dbPosts.push(post);
+            if(post.id == id)
+            {
+                //console.log("Matched POST ID: " + post.id);
+                selectedPost = post;
+            }
+            else
+            {
+                dbPosts.push(post);
+            }
             //console.log("ID: " + post.id +  " | Title: " + post.title);
         }, function() {
                 res.render('article', {
                     title : 'The Articles Route',
+                    "selectedPost": selectedPost,
                     "posts": dbPosts
                 });
         });
@@ -97,7 +109,7 @@ module.exports = function(blog_app, client) {
             }
         }
 
-        delete req.body._id; // for saftey (to avoid overwriting existing id)
+        delete req.body.id; // for saftey (to avoid overwriting existing id)
         // Create the blog post
         const post = {
             author: req.body.author,

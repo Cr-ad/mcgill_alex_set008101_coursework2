@@ -6,18 +6,24 @@ block content
 	div.page
 		div.blog-section
 			div.blog-content
-				p.blog-title <a href="#">!{posts[0].title}</a>
-				<a href="#"><img class="blog-thumbnail" src=!{posts[0].thumbnail}></a>
-				p.blog-text !{posts[0].content}
+				p.blog-title <a href="#">!{selectedPost.title}</a>
+				<a href="#"><img class="blog-thumbnail" src=!{selectedPost.thumbnail}></a>
+				p.blog-text !{selectedPost.content}
 				div.blog-footer
-					p.blog-category Category: <a href="#">!{posts[0].category}</a>
-					p.blog-info By <a href="#">!{posts[0].author}</a> | !{posts[0].date}
+					p.blog-category Category: <a href="#">!{selectedPost.category}</a>
+					p.blog-info By <a href="#">!{selectedPost.author}</a> | !{selectedPost.date}
 		div.right-section
 
 			p.right-header RELATED ARTICLES
 
 			-for(i = posts.length - 1; i >= 0; i--){
+				- category = posts[i].category
+				- id = posts[i].id
+				- thumbnail = posts[i].thumbnail
 			div.right-content
-				<a href="/articles/test"><img class="right-thumbnail" src=!{posts[i].thumbnail}></a>
-				<a href="/articles/test">!{posts[i].title}</a>
+				a(href='../'+category+'/'+id)
+					img(class="right-thumbnail" src=thumbnail)
+				a(href='../'+category+'/'+id) !{posts[i].title}
+				//-<a href="/articles/{}"><img class="right-thumbnail" src=!{posts[i].thumbnail}></a>
+				//-<a href="/articles/test">!{posts[i].title}</a>
 			-}
