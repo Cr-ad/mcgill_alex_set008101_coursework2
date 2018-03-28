@@ -86,6 +86,54 @@ module.exports = function(blog_app, client) {
         });
     });
 
+    function capitaliseFirstLetter(string)
+    {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+    }
+
+    // Category Route
+    blog_app.get('/articles/:category/', (req, res) => {
+        var selected_category = req.params.category;
+        selected_category = selected_category.toLowerCase();
+        selected_category.charAt(0).toUpperCase();
+        var dbPosts = [];
+        var cursor = db.collection('posts').find({category : selected_category});
+        // Execute the each command, triggers for each document
+        cursor.forEach(function(doc, err) {
+            assert.equal(null, err);
+            // Convert the first letter of the category to uppercase to look nicer
+            var categoryUpper = (capitaliseFirstLetter(doc.category));
+
+            // Need to add some validation
+            var post = {
+                id:         doc._id,
+                author:     doc.author,
+                title:      doc.title,
+                thumbnail:  doc.thumbnail,
+                content:    doc.content,
+                date:       doc.date,
+                category:   categoryUpper,
+                tags:       doc.tags
+            }
+            dbPosts.push(post);
+            //console.log("ID: " + post.id +  " | Title: " + post.title);
+        }, function() {
+            
+            if(dbPosts.length > 0)
+            {
+                res.render('category', {
+                    title : 'The Category Route',
+                    "posts": dbPosts
+                });
+            }
+            else
+            {
+                res.send("Category does not exist");
+            }
+        });
+    });
+
+
     // Samples Route
     blog_app.get('/add_article/', (req, res) => {
         res.render('add_article', { title : 'The Add Article Route'});
