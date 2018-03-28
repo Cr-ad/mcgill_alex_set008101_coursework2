@@ -2,7 +2,7 @@ extends layout
 
 block content
 	h1= title
-
+	- dateTime = selectedPost.date.toLocaleDateString() + " " + selectedPost.date.toLocaleTimeString();
 	div.page
 		div.blog-section
 			div.blog-content
@@ -11,7 +11,7 @@ block content
 				p.blog-text !{selectedPost.content}
 				div.blog-footer
 					p.blog-category Category: <a href="#">!{selectedPost.category}</a>
-					p.blog-info By <a href="#">!{selectedPost.author}</a> | !{selectedPost.date}
+					p.blog-info By <a href="#">!{selectedPost.author}</a> | !{dateTime}
 		div.right-section
 
 			p.right-header RELATED ARTICLES

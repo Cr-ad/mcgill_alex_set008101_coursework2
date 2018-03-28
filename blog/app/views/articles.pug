@@ -9,6 +9,7 @@ block content
 				- category = posts[i].category
 				- id = posts[i].id
 				- thumbnail = posts[i].thumbnail
+				- dateTime = posts[i].date.toLocaleDateString() + " " + posts[i].date.toLocaleTimeString();
 				div.blog-content
 					a(href='articles/'+category+'/'+id)
 						p(class="blog-title") !{posts[i].title}
@@ -17,7 +18,7 @@ block content
 					p.blog-text !{posts[i].content}
 					div.blog-footer
 						p.blog-category Category: <a href="#">!{posts[i].category}</a>
-						p.blog-info By <a href="#">!{posts[i].author}</a> | !{posts[i].date}
+						p.blog-info By <a href="#">!{posts[i].author}</a> | !{dateTime}
 			-}
 		div.right-section
 			p.right-header POPULAR ARTICLES

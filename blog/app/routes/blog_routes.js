@@ -95,7 +95,7 @@ module.exports = function(blog_app, client) {
         var originalTagString = req.body.tags;
         var tagsUnfiltered = originalTagString.split(',');
         var tagsFiltered = new Array();
-
+        var currentDateTime = new Date();
         for(i = 0; i < tagsUnfiltered.length; i++)
         {
             var current = tagsUnfiltered[i];
@@ -108,7 +108,7 @@ module.exports = function(blog_app, client) {
                 tagsFiltered.push(current);
             }
         }
-
+        
         delete req.body.id; // for saftey (to avoid overwriting existing id)
         // Create the blog post
         const post = {
@@ -116,7 +116,8 @@ module.exports = function(blog_app, client) {
             title: req.body.title,
             thumbnail: req.body.thumbnail,
             content: req.body.content,
-            date: req.body.date,
+            date: currentDateTime,
+            //date: req.body.date,
             category: req.body.category,
             tags: tagsFiltered
          };
