@@ -79,7 +79,7 @@ module.exports = function(blog_app, client) {
             //console.log("ID: " + post.id +  " | Title: " + post.title);
         }, function() {
                 res.render('article', {
-                    title : 'The Articles Route',
+                    title : 'The Article Route',
                     "selectedPost": selectedPost,
                     "posts": dbPosts
                 });
@@ -95,6 +95,11 @@ module.exports = function(blog_app, client) {
     blog_app.get('/articles/:category/', (req, res) => {
         var selected_category = req.params.category;
         selected_category = selected_category.toLowerCase();
+        // Nearly correct url redirects:
+        if(selected_category == "tech")
+        {
+            selected_category = "technology";
+        }
         selected_category.charAt(0).toUpperCase();
         var dbPosts = [];
         var cursor = db.collection('posts').find({category : selected_category});
@@ -149,7 +154,7 @@ module.exports = function(blog_app, client) {
             var current = tagsUnfiltered[i];
             while(current.charAt(0) == ' ' || current.charAt(0) == ',')
             {
-            current = current.substring(1);
+                current = current.substring(1);
             }
             if(current.length > 2)
             {
@@ -165,7 +170,6 @@ module.exports = function(blog_app, client) {
             thumbnail: req.body.thumbnail,
             content: req.body.content,
             date: currentDateTime,
-            //date: req.body.date,
             category: req.body.category,
             tags: tagsFiltered
          };

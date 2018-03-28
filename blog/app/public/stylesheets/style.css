@@ -5,6 +5,106 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+/* START OF NAV BAR */
+
+#nav_bar {
+  height: 80px;
+  width: 100%;
+  background-color: #002064;
+  text-align: right;
+  margin: 0;
+}
+
+#blog_logo {
+  font-family: 'Special Elite', sans-serif;
+  font-size: 250%;
+  color: red;
+  text-decoration: none;
+  margin-left: 10px;
+  position: absolute;
+  left: 10%;
+  top: 80px;
+  /*
+  
+  */
+}
+
+#nav_bar ul li {
+  display: inline;
+}
+
+#nav_bar ul li a {
+  color:white;
+  text-decoration: none;
+  font-family: 'Neucha', sans-serif;
+  font-size: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+#nav_bar ul li a:hover {
+  border-top: 2px solid #FFF;
+}
+
+#nav_bar ul li a:active {
+  color:rgb(70, 69, 69);
+}
+
+li {
+  float: right;
+}
+
+li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: #000504;
+}
+.dropdown-content {
+  display: none;
+  top: 100%;
+  position: absolute;
+  background-color: #000504;
+  min-width: 160px;
+  box-shadow: 0 8px 16px 0 black;
+  z-index: 22;
+  text-align: left;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+  color: black !important;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.active_page {
+  font-weight: bold;
+  font-size: 32px !important;
+}
+
+/* END OF NAV BAR */
+
+
 h1 {
   font: 30px "Arial", Helvetica, sans-serif;
 }
