@@ -172,11 +172,17 @@ module.exports = function(blog_app, client) {
 
         for(i = 0; i < tagsUnfiltered.length; i++)
         {
-            if(tagsUnfiltered[i].length > 2)
+            var current = tagsUnfiltered[i];
+            while(current.charAt(0) == ' ' || current.charAt(0) == ',')
             {
-                tagsFiltered.push(tagsUnfiltered[i]);
+            current = current.substring(1);
+            }
+            if(current.length > 2)
+            {
+                tagsFiltered.push(current);
             }
         }
+
         delete req.body._id; // for saftey (to avoid overwriting existing id)
         // Create the blog post
         const post = {
