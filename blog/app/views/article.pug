@@ -6,8 +6,9 @@ block content
 	div.page
 		div.blog-section
 			div.blog-content
-				p.blog-title <a href="#">!{selectedPost.title}</a>
-				<a href="#"><img class="blog-thumbnail" src=!{selectedPost.thumbnail}></a>
+				p.blog-title !{selectedPost.title}
+				img(class="blog-thumbnail" src=selectedPost.thumbnail)
+				//-<img class="blog-thumbnail" src=!{selectedPost.thumbnail}>
 				p.blog-text !{selectedPost.content}
 				div.blog-footer
 					p.blog-category Category: <a href="#">!{selectedPost.category}</a>
