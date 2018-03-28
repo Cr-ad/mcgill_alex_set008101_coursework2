@@ -37,7 +37,7 @@ module.exports = function(blog_app, client) {
                 tags:       doc.tags
             }
             dbPosts.push(post);
-            console.log("ID: " + post.id +  " | Title: " + post.title);
+            //console.log("ID: " + post.id +  " | Title: " + post.title);
         }, function() {
                 res.render('articles', {
                     title : 'The Articles Route',
@@ -48,7 +48,6 @@ module.exports = function(blog_app, client) {
 
     // Articles Route
     blog_app.get('/articles/test', (req, res) => {
-        
         var dbPosts = [];
         var cursor = db.collection('posts').find();
         // Execute the each command, triggers for each document
@@ -66,7 +65,7 @@ module.exports = function(blog_app, client) {
                 tags:       doc.tags
             }
             dbPosts.push(post);
-            console.log("ID: " + post.id +  " | Title: " + post.title);
+            //console.log("ID: " + post.id +  " | Title: " + post.title);
         }, function() {
                 res.render('article', {
                     title : 'The Articles Route',
@@ -74,7 +73,6 @@ module.exports = function(blog_app, client) {
                 });
         });
     });
-
 
     // Samples Route
     blog_app.get('/add_article/', (req, res) => {
