@@ -11,7 +11,7 @@ block content
 				- thumbnail = posts[i].thumbnail
 				- dateTime = posts[i].date.toLocaleDateString() + " " + posts[i].date.toLocaleTimeString();
 				div.blog-content
-					a(href='articles/'+category+'/'+id)
+					a(href=category+'/'+id)
 						p(class="blog-title") !{posts[i].title}
 					//-p.blog-title <a href='/articles/'+category+'/'+id>!{posts[i].title}</a>
 					<a href="/articles/test"><img class="blog-thumbnail" src=!{posts[i].thumbnail}></a>
