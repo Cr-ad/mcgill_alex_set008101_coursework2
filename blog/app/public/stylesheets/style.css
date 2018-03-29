@@ -16,7 +16,7 @@ body {
 
 .nav-bar h2 {
   position: absolute;
-  vertical-align: middle;
+  margin-top: 4px;
   margin-left: 15px;
   color: white;
   font-family: 'Hammersmith One', sans-serif;
