@@ -26,6 +26,8 @@ module.exports = function(blog_app, client) {
         cursor.forEach(function(doc, err) {
             assert.equal(null, err);
             // Need to add some validation
+
+            var cat = capitaliseFirstLetter(doc.category);
             var post = {
                 id:         doc._id,
                 author:     doc.author,
@@ -33,7 +35,7 @@ module.exports = function(blog_app, client) {
                 thumbnail:  doc.thumbnail,
                 content:    doc.content,
                 date:       doc.date,
-                category:   doc.category,
+                category:   cat,
                 tags:       doc.tags
             }
             dbPosts.push(post);
@@ -57,6 +59,9 @@ module.exports = function(blog_app, client) {
         cursor.forEach(function(doc, err) {
             assert.equal(null, err);
             // Need to add some validation
+
+            var cat = capitaliseFirstLetter(doc.category);
+
             var post = {
                 id:         doc._id,
                 author:     doc.author,
@@ -64,7 +69,7 @@ module.exports = function(blog_app, client) {
                 thumbnail:  doc.thumbnail,
                 content:    doc.content,
                 date:       doc.date,
-                category:   doc.category,
+                category:   cat,
                 tags:       doc.tags
             }
             if(post.id == id)

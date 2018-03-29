@@ -1,6 +1,44 @@
 extends layout
 
 block content
+	nav.nav-bar
+		a(href="#")
+			h2 Blog Site
+		ul
+			li Home
+			li.active_tab Articles
+				.mega-menu
+					h3 Categories
+					.inner-mega-menu
+						a(href="/articles/Technology")
+							p Technology
+						a(href="/articles/Automotive")
+							p Automotive
+						a(href="/articles/Business")
+							p Business
+						a(href="/articles/Sports")
+							p Sports
+					.inner-mega-menu
+						a(href="#")
+							p Category
+						a(href="#")
+							p Category
+						a(href="#")
+							p Category
+						a(href="#")
+							p Category
+					.inner-mega-menu
+						a(href="#")
+							p Category
+						a(href="#")
+							p Category
+						a(href="#")
+							p Category
+						a(href="#")
+							p Category
+			li Authors
+			li About
+	
 	h1= title
 
 	div.page
