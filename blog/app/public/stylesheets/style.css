@@ -114,6 +114,18 @@ body {
   z-index: 20;
 }
 
+.mega-menu h3 {
+  text-align: left;
+  font-size: 20px;
+  position: relative;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: -10px;
+  font-style: italic;
+  font-weight: 20;
+  text-shadow: none;
+}
+
 .inner-mega-menu {
   width: 24%;
   float: left;
@@ -166,6 +178,8 @@ a {
 
 .right-section {
   margin-left: 70px;
+  max-width: 300px;
+  min-width: 200px;
   /* background: rgb(187, 187, 247); */
 }
 
@@ -180,7 +194,7 @@ a {
 .right-thumbnail {
   border-radius: 5%;
   height: 230px;
-  width: 260px;
+  width: 100%;
   object-fit: cover;
   /* 
   margin-top: -15px;
@@ -194,9 +208,10 @@ a {
 }
 
 .right-content {
-  width: 260px;
+  width: 100%;
   margin-bottom: 50px;
   padding-bottom: -5px;
+  
   /*
   border: solid black 2px;
   border-radius: 3px;
@@ -216,6 +231,7 @@ a {
   
   padding: 0 10px 0 10px;
   width: 70%;
+  min-width: 400px;
   /*
   border: solid black 2px;
   background: plum;
