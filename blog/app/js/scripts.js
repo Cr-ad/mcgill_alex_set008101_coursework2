@@ -36,7 +36,6 @@ function validateBlogPostSubmission()
         alert("Error: Please choose a valid category");
         return false;
     }
-
     var x = true;
     if (x)
     {
