@@ -1,15 +1,7 @@
 extends layout
 
 block content
-  div#nav_bar.fixed-nav-bar
-    a(href="#" id="blog_logo") Blog Logo
-    ul
-      li
-        a(href="#") Not Home
-      li
-        a(href="#") Categories
-      li
-        a(href="#") Home
+  
   h1= title
 
   div
@@ -20,3 +12,21 @@ block content
       br
       br
       | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam in interdum quam. Mauris eu dapibus neque. Morbi eget laoreet tortor. Vivamus rhoncus, erat nec blandit scelerisque, dui purus congue leo, eu rutrum enim nisl convallis nunc. Sed varius dui vitae justo tempor, et lobortis nunc finibus. Donec viverra ac metus ut tincidunt.
+
+
+
+//-div#nav_bar.fixed-nav-bar
+    a(href="#" id="blog_logo") Blog Logo
+    ul
+      li
+        a(href="#") Not Home
+      li
+        .dropdown
+          a(href="javascript:void(0)" class="dropbtn") Categories
+          .dropdown-content
+            a(href="#") Technology
+            a(href="#") Automotive
+            a(href="#") Business
+      li
+        a(href="#") Home
+      li.spacer
