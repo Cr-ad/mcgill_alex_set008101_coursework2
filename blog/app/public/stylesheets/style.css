@@ -84,6 +84,7 @@ body {
 
 .nav-bar ul li .mega-menu p:hover {
   color: #18bc9c;
+  transition: all 0.4s ease;
 }
 
 .header-banner {
@@ -228,7 +229,7 @@ a {
   max-width: 100%;
   min-width: 60%;
   background: white;
-  border: solid rgb(4, 0, 63) 2px;
+  border: solid 1px rgb(4, 0, 63);
 }
 
 .blog-content a{
