@@ -14,10 +14,31 @@ body {
   border-bottom: 1px solid #1a252f;
 }
 
+.nav-bar h2 {
+  position: absolute;
+  vertical-align: middle;
+  margin-left: 15px;
+  color: white;
+  font-family: 'Hammersmith One', sans-serif;
+  font-size: 40px;
+  font-weight: 40;
+}
+
+.active_tab {
+  text-shadow: 3px 3px 5px #000;
+  border-top: 2px solid white;
+  margin-top: -2px !important;
+  transition: all 0.4s ease;
+  /*
+  border-top: 3px solid white;
+  */
+}
+
 .nav-bar ul {
   width: 780px;
   height: 100%;
   margin: 0 auto;
+  float: center;
   list-style: none;
   font-weight: bold;
   letter-spacing: 1px;
@@ -25,6 +46,7 @@ body {
   font-family: 'Hammersmith One', sans-serif;
   font-weight: 80;
   font-size: 25px;
+  
 }
 
 .nav-bar ul li {
@@ -37,6 +59,7 @@ body {
   color: white;
   cursor: pointer;
   transition: all 0.4s ease;
+  
   /*
   background: plum;
   */
@@ -48,6 +71,9 @@ body {
 
 .nav-bar ul li:hover {
   color: #18bc9c;
+  /* border-bottom: 3px solid black; */
+  margin-top: -3px !important;
+  transition: all 0.4s ease;
 }
 
 .nav-bar ul li:hover .mega-menu {
