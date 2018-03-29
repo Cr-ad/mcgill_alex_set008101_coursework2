@@ -1,8 +1,10 @@
 body {
-  margin: 0 auto;
-  width: 85%;
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.content {
+  width: 85%;
+  margin: 0 auto;
 }
 
 .nav-bar {
@@ -154,6 +156,8 @@ a {
 }
 
 .page {
+  width: 85%;
+  margin: 0 auto;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
@@ -208,11 +212,12 @@ a {
 }
 
 .blog-section {
-  background: plum;
+  
   padding: 0 10px 0 10px;
   width: 70%;
   /*
   border: solid black 2px;
+  background: plum;
   */
 }
 
