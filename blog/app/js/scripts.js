@@ -54,7 +54,7 @@ function test()
 function search()
 {
     var search_query = document.forms["search_bar"]["search_input"].value;
-    alert(search_query);
+    alert("Query: " + search_query);
     
     // validate the data, if valid then return true
     return true;

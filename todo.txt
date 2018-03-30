@@ -13,6 +13,8 @@ Proper error page (404 etc.)
 More categories
 About page
 Content for home page?
+Add search query validation
+Sort search results by most tags matched
 Add article input validation
 Add article view counter - used for popular article sorting
 Related article tags - display articles with similar tags
