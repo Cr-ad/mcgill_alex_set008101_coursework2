@@ -65,9 +65,7 @@ block content
 				- id = posts[i].id
 				- thumbnail = posts[i].thumbnail
 			div.right-content
-				a(href='articles/'+category+'/'+id)
+				a(href=category+'/'+id)
 					img(class="right-thumbnail" src=thumbnail)
-				a(href='articles/'+category+'/'+id) !{posts[i].title}
-				//-<a href="/articles/{}"><img class="right-thumbnail" src=!{posts[i].thumbnail}></a>
-				//-<a href="/articles/test">!{posts[i].title}</a>
+				a(href=category+'/'+id) !{posts[i].title}
 			-}

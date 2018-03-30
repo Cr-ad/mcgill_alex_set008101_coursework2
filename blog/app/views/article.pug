@@ -48,7 +48,6 @@ block content
 			div.blog-content
 				p.blog-title !{selectedPost.title}
 				img(class="blog-thumbnail" src=selectedPost.thumbnail)
-				//-<img class="blog-thumbnail" src=!{selectedPost.thumbnail}>
 				p.blog-text !{selectedPost.content}
 				div.blog-footer
 					p.blog-category Category: <a href="#">!{selectedPost.category}</a>
@@ -65,6 +64,4 @@ block content
 				a(href='../'+category+'/'+id)
 					img(class="right-thumbnail" src=thumbnail)
 				a(href='../'+category+'/'+id) !{posts[i].title}
-				//-<a href="/articles/{}"><img class="right-thumbnail" src=!{posts[i].thumbnail}></a>
-				//-<a href="/articles/test">!{posts[i].title}</a>
 			-}

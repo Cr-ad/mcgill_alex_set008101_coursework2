@@ -48,7 +48,7 @@ module.exports = function(blog_app, client) {
         });
     });
 
-    // Articles Route
+    // Article Route
     blog_app.get('/articles/:category/:id', (req, res) => {
         const category = req.params.category;
         const id = req.params.id;
