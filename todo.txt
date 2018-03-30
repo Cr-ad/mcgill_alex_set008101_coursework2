@@ -22,7 +22,7 @@ Site name for the blog platform
 ----------------------
 In progress:
 
-
+Search Bar in nav bar
 
 ----------------------
 Implemented:
