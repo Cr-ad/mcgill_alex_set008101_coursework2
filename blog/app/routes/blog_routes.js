@@ -138,7 +138,11 @@ module.exports = function(blog_app, client) {
             }
             else
             {
-                res.send("Category does not exist");
+                res.render('empty_category', {
+                    title : 'The Category Route',
+                    category : req.params.category
+                });
+                //res.send("Category does not exist");
             }
         });
     });

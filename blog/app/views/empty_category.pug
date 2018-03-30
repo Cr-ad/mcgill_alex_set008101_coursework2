@@ -1,0 +1,69 @@
+extends layout
+
+block content
+	.container
+	nav.nav-bar
+		a(href="/")
+			h2 Blog Site
+		ul
+			li.active_tab Home
+			li Articles
+				.mega-menu
+					h3 Categories
+					.inner-mega-menu
+						a(href="/articles/Technology")
+							p Technology
+						a(href="/articles/Automotive")
+							p Automotive
+						a(href="/articles/Business")
+							p Business
+						a(href="/articles/Sports")
+							p Sports
+					.inner-mega-menu
+						a(href="#")
+							p Category
+						a(href="#")
+							p Category
+						a(href="#")
+							p Category
+						a(href="#")
+							p Category
+					.inner-mega-menu
+						a(href="#")
+							p Category
+						a(href="#")
+							p Category
+						a(href="#")
+							p Category
+						a(href="#")
+							p Category
+			li Authors
+			li About
+
+		//-.header-banner
+			h1 BANNER
+
+
+
+	.content
+		h1= title
+		p
+			| Unfortunately the category '!{category}' does not currently exist.
+
+
+
+//-div#nav_bar.fixed-nav-bar
+	a(href="#" id="blog_logo") Blog Logo
+	ul
+		li
+			a(href="#") Not Home
+		li
+			.dropdown
+				a(href="javascript:void(0)" class="dropbtn") Categories
+				.dropdown-content
+					a(href="#") Technology
+					a(href="#") Automotive
+					a(href="#") Business
+		li
+			a(href="#") Home
+		li.spacer
