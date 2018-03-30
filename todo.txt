@@ -1,10 +1,11 @@
 Todo:
 User Account
+	Register and Login?
 	Update / edit a blog post
 	Delete a blog post
 	Add a blog post - need a way of accessing the add page
 		Author should be determined by the user account name
-
+Category page should have the name of the category on the page
 Show only a preview of the blog post on articles list - click to reveal full post
 Author page - shows all the authors articles
 Fully implement nav bar
@@ -17,14 +18,13 @@ Content for home page?
 Add article view counter - used for popular article sorting
 Related article tags - display articles with similar tags
 Responsive design - page scaling on smaller windows
+Split articles page into different pages (x blog posts per page)
 ----------------------
 In progress:
-
-Sort articles by date
 
 
 
 ----------------------
 Implemented:
 
-
+Sort articles by date

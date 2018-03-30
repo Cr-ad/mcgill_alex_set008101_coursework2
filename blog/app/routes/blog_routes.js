@@ -41,10 +41,15 @@ module.exports = function(blog_app, client) {
             dbPosts.push(post);
             //console.log("ID: " + post.id +  " | Title: " + post.title);
         }, function() {
-                res.render('articles', {
-                    title : 'The Articles Route',
-                    "posts": dbPosts
-                });
+            // Sort articles by date descending
+            dbPosts.sort(function compare(a,b){
+                return b.date.getTime() - a.date.getTime()
+            });
+            
+            res.render('articles', {
+                title : 'The Articles Route',
+                "posts": dbPosts
+            });
         });
     });
 
@@ -83,11 +88,16 @@ module.exports = function(blog_app, client) {
             }
             //console.log("ID: " + post.id +  " | Title: " + post.title);
         }, function() {
-                res.render('article', {
-                    title : 'The Article Route',
-                    "selectedPost": selectedPost,
-                    "posts": dbPosts
-                });
+            // Sort articles by date descending
+            dbPosts.sort(function compare(a,b){
+                return b.date.getTime() - a.date.getTime()
+            });
+
+            res.render('article', {
+                title : 'The Article Route',
+                "selectedPost": selectedPost,
+                "posts": dbPosts
+            });
         });
     });
 
@@ -131,6 +141,11 @@ module.exports = function(blog_app, client) {
             
             if(dbPosts.length > 0)
             {
+                // Sort articles by date descending
+                dbPosts.sort(function compare(a,b){
+                return b.date.getTime() - a.date.getTime()
+                });
+                
                 res.render('category', {
                     title : 'The Category Route',
                     "posts": dbPosts
