@@ -109,6 +109,7 @@ module.exports = function(blog_app, client) {
     // Category Route
     blog_app.get('/articles/:category/', (req, res) => {
         var selected_category = req.params.category;
+        var categoryUpper;
         selected_category = selected_category.toLowerCase();
         // Nearly correct url redirects:
         if(selected_category == "tech")
@@ -122,9 +123,8 @@ module.exports = function(blog_app, client) {
         cursor.forEach(function(doc, err) {
             assert.equal(null, err);
             // Convert the first letter of the category to uppercase to look nicer
-            var categoryUpper = (capitaliseFirstLetter(doc.category));
-
-            // Need to add some validation
+            categoryUpper = (capitaliseFirstLetter(doc.category));
+            // Need to add some validation to make sure all object variables are in the db
             var post = {
                 id:         doc._id,
                 author:     doc.author,
@@ -148,6 +148,7 @@ module.exports = function(blog_app, client) {
                 
                 res.render('category', {
                     title : 'The Category Route',
+                    category : categoryUpper,
                     "posts": dbPosts
                 });
             }
