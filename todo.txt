@@ -11,7 +11,6 @@ Fully implement nav bar
 Comment section
 Proper error page (404 etc.)
 More categories
-Site name for the blog platform
 About page
 Content for home page?
 Add article input validation
@@ -19,6 +18,7 @@ Add article view counter - used for popular article sorting
 Related article tags - display articles with similar tags
 Responsive design - page scaling on smaller windows
 Split articles page into different pages (x blog posts per page)
+Site name for the blog platform
 ----------------------
 In progress:
 

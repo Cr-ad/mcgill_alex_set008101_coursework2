@@ -155,7 +155,7 @@ module.exports = function(blog_app, client) {
             else
             {
                 res.render('empty_category', {
-                    title : 'The Category Route',
+                    title : 'Category Unavailable',
                     category : req.params.category
                 });
                 //res.send("Category does not exist");
