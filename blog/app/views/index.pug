@@ -41,9 +41,10 @@ block content
 			li About
 			li
 				.search-container
-					input(type="text" placeholder="Search..")
-					button(type="submit")
-						i(class="fa fa-search")
+					form(name="search_bar", onsubmit="return search()", action='/search/', method="get")
+						input(type="text" placeholder="Search.." name="search_input")
+						button(type="submit")
+							i(class="fa fa-search")
 
 	.content
 		h1= title

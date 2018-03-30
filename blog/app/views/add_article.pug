@@ -38,6 +38,12 @@ block content
 							p Category
 			li Authors
 			li About
+			li
+				.search-container
+					form(name="search_bar", onsubmit="return search()", action='/search/', method="get")
+						input(type="text" placeholder="Search.." name="search_input")
+						button(type="submit")
+							i(class="fa fa-search")
 
 
 	h1= title
@@ -80,7 +86,6 @@ block content
 				p Date:
 			.form-content
 				input(class="form-content-inputs" type="date", name="date")
-
 		.actions
 			input(type="submit", value="Submit")
 

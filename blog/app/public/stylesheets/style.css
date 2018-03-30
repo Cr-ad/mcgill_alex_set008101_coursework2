@@ -67,7 +67,7 @@ body {
   */
 }
 
-.nav-bar .search-container {
+.nav-bar .search-container form {
   display: flex;
   flex-direction: row;
 }

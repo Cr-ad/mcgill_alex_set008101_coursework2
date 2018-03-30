@@ -164,6 +164,56 @@ module.exports = function(blog_app, client) {
     });
 
 
+    // Search Route
+    blog_app.get('/search/', (req, res) => {
+        var search_query = req.query.search_input
+        var categoryUpper;
+        search_query = search_query.toLowerCase();
+        var dbPosts = [];
+        // Find articles with title that contains keywords in tags?
+        var cursor = db.collection('posts').find();
+        // Execute the each command, triggers for each document
+        cursor.forEach(function(doc, err) {
+            assert.equal(null, err);
+            // Convert the first letter of the category to uppercase to look nicer
+            // Need to add some validation to make sure all object variables are in the db
+            categoryUpper = (capitaliseFirstLetter(doc.category));
+            var post = {
+                id:         doc._id,
+                author:     doc.author,
+                title:      doc.title,
+                thumbnail:  doc.thumbnail,
+                content:    doc.content,
+                date:       doc.date,
+                category:   categoryUpper,
+                tags:       doc.tags
+            }
+            dbPosts.push(post);
+            //console.log("ID: " + post.id +  " | Title: " + post.title);
+        }, function() {
+            if(dbPosts.length > 0)
+            {
+                // Sort articles by date descending
+                dbPosts.sort(function compare(a,b){
+                return b.date.getTime() - a.date.getTime()
+                });
+
+                res.render('search', {
+                    title : 'The Search Route',
+                    "posts": dbPosts
+                });
+            }
+            else
+            {
+                res.render('empty_category', {
+                    title : 'Category Unavailable',
+                    category : req.params.category
+                });
+                //res.send("Category does not exist");
+            }
+        });
+    });
+
     // Samples Route
     blog_app.get('/add_article/', (req, res) => {
         res.render('add_article', { title : 'The Add Article Route'});
