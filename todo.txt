@@ -1,0 +1,30 @@
+Todo:
+User Account
+	Update / edit a blog post
+	Delete a blog post
+	Add a blog post - need a way of accessing the add page
+		Author should be determined by the user account name
+
+Show only a preview of the blog post on articles list - click to reveal full post
+Author page - shows all the authors articles
+Fully implement nav bar
+Comment section
+Proper error page (404 etc.)
+More categories
+Site name for the blog platform
+About page
+Content for home page?
+Add article view counter - used for popular article sorting
+Related article tags - display articles with similar tags
+Responsive design - page scaling on smaller windows
+----------------------
+In progress:
+
+Sort articles by date
+
+
+
+----------------------
+Implemented:
+
+
