@@ -60,7 +60,8 @@ block content
 						img(class="blog-thumbnail" src=thumbnail)
 					p.blog-text !{posts[i].content}
 					div.blog-footer
-						p.blog-category Category: <a href="#">!{posts[i].category}</a>
+						p.blog-category Category: 
+							a(href='/articles/'+posts[i].category+'/') !{posts[i].category}
 						p.blog-info By <a href="#">!{posts[i].author}</a> | !{dateTime}
 			-}
 		div.right-section
