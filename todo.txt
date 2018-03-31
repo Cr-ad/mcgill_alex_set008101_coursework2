@@ -10,7 +10,6 @@ Author page - shows all the authors articles
 Fully implement nav bar
 Comment section
 Proper error page (404 etc.)
-More categories
 Search bar functionality
 About page
 Add search query validation
@@ -29,5 +28,6 @@ In progress:
 ----------------------
 Implemented:
 
+More categories
 Sort articles by date
 Make category page title look nice
