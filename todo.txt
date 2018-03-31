@@ -8,6 +8,8 @@ User Account
 Show only a preview of the blog post on articles list - click to reveal full post
 Author page - shows all the authors articles
 Fully implement nav bar
+Add triggers
+Trigger page audit history
 Comment section
 Proper error page (404 etc.)
 Search bar functionality
@@ -20,10 +22,11 @@ Related article tags - display articles with similar tags
 Responsive design - page scaling on smaller windows
 Split articles page into different pages (x blog posts per page)
 Site name for the blog platform
+
 ----------------------
 In progress:
 
-
+User account registration
 
 ----------------------
 Implemented:
