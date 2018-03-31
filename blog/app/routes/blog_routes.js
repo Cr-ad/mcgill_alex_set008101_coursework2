@@ -10,12 +10,37 @@ module.exports = function(blog_app, client) {
 
     // Home Route
     blog_app.get('/', (req, res) => {
-       res.render('index', { title : 'The Home Route'});
-    });
+        var dbPosts = [];
+        var cursor = db.collection('posts').find();
+        // Execute the each command, triggers for each document
+        cursor.forEach(function(doc, err) {
+            assert.equal(null, err);
+            // Need to add some validation
 
-    // Test Route
-    blog_app.get('/test/', (req, res) => {
-        res.render('index', { title : 'The Test Route'});
+            var cat = capitaliseFirstLetter(doc.category);
+            var post = {
+                id:         doc._id,
+                author:     doc.author,
+                title:      doc.title,
+                thumbnail:  doc.thumbnail,
+                content:    doc.content,
+                date:       doc.date,
+                category:   cat,
+                tags:       doc.tags
+            }
+            dbPosts.push(post);
+            //console.log("ID: " + post.id +  " | Title: " + post.title);
+        }, function() {
+            // Sort articles by date descending
+            dbPosts.sort(function compare(a,b){
+                return b.date.getTime() - a.date.getTime()
+            });
+            
+            res.render('articles', {
+                title : 'The Articles Route',
+                "posts": dbPosts
+            });
+        });
     });
 
     // Articles Route
@@ -174,6 +199,7 @@ module.exports = function(blog_app, client) {
         var dbPosts = [];
         // Find articles with title that contains keywords in tags?
         var cursor = db.collection('posts').find();
+        //var cursor = db.collection('posts').find({"tags" : {"$in" : search_tags}});
         //var cursor = db.collection('posts').find({'tags' : { $in : search_query}});
         // Execute the each command, triggers for each document
         cursor.forEach(function(doc, err) {
@@ -211,8 +237,8 @@ module.exports = function(blog_app, client) {
             }
             else
             {
-                res.render('empty_category', {
-                    title : 'Category Unavailable',
+                res.render('search_empty', {
+                    title : 'No Search Results',
                     category : req.params.category
                 });
                 //res.send("Category does not exist");

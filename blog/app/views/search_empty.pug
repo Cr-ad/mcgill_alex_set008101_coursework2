@@ -1,7 +1,6 @@
 extends layout
 
 block content
-	.container
 	nav.nav-bar
 		a(href="/")
 			h2 Blog Site
@@ -45,34 +44,13 @@ block content
 						input(type="text" placeholder="Search.." name="search_input")
 						button(type="submit")
 							i(class="fa fa-search")
-	br
-	br
-	div.page
-		div.blog-section
-			-for(i = 0; i < posts.length; i++){
-				- category = posts[i].category
-				- id = posts[i].id
-				- thumbnail = posts[i].thumbnail
-				- dateTime = posts[i].date.toLocaleDateString() + " " + posts[i].date.toLocaleTimeString();
-				div.blog-content
-					a(href='/articles/' + category+'/'+id)
-						p(class="blog-title") !{posts[i].title}
-						img(class="blog-thumbnail" src=thumbnail)
-					p.blog-text !{posts[i].content}
-					div.blog-footer
-						p.blog-category Category: 
-							a(href='/articles/'+posts[i].category+'/') !{posts[i].category}
-						p.blog-info By <a href="#">!{posts[i].author}</a> | !{dateTime}
-			-}
-		div.right-section
-			p.right-header POPULAR ARTICLES
+	
+	.page-header
+		h1 Showing search results for '!{search_query}'
+		.page-header-spacer
+			p   
 
-			-for(i = posts.length - 1; i >= 0; i--){
-				- category = posts[i].category
-				- id = posts[i].id
-				- thumbnail = posts[i].thumbnail
-			div.right-content
-				a(href='articles/'+category+'/'+id)
-					img(class="right-thumbnail" src=thumbnail)
-				a(href='articles/'+category+'/'+id) !{posts[i].title}
-			-}
+	.content
+		h1= title
+		p
+			| Unfortunately the search '!{search_query}' has returned no articles. Plesae try again with a different query!

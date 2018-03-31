@@ -11,8 +11,8 @@ Fully implement nav bar
 Comment section
 Proper error page (404 etc.)
 More categories
+Search bar functionality
 About page
-Content for home page?
 Add search query validation
 Sort search results by most tags matched
 Add article input validation
@@ -24,7 +24,7 @@ Site name for the blog platform
 ----------------------
 In progress:
 
-Search Bar in nav bar
+
 
 ----------------------
 Implemented:
