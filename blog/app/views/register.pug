@@ -1,0 +1,82 @@
+extends layout
+
+block content
+	.container
+	nav.nav-bar
+		a(href="/")
+			h2 Blog Site
+		ul
+			li.active_tab Home
+			li Articles
+				.mega-menu
+					h3 Categories
+					.inner-mega-menu
+						a(href="/articles/Technology")
+							p Technology
+						a(href="/articles/Automotive")
+							p Automotive
+						a(href="/articles/Business")
+							p Business
+						a(href="/articles/Sports")
+							p Sports
+					.inner-mega-menu
+						a(href="/articles/Travel")
+							p Travel
+						a(href="/articles/Economics")
+							p Economics
+						a(href="/articles/Politics")
+							p Politics
+						a(href="/articles/Science")
+							p Science
+					.inner-mega-menu
+						a(href="/articles/Entertainment")
+							p Entertainment
+						a(href="/articles/Music")
+							p Music 
+						a(href="/articles/Gaming")
+							p Gaming
+						a(href="/articles/Other")
+							p Other
+			li Authors
+			li About
+			li
+				.search-container
+					form(name="search_bar", onsubmit="return search()", action='/search/', method="get")
+						input(type="text" placeholder="Search.." name="search_input")
+						button(type="submit")
+							i(class="fa fa-search")
+
+	.content
+		h1= title
+
+		div
+			p Welcome to Register
+
+	form(name="add_blog_post", method="post", action='/users/register')
+		.form-container
+			.form-heading
+				p Name:
+			.form-content
+				input(class="form-heading-input" type="text", name="name" size="47")
+		.form-container
+			.form-heading
+				p Email:
+			.form-content
+				input(class="form-heading-input" type="text", name="email" size="47")
+		.form-container
+			.form-heading
+				p Username:
+			.form-content
+				input(class="form-heading-input" type="text", name="username" size="47")
+		.form-container
+			.form-heading
+				p Password:
+			.form-content
+				input(class="form-heading-input" type="password", name="password" size="47")
+		.form-container
+			.form-heading
+				p Confirm:
+			.form-content
+				input(class="form-heading-input" type="text", name="password2" size="47")
+		.actions
+			input(type="submit", value="Submit")

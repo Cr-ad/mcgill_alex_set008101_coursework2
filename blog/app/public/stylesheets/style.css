@@ -373,10 +373,13 @@ a {
 }
 
 .form-heading {
-  background-color: pink;
+  
   width: 150px;
   text-align: right;
   padding-right: 20px;
+  /*
+  background-color: pink;
+  */
 }
 
 .form-heading-input {
@@ -393,7 +396,9 @@ a {
 }
 
 .form-content {
+  /*
   background-color: plum;
+  */
   width: 62%;
 }
 

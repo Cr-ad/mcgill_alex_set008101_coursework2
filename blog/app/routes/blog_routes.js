@@ -303,73 +303,29 @@ module.exports = function(blog_app, client) {
     blog_app.get('/samples/', (req, res) => {
         res.render('samples', { title : 'The Sample Route'});
     });
-
-    blog_app.get('/posts/:id', (req, res) => {
-
-        const id = req.params.id;
-        const details = {'_id' : new ObjectID(id) };
-        db.collection('posts').findOne(details, (err, item) => {
-            if(err)
-            {
-                res.send({ 'error' : 'An error occurred' });
-            }
-            else
-            {
-                res.send(item);
-            }
-        });
-    });
-
-    blog_app.delete('/posts/:id', (req, res) => {
-
-        const id = req.params.id;
-        const details = {'_id' : new ObjectID(id) };
-        db.collection('posts').remove(details, (err, item) => {
-            if(err)
-            {
-                res.send({ 'error' : 'An error occurred' });
-            }
-            else
-            {
-                res.send('Note ' + id + ' has been removed');
-            }
-        });
-    });
     
-    blog_app.put('/posts/:id', (req, res) => {
-
-        const id = req.params.id;
-        const details = {'_id' : new ObjectID(id) };
-        const post = {text: req.body.body, title: req.body.title };
-        db.collection('posts').update(details, post, (err, item) => {
-            if(err)
-            {
-                res.send({ 'error' : 'An error occurred' });
-            }
-            else
-            {
-                res.send(item);
-            }
-        });
-    });
-
-    blog_app.post('/posts', (req, res) => {
-        // Create the blog post
-        const post = {text: req.body.body, title: req.body.title };
-        
-
-        // delete req.body._id; // for saftey (so they cant overwrite existing id)
-        db.collection('posts').insertOne(post, (err, result) => {
-            if(err)
-            {
-                res.send({ 'error' : 'An error occurred' });
-            }
-            else
-            {
-                res.send(result.ops[0]);
-            }
-        })
+    // Import User Model
+    let User = require('../models/user');
 
 
-    });
+    // Register Route
+    blog_app.get('/users/register', function(req, res){
+        res.render('register');
+    })
+
+    // Register Process
+    blog_app.post('/users/register', function(req, res){
+        const name = req.body.name;
+        const email = req.body.email;
+        const username = req.body.username;
+        const password = req.body.password;
+        const password2 = req.body.password2;
+
+        req.checkBody('Name', 'Name is required').notEmpty();
+        req.checkBody('Name', 'Name is required').notEmpty();
+        req.checkBody('Name', 'Name is required').notEmpty();
+        req.checkBody('Name', 'Name is required').notEmpty();
+        req.checkBody('Name', 'Name is required').notEmpty();
+
+    })
 };
