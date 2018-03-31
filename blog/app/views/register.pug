@@ -47,12 +47,9 @@ block content
 							i(class="fa fa-search")
 
 	.content
-		h1= title
+		h1 Register
 
-		div
-			p Welcome to Register
-
-	form(name="add_blog_post", method="post", action='/users/register')
+	form(name="register", method="POST", action='/users/register')
 		.form-container
 			.form-heading
 				p Name:
@@ -77,6 +74,6 @@ block content
 			.form-heading
 				p Confirm:
 			.form-content
-				input(class="form-heading-input" type="text", name="password2" size="47")
+				input(class="form-heading-input" type="password", name="password2" size="47")
 		.actions
 			input(type="submit", value="Submit")

@@ -4,9 +4,11 @@ const bodyParser = require('body-parser');
 const path = require('path');
 //var logger = require('morgan');
 var cookieParser = require('cookie-parser');
-
+const expressValidator = require('express-validator');
 const mongoose = require('mongoose');
 const dbCfg = require('./config/db');
+const bcrypt = require('bcryptjs');
+
 
 mongoose.connect(dbCfg.url);
 let db = mongoose.connection;
@@ -61,6 +63,7 @@ MongoClient.connect(db.url, (err, database) => {
   //blog_app.use(logger('dev'));
   blog_app.use(bodyParser.json());
   blog_app.use(bodyParser.urlencoded({ extended: false }));
+  //blog_app.use(expressValidator); // not loading the app?????
   blog_app.use(cookieParser());
   blog_app.use(express.static(path.join(__dirname, 'public')));
   

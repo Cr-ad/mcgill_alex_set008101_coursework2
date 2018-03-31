@@ -22,7 +22,7 @@ Related article tags - display articles with similar tags
 Responsive design - page scaling on smaller windows
 Split articles page into different pages (x blog posts per page)
 Site name for the blog platform
-
+split routes into different js files instead of all in blog_routes
 ----------------------
 In progress:
 
