@@ -5,8 +5,11 @@ const path = require('path');
 //var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 
+const mongoose = require('mongoose');
+const dbCfg = require('./config/db');
 
-const db = require('./config/db');
+mongoose.connect(dbCfg.url);
+let db = mongoose.connection;
 
 var currentDate = new Date().toLocaleString();
 var index = require('./app/routes/index');
@@ -21,6 +24,22 @@ blog_app.set('views', path.join(__dirname, '/app/views'));
 blog_app.use(express.static(path.join(__dirname, 'app/public')));
 blog_app.set('view engine', 'pug');
 
+
+// Check connection
+db.once('open', function(){
+    console.log('Connected to MongoDB')
+    require('./app/routes')(blog_app, db);
+    blog_app.listen(port, () => {
+        console.log(currentDate + " | Listening on port " + port + " @ http://localhost:3000");
+    });
+});
+
+// Check for DB errors
+db.on('error', function(err){
+    console.log(err);
+});
+
+/*
 MongoClient.connect(db.url, (err, database) => {
     if (err)
     {
@@ -35,6 +54,7 @@ MongoClient.connect(db.url, (err, database) => {
     }
 
 });  
+*/
   
   // uncomment after placing your favicon in /public
   //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

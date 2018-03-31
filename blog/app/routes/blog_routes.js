@@ -4,10 +4,12 @@ var assert = require('assert');
 var router = new express.Router();
 var path = require('path');
 
+var mongoose = require('mongoose');
+
 module.exports = function(blog_app, client) {
     
-    var db = client.db('blog_db');
-
+    //var db = client.db('blog_db');
+    var db = mongoose.connection;
     // Home Route
     blog_app.get('/', (req, res) => {
         var dbPosts = [];
