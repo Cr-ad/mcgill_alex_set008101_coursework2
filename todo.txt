@@ -7,7 +7,7 @@ User Account
 		Author should be determined by the user account name
 Show only a preview of the blog post on articles list - click to reveal full post
 Author page - shows all the authors articles
-Fully implement nav bar
+
 Switch article to use mongoose article schema
 put nav bar in layout pug
 Add triggers
@@ -32,6 +32,7 @@ User account registration
 ----------------------
 Implemented:
 
+Fully implement nav bar
 implement schema validation checkbody
 More categories
 Sort articles by date

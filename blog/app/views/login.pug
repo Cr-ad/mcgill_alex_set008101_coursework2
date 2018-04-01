@@ -7,7 +7,7 @@ block content
             h2 Blog Site
         .main-nav
             ul
-                li.active_tab
+                li
                     a(href="/")
                         p1 Home
                 li 
@@ -59,7 +59,7 @@ block content
                 li
                     a(href="/users/register")
                         p1 Register
-                li
+                li.active_tab
                     a(href="/users/login")
                         p1 Login
     .content
@@ -81,5 +81,8 @@ block content
             .form-heading
                 p 
             .form-content
-                .display-button
-                    input(class="blue" type="submit", value="Submit")
+                .display-buttons
+                    .display-button
+                        input(class="blue" type="submit", value="Submit")
+                    .display-button
+                        input(class="red" onclick="test()" type="button" value="Cancel")

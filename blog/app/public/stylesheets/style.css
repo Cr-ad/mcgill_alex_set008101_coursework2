@@ -71,8 +71,11 @@ body {
   flex-direction: row;
 }
 .nav-bar .right-nav ul li {
-  margin-top: 10px;
-  padding-top: 10px;  
+  padding-top: 15px;  
+}
+.nav-bar .right-nav ul li:last-child {
+  padding-top: 15px;
+  margin-right: 20px;
 }
 
 .nav-bar .right-nav ul li a p1{

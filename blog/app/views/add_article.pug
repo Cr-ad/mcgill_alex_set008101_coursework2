@@ -2,57 +2,67 @@ extends layout
 
 block content
 	.container
-    nav.nav-bar
-        a(href="/")
-            h2 Blog Site
-        .main-nav
-            ul
-                li.active_tab Home
-                li Articles
-                    .mega-menu
-                        h3 Categories
-                        .inner-mega-menu
-                            a(href="/articles/Technology")
-                                p Technology
-                            a(href="/articles/Automotive")
-                                p Automotive
-                            a(href="/articles/Business")
-                                p Business
-                            a(href="/articles/Sports")
-                                p Sports
-                        .inner-mega-menu
-                            a(href="/articles/Travel")
-                                p Travel
-                            a(href="/articles/Economics")
-                                p Economics
-                            a(href="/articles/Politics")
-                                p Politics
-                            a(href="/articles/Science")
-                                p Science
-                        .inner-mega-menu
-                            a(href="/articles/Entertainment")
-                                p Entertainment
-                            a(href="/articles/Music")
-                                p Music 
-                            a(href="/articles/Gaming")
-                                p Gaming
-                            a(href="/articles/Other")
-                                p Other
-                li Authors
-                li About
-                li
-                    .search-container
-                        form(name="search_bar", onsubmit="return search()", action='/search/', method="get")
-                            input(type="text" placeholder="Search.." name="search_input")
-                            button(type="submit")
-                                i(class="fa fa-search")             
-        .right-nav
-            ul
-                li
-                    a(href="/users/register") Register
-                li
-                    a(href="/users/login") Login
-	
+	nav.nav-bar
+		a(href="/")
+			h2 Blog Site
+		.main-nav
+			ul
+				li
+					a(href="/")
+						p1 Home
+				li.active_tab
+					a(href="javascript:void(0)")
+						p1 Articles
+							.mega-menu
+								h3 Categories
+								.inner-mega-menu
+									a(href="/articles/Technology")
+										p Technology
+									a(href="/articles/Automotive")
+										p Automotive
+									a(href="/articles/Business")
+										p Business
+									a(href="/articles/Sports")
+										p Sports
+								.inner-mega-menu
+									a(href="/articles/Travel")
+										p Travel
+									a(href="/articles/Economics")
+										p Economics
+									a(href="/articles/Politics")
+										p Politics
+									a(href="/articles/Science")
+										p Science
+								.inner-mega-menu
+									a(href="/articles/Entertainment")
+										p Entertainment
+									a(href="/articles/Music")
+										p Music 
+									a(href="/articles/Gaming")
+										p Gaming
+									a(href="/articles/Other")
+										p Other
+				li
+					a(href="/authors")
+						p1 Authors
+				li
+					a(href="/about")
+						p1 About
+				li
+					.search-container
+						form(name="search_bar", onsubmit="return search()", action='/search/', method="get")
+							input(type="text" placeholder="Search.." name="search_input")
+							button(type="submit")
+								i(class="fa fa-search")             
+		.right-nav
+			ul
+				li
+					a(href="/users/register")
+						p1 Register
+				li
+					a(href="/users/login")
+						p1 Login
+
 	.content
 		h1 Add Article
 
@@ -98,12 +108,9 @@ block content
 				p Author:
 			.form-content
 				input(class="form-content-inputs" type="text", name="author" size="19")
-		//-.form-container
+		.form-container
 			.form-heading
-				p Date:
+				p  
 			.form-content
-				input(class="form-content-inputs" type="date", name="date")
-		.actions
-			input(type="submit", value="Submit")
-
-	button(onclick='test()') TEST
+				.display-button
+					input(class="blue" type="submit", value="Submit")
