@@ -8,6 +8,9 @@ body {
 }
 
 .nav-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   width: 100%;
   background: #2c3e50;
   height: 75px;
@@ -52,6 +55,10 @@ body {
   */
 }
 
+.nav-bar .main-nav {
+  margin-left: 200px;
+}
+
 .nav-bar .right-nav {
   float:right;
   /*
@@ -60,12 +67,15 @@ body {
 }
 
 .nav-bar .right-nav ul {
+  display:flex;
+  flex-direction: row;
 }
 .nav-bar .right-nav ul li {
-  margin-right: -15px;
+  margin-top: 10px;
+  padding-top: 10px;  
 }
 
-.nav-bar .right-nav ul li a {
+.nav-bar .right-nav ul li a p1{
   margin: 0 -10px -10px -10px;
   width: 135px;
   float: left;
@@ -76,14 +86,25 @@ body {
   text-decoration: none;
 }
 
-.nav-bar .right-nav ul li a:hover {
+.nav-bar .main-nav ul li a p1 {
+  margin: 0 -10px -10px -10px;
+  width: 135px;
+  float: left;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  text-decoration: none;
+}
+
+.nav-bar .right-nav ul li a p1:hover {
   color: #18bc9c;
   /* border-bottom: 3px solid black; */
   margin-top: -3px;
   transition: all 0.4s ease;
 }
 
-.nav-bar ul li {
+.nav-bar .main-nav ul li{
   margin-top: 2px;
   margin-right: 20px;
   width: 135px;
@@ -98,17 +119,22 @@ body {
   */
 }
 
-.nav-bar .search-container form {
+.nav-bar .main-nav ul li a{
+  text-decoration: none;
+  color: white;
+}
+
+.nav-bar .main-nav .search-container form {
   display: flex;
   flex-direction: row;
 }
 
-.nav-bar .search-container:hover {
+.nav-bar .main-nav .search-container:hover {
   margin-top: 0 !important;
   transition: none !important;
 }
 
-.nav-bar .search-container button {
+.nav-bar .main-nav .search-container button {
   float: right;
   margin-top: -5px;
   padding: 8px 10px;
@@ -119,11 +145,11 @@ body {
   border-radius: 0 5px 5px 0;
 }
 
-.nav-bar .search-container button:hover {
+.nav-bar .main-nav .search-container button:hover {
   background: #ccc;
 }
 
-.nav-bar ul li input[type=text] {
+.nav-bar .main-nav ul li input[type=text] {
   font-size: 25px;
   font-family: 'Hammersmith One', sans-serif;
   margin-top: -5px;
@@ -132,24 +158,22 @@ body {
   border: none;
 }
 
-.nav-bar ul li:last-child {
+.nav-bar .main-nav ul li a p1:last-child {
   margin-right: 0;
 }
 
-.nav-bar ul li:hover {
+.nav-bar .main-nav ul li a p1:hover {
   color: #18bc9c;
   /* border-bottom: 3px solid black; */
   margin-top: -3px;
   transition: all 0.4s ease;
 }
 
-
-
-.nav-bar ul li:hover .mega-menu {
+.nav-bar .main-nav ul li:hover .mega-menu {
   color: white;
 }
 
-.nav-bar ul li .mega-menu p:hover {
+.nav-bar .main-nav ul li .mega-menu p:hover {
   color: #18bc9c;
   transition: all 0.4s ease;
 }

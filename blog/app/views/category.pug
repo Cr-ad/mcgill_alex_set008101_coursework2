@@ -1,50 +1,58 @@
 extends layout
 
 block content
+	.container
 	nav.nav-bar
 		a(href="/")
 			h2 Blog Site
-		ul
-			li Home
-			li.active_tab Articles
-				.mega-menu
-					h3 Categories
-					.inner-mega-menu
-						a(href="/articles/Technology")
-							p Technology
-						a(href="/articles/Automotive")
-							p Automotive
-						a(href="/articles/Business")
-							p Business
-						a(href="/articles/Sports")
-							p Sports
-					.inner-mega-menu
-						a(href="/articles/Travel")
-							p Travel
-						a(href="/articles/Economics")
-							p Economics
-						a(href="/articles/Politics")
-							p Politics
-						a(href="/articles/Science")
-							p Science
-					.inner-mega-menu
-						a(href="/articles/Entertainment")
-							p Entertainment
-						a(href="/articles/Music")
-							p Music 
-						a(href="/articles/Gaming")
-							p Gaming
-						a(href="/articles/Other")
-							p Other
-			li Authors
-			li About
-			li
-				.search-container
-					form(name="search_bar", onsubmit="return search()", action='/search/', method="get")
-						input(type="text" placeholder="Search.." name="search_input")
-						button(type="submit")
-							i(class="fa fa-search")
-	
+		.main-nav
+			ul
+				li.active_tab Home
+				li Articles
+					.mega-menu
+						h3 Categories
+						.inner-mega-menu
+							a(href="/articles/Technology")
+								p Technology
+							a(href="/articles/Automotive")
+								p Automotive
+							a(href="/articles/Business")
+								p Business
+							a(href="/articles/Sports")
+								p Sports
+						.inner-mega-menu
+							a(href="/articles/Travel")
+								p Travel
+							a(href="/articles/Economics")
+								p Economics
+							a(href="/articles/Politics")
+								p Politics
+							a(href="/articles/Science")
+								p Science
+						.inner-mega-menu
+							a(href="/articles/Entertainment")
+								p Entertainment
+							a(href="/articles/Music")
+								p Music 
+							a(href="/articles/Gaming")
+								p Gaming
+							a(href="/articles/Other")
+								p Other
+				li Authors
+				li About
+				li
+					.search-container
+						form(name="search_bar", onsubmit="return search()", action='/search/', method="get")
+							input(type="text" placeholder="Search.." name="search_input")
+							button(type="submit")
+								i(class="fa fa-search")             
+		.right-nav
+			ul
+				li
+					a(href="/users/register") Register
+				li
+					a(href="/users/login") Login
+
 	.page-header
 		h1= category
 		.page-header-spacer
