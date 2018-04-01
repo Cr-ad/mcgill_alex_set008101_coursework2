@@ -44,11 +44,16 @@ block content
                     form(name="search_bar", onsubmit="return search()", action='/search/', method="get")
                         input(type="text" placeholder="Search.." name="search_input")
                         button(type="submit")
-                            i(class="fa fa-search")
-
+                            i(class="fa fa-search")             
+        .right-nav
+            ul
+                li
+                    a(href="/users/register") Register
+                li
+                    a(href="/users/login") Login
     .content
         h1 Login
-
+        include message
 
     form(name="login", method="post", action='/users/login')
         .form-container

@@ -9,7 +9,7 @@ Show only a preview of the blog post on articles list - click to reveal full pos
 Author page - shows all the authors articles
 Fully implement nav bar
 Switch article to use mongoose article schema
-implement schema validation checkbody
+put nav bar in layout pug
 Add triggers
 Trigger page audit history
 Comment section
@@ -32,6 +32,7 @@ User account registration
 ----------------------
 Implemented:
 
+implement schema validation checkbody
 More categories
 Sort articles by date
 Make category page title look nice

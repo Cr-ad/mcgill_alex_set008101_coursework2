@@ -49,11 +49,13 @@ block content
 	.content
 		h1 Register
 
-		!= messages('message', locals)
-		if errors
-			each error, i in errors
-				div(class="alert alert-danger") #{error.msg}
-	.center-form
+		.alerts
+			!= messages('message', locals)
+			if errors
+				each error, i in errors						
+					div(class="alert alert-danger") #{error.msg}
+	
+	
 		form(name="register", method="POST", action='/users/register')
 			.form-container
 				.form-heading

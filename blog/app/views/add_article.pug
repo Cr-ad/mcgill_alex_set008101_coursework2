@@ -1,52 +1,6 @@
 extends layout
 
 block content
-	.container
-	nav.nav-bar
-		a(href="#")
-			h2 Blog Site
-		ul
-			li.active_tab Home
-			li Articles
-				.mega-menu
-					.inner-mega-menu
-						a(href="#")
-							p Technology
-						a(href="#")
-							p Automotive
-						a(href="#")
-							p Business
-						a(href="#")
-							p Sports
-					.inner-mega-menu
-						a(href="#")
-							p Category
-						a(href="#")
-							p Category
-						a(href="#")
-							p Category
-						a(href="#")
-							p Category
-					.inner-mega-menu
-						a(href="#")
-							p Category
-						a(href="#")
-							p Category
-						a(href="#")
-							p Category
-						a(href="#")
-							p Category
-			li Authors
-			li About
-			li
-				.search-container
-					form(name="search_bar", onsubmit="return search()", action='/search/', method="get")
-						input(type="text" placeholder="Search.." name="search_input")
-						button(type="submit")
-							i(class="fa fa-search")
-
-
-
 	.content
 		h1 Add Article
 

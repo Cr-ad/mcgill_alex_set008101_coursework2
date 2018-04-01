@@ -21,7 +21,8 @@ router.get('/register', function(req, res){
 
 // Register Process
 router.post('/register', function(req, res){
-    const name = req.body.name;
+    const first_name = req.body.first_name;
+    const last_name = req.body.last_name;
     const email = req.body.email;
     const username = req.body.username;
     const password = req.body.password;
@@ -48,10 +49,11 @@ router.post('/register', function(req, res){
     {
         console.log("Success");
         let newUser = new User({
-            name :      name,
-            email :     email,
-            username :  username,
-            password :  password
+            first_name  : first_name,
+            last_name   : last_name,
+            email       : email,
+            username    : username,
+            password    : password
         });
 
         bcrypt.genSalt(10, function(err, salt){
@@ -71,7 +73,7 @@ router.post('/register', function(req, res){
                     else
                     {
                         req.flash('success','Account successfully registered. Log in to get started!');
-                        res.redirect('/login');
+                        res.redirect('users/login');
                     }
                 })
             });

@@ -37,10 +37,9 @@ body {
 }
 
 .nav-bar ul {
-  width: 780px;
+  display: inline-block;
   height: 100%;
   margin: 0 auto;
-  float: center;
   list-style: none;
   font-weight: bold;
   letter-spacing: 1px;
@@ -48,7 +47,40 @@ body {
   font-family: 'Hammersmith One', sans-serif;
   font-weight: 80;
   font-size: 25px;
-  
+  /*
+  float: center;
+  */
+}
+
+.nav-bar .right-nav {
+  float:right;
+  /*
+  background: orange !important;
+  */
+}
+
+.nav-bar .right-nav ul {
+}
+.nav-bar .right-nav ul li {
+  margin-right: -15px;
+}
+
+.nav-bar .right-nav ul li a {
+  margin: 0 -10px -10px -10px;
+  width: 135px;
+  float: left;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  text-decoration: none;
+}
+
+.nav-bar .right-nav ul li a:hover {
+  color: #18bc9c;
+  /* border-bottom: 3px solid black; */
+  margin-top: -3px;
+  transition: all 0.4s ease;
 }
 
 .nav-bar ul li {
@@ -59,11 +91,10 @@ body {
   text-align: center;
   padding: 15px 0;
   color: white;
-  cursor: pointer;
   transition: all 0.4s ease;
   /*
   background: plum;
-  REMOVE CURSOR POINTER // ONLY TEMP
+  cursor: pointer;
   */
 }
 
@@ -190,6 +221,8 @@ body {
   visibility: visible;
   opacity: 1;
 }
+
+
 
 h1 {
   font: 30px "Arial", Helvetica, sans-serif;
@@ -369,8 +402,19 @@ a {
   display: flex;
   margin: 0 auto;
   text-align: center;
-  background: plum;
   width: 40%;
+}
+.center-errors {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  text-align: left;
+  width: 25%;
+}
+
+.alerts {
+  margin-left: 265px;
 }
 
 .form-container {
@@ -450,7 +494,7 @@ a {
   border-color: #ebccd1;
   padding: 10px;
   margin-bottom: 15px;
-  width: 770px;
+  width: 400px;
   border-radius: 5px;
 }
 
@@ -458,4 +502,8 @@ a {
   color: #3c763d;
   background-color: #dff0d8;
   border-color: #d6e9c6;
+  padding: 10px;
+  margin-bottom: 15px;
+  width: 400px;
+  border-radius: 5px;
 }
