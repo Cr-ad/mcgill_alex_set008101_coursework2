@@ -365,6 +365,14 @@ a {
   font-family: 'Quicksand', sans-serif;
 }
 
+.center-form {
+  display: flex;
+  margin: 0 auto;
+  text-align: center;
+  background: plum;
+  width: 40%;
+}
+
 .form-container {
   display: flex;
   flex-direction: row;
@@ -405,6 +413,13 @@ a {
 .form-content-inputs {
   font-size: 26px;
   font-family: 'Quicksand', sans-serif;
+}
+
+
+.display-buttons {
+  display: flex;
+  justify-content: flex;
+  flex-direction: row;
 }
 
 .display-button input{

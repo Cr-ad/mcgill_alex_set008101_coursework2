@@ -8,6 +8,24 @@ var path = require('path');
 // Bring in Article Model
 let Article = require('../models/article');
 var db = mongoose.connection;
+
+
+var all_categories = [
+    "Technology",
+    "Automotive",
+    "Business",
+    "Sport",
+    "Travel",
+    "Economics",
+    "Politics",
+    "Science",
+    "Entertainment",
+    "Music",
+    "Gaming",
+    "Other"
+];
+all_categories.sort();
+
 // Articles Route
 router.get('/', (req, res) => {
     var dbPosts = [];
@@ -98,14 +116,17 @@ function capitaliseFirstLetter(string)
 
 // Add Article Route
 router.get('/add_article/', (req, res) => {
-    res.render('add_article', { title : 'The Add Article Route'});
+    res.render('add_article', {
+        title : 'The Add Article Route',
+        categories : all_categories
+    });
 });
 
 router.post('/add_article/', (req, res) => {
     req.checkBody('title', 'Title is required').notEmpty();
     req.checkBody('thumbnail', 'Thumbnail is required').notEmpty();
     req.checkBody('content', 'Content is required').notEmpty();
-    req.checkBody('category', 'Category is required').notEmpty();
+    req.checkBody('category', 'Category is required').equals(!"Select...");
     req.checkBody('tags', 'Tags is required').notEmpty();
     
     let errors = req.validationErrors();
@@ -114,7 +135,8 @@ router.post('/add_article/', (req, res) => {
     {
         res.render('add_article', {
             title: 'Add Article',
-            errors : errors
+            errors : errors,
+            categories : all_categories
         });
     }
     else

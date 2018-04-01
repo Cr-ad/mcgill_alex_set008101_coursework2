@@ -46,6 +46,7 @@ block content
 							i(class="fa fa-search")
 
 
+
 	.content
 		h1 Add Article
 
@@ -79,7 +80,12 @@ block content
 			.form-heading
 				p Category:
 			.form-content
-				input(class="form-content-inputs" type="text", name="category" size="19")
+				select(class="form-content-inputs" name="category")
+					option(value="default") Select...
+					- for (i = 0; i < categories.length; i++)
+						- if(categories[i] != "Other")
+							option(value=categories[i]) !{categories[i]}
+					option(value="other") Other
 
 		.form-container
 			.form-heading

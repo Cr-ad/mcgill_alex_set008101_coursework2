@@ -47,7 +47,7 @@ function validateBlogPostSubmission()
 function test()
 {
     
-    alert("hi");
+    alert("Cancel");
 }
 
 
