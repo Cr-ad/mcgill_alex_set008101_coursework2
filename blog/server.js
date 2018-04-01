@@ -103,9 +103,11 @@ MongoClient.connect(db.url, (err, database) => {
   // uncomment after placing your favicon in /public
   //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
   //blog_app.use(logger('dev'));
+   //blog_app.use(expressValidator);
+   
   blog_app.use(bodyParser.json());
   blog_app.use(bodyParser.urlencoded({ extended: false }));
-  //blog_app.use(expressValidator); // not loading the app?????
+ 
   blog_app.use(cookieParser());
   blog_app.use(express.static(path.join(__dirname, 'public')));
   
