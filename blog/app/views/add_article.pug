@@ -46,10 +46,15 @@ block content
 							i(class="fa fa-search")
 
 
-	h1= title
-	p Welcome to #{title}
+	.content
+		h1 Add Article
 
-	form(name="add_blog_post", onsubmit="return validateBlogPostSubmission()", method="post")
+		!= messages('message', locals)
+		if errors
+			each error, i in errors
+				div(class="alert alert-danger") #{error.msg}
+
+	form(name="add_blog_post", method="post")
 		.form-container
 			.form-heading
 				p Title:

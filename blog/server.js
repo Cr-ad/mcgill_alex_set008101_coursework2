@@ -67,6 +67,13 @@ blog_app.use(expressValidator({
     }
 }));
 
+// Route files
+let articles = require('./app/routes/articles');
+blog_app.use('/articles', articles);
+
+let users = require('./app/routes/users');
+blog_app.use('/users', users);
+
 // Check connection
 db.once('open', function(){
     console.log('Connected to MongoDB')
@@ -104,7 +111,7 @@ MongoClient.connect(db.url, (err, database) => {
   //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
   //blog_app.use(logger('dev'));
    //blog_app.use(expressValidator);
-   
+
   blog_app.use(bodyParser.json());
   blog_app.use(bodyParser.urlencoded({ extended: false }));
  

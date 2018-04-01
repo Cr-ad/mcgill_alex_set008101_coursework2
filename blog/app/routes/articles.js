@@ -1,7 +1,15 @@
 const express = require('express');
-const router = express.router();
+const router = new express.Router();
+var mongoose = require('mongoose');
+var assert = require('assert');
+var expressValidator = require('express-validator');
+var path = require('path');
+
+// Bring in Article Model
+let Article = require('../models/article');
+var db = mongoose.connection;
 // Articles Route
-blog_app.get('/articles/', (req, res) => {
+router.get('/', (req, res) => {
     var dbPosts = [];
     var cursor = db.collection('posts').find();
     // Execute the each command, triggers for each document
@@ -36,7 +44,7 @@ blog_app.get('/articles/', (req, res) => {
 });
 
 // Article Route
-blog_app.get('/articles/:category/:id', (req, res) => {
+router.get('/:category/:id', (req, res) => {
     const category = req.params.category;
     const id = req.params.id;
     var selectedPost;
@@ -88,8 +96,78 @@ function capitaliseFirstLetter(string)
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+// Add Article Route
+router.get('/add_article/', (req, res) => {
+    res.render('add_article', { title : 'The Add Article Route'});
+});
+
+router.post('/add_article/', (req, res) => {
+    req.checkBody('title', 'Title is required').notEmpty();
+    req.checkBody('thumbnail', 'Thumbnail is required').notEmpty();
+    req.checkBody('content', 'Content is required').notEmpty();
+    req.checkBody('category', 'Category is required').notEmpty();
+    req.checkBody('tags', 'Tags is required').notEmpty();
+    
+    let errors = req.validationErrors();
+
+    if(errors)
+    {
+        res.render('add_article', {
+            title: 'Add Article',
+            errors : errors
+        });
+    }
+    else
+    {
+        var originalTagString = req.body.tags;
+        var tagsUnfiltered = originalTagString.split(',');
+        var tagsFiltered = new Array();
+        var currentDateTime = new Date();
+        for(i = 0; i < tagsUnfiltered.length; i++)
+        {
+            var current = tagsUnfiltered[i];
+            while(current.charAt(0) == ' ' || current.charAt(0) == ',')
+            {
+                current = current.substring(1);
+            }
+            if(current.length > 2)
+            {
+                tagsFiltered.push(current);
+            }
+        }
+        
+        delete req.body.id; // for saftey (to avoid overwriting existing id)
+        // Create the blog post
+        const post = {
+            author: req.body.author,
+            title: req.body.title,
+            thumbnail: req.body.thumbnail,
+            content: req.body.content,
+            date: currentDateTime,
+            category: req.body.category,
+            tags: tagsFiltered
+        };
+        
+        db.collection('posts').insertOne(post, (err, result) => {
+            if(err)
+            {
+                res.send({ 'error' : 'An error occurred' });
+            }
+            else
+            {
+                //res.send(result.ops[0]);
+                req.flash('success', 'Blog Post Submitted!');
+                res.redirect('/');
+                var currentDate = new Date().toLocaleString();
+                console.log(currentDate + " | Blog Post Submitted by " + post.author + " : '" + post.title + "'")
+                //alert("Blog Post Successfully Submitted!");
+            }
+        });
+    }    
+});
+
 // Category Route
-blog_app.get('/articles/:category/', (req, res) => {
+router.get('/:category/', (req, res) => {
     var selected_category = req.params.category;
     var categoryUpper;
     selected_category = selected_category.toLowerCase();
@@ -144,3 +222,5 @@ blog_app.get('/articles/:category/', (req, res) => {
         }
     });
 });
+
+module.exports = router;
