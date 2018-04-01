@@ -8,7 +8,6 @@ var path = require('path');
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 
-
 module.exports = function(blog_app, client) {
     
     //var db = client.db('blog_db');
@@ -294,6 +293,7 @@ module.exports = function(blog_app, client) {
             else
             {
                 //res.send(result.ops[0]);
+                req.flash('success', 'Blog Post Submitted!');
                 res.redirect('/');
                 var currentDate = new Date().toLocaleString();
                 console.log(currentDate + " | Blog Post Submitted by " + post.author + " : '" + post.title + "'")
@@ -323,7 +323,7 @@ module.exports = function(blog_app, client) {
         const username = req.body.username;
         const password = req.body.password;
         const password2 = req.body.password2;
-        /*
+        
         req.checkBody('name', 'Name is required').notEmpty();
         req.checkBody('email', 'Email is required').notEmpty();
         req.checkBody('email', 'Email is not valid').isEmail();
@@ -335,12 +335,16 @@ module.exports = function(blog_app, client) {
 
         if(errors)
         {
+            console.log(errors);
+            console.log("\n");
+            req.flash('success', 'Register failed!');
             res.render('register', {
                 errors:errors
             });
         }
         else
         {
+            console.log("Success");
             let newUser = new User({
                 name :      name,
                 email :     email,
@@ -370,8 +374,8 @@ module.exports = function(blog_app, client) {
                 });
             });
         }
-        */
-       console.log("Post!");
+        
+       
     });
 
     blog_app.get('/login', function(req, res){

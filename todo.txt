@@ -8,6 +8,8 @@ User Account
 Show only a preview of the blog post on articles list - click to reveal full post
 Author page - shows all the authors articles
 Fully implement nav bar
+Switch article to use mongoose article schema
+implement schema validation checkbody
 Add triggers
 Trigger page audit history
 Comment section

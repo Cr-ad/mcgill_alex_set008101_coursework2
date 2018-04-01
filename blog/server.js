@@ -4,7 +4,11 @@ const bodyParser = require('body-parser');
 const path = require('path');
 //var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+
 const expressValidator = require('express-validator');
+const flash = require('connect-flash');
+const session = require('express-session');
+
 const mongoose = require('mongoose');
 const dbCfg = require('./config/db');
 const bcrypt = require('bcryptjs');
@@ -26,6 +30,42 @@ blog_app.set('views', path.join(__dirname, '/app/views'));
 blog_app.use(express.static(path.join(__dirname, 'app/public')));
 blog_app.set('view engine', 'pug');
 
+// Express session middleware
+
+blog_app.use(session({
+    secret: 'keyboard cat',
+    resave: true,
+    saveUninitialized: true
+}));
+
+// Express messages middleware
+blog_app.use(require('connect-flash')());
+blog_app.use(function (req, res, next) {
+    res.locals.messages = require('express-messages')(req, res);
+    next();
+});
+
+//blog_app.use(flash());
+
+// Express validator middleware
+blog_app.use(expressValidator({
+    errorFormatter : function(param, msg, value) {
+        var namespace = param.split('.'),
+        root =          namespace.shift(),
+        formParam =     root;
+
+        while(namespace.length)
+        {
+            formParam += '[' + namespace.shift() + ']';
+        }
+
+        return {
+            param : formParam,
+            msg :   msg,
+            value : value
+        };
+    }
+}));
 
 // Check connection
 db.once('open', function(){
@@ -38,6 +78,8 @@ db.once('open', function(){
 
 // Check for DB errors
 db.on('error', function(err){
+    error.status = err;
+    res.render('error');
     console.log(err);
 });
 
