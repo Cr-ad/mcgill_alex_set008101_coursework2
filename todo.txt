@@ -5,7 +5,6 @@ User Account
 	Delete a blog post
 	Add a blog post - need a way of accessing the add page
 		Author should be determined by the user account name
-put nav bar in layout pug
 fix flash notifications
 Fix search
 Search bar functionality
@@ -29,6 +28,7 @@ Author page - shows all the authors articles
 
 ----------------------
 Implemented:
+put nav bar in layout pug
 Proper error page (404 etc.)
 User account registration
 User account login + logout

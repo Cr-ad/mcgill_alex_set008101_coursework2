@@ -15,7 +15,6 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
 
-
 mongoose.connect(dbCfg.url);
 let db = mongoose.connection;
 

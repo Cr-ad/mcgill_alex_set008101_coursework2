@@ -12,7 +12,6 @@ module.exports = function(passport){
     passport.use(new LocalStrategy(function(username, password, done){
         // Match Username
         let query = {username:username};
-        console.log("here");
         User.findOne(query, function(err, user){
             if(err)
             {
