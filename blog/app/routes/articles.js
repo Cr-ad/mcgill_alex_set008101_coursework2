@@ -123,7 +123,7 @@ router.get('/add_article/', (req, res) => {
 });
 
 router.post('/add_article/', (req, res) => {
-    req.checkBody('title', 'Title is required').notEmpty();
+    /*req.checkBody('title', 'Title is required').notEmpty();
     req.checkBody('thumbnail', 'Thumbnail is required').notEmpty();
     req.checkBody('content', 'Content is required').notEmpty();
     req.checkBody('category', 'Category is required').equals(!"Select...");
@@ -140,52 +140,54 @@ router.post('/add_article/', (req, res) => {
         });
     }
     else
+    { 
+       
+    }*/
+    // Use JS to make sure category is not default
+    var originalTagString = req.body.tags;
+    var tagsUnfiltered = originalTagString.split(',');
+    var tagsFiltered = new Array();
+    var currentDateTime = new Date();
+    for(i = 0; i < tagsUnfiltered.length; i++)
     {
-        var originalTagString = req.body.tags;
-        var tagsUnfiltered = originalTagString.split(',');
-        var tagsFiltered = new Array();
-        var currentDateTime = new Date();
-        for(i = 0; i < tagsUnfiltered.length; i++)
+        var current = tagsUnfiltered[i];
+        while(current.charAt(0) == ' ' || current.charAt(0) == ',')
         {
-            var current = tagsUnfiltered[i];
-            while(current.charAt(0) == ' ' || current.charAt(0) == ',')
-            {
-                current = current.substring(1);
-            }
-            if(current.length > 2)
-            {
-                tagsFiltered.push(current);
-            }
+            current = current.substring(1);
         }
-        
-        delete req.body.id; // for saftey (to avoid overwriting existing id)
-        // Create the blog post
-        const post = {
-            author: req.body.author,
-            title: req.body.title,
-            thumbnail: req.body.thumbnail,
-            content: req.body.content,
-            date: currentDateTime,
-            category: req.body.category,
-            tags: tagsFiltered
-        };
-        
-        db.collection('posts').insertOne(post, (err, result) => {
-            if(err)
-            {
-                res.send({ 'error' : 'An error occurred' });
-            }
-            else
-            {
-                //res.send(result.ops[0]);
-                req.flash('success', 'Blog Post Submitted!');
-                res.redirect('/');
-                var currentDate = new Date().toLocaleString();
-                console.log(currentDate + " | Blog Post Submitted by " + post.author + " : '" + post.title + "'")
-                //alert("Blog Post Successfully Submitted!");
-            }
-        });
-    }    
+        if(current.length > 2)
+        {
+            tagsFiltered.push(current);
+        }
+    }
+    
+    delete req.body.id; // for saftey (to avoid overwriting existing id)
+    // Create the blog post
+    const post = {
+        author: req.body.author,
+        title: req.body.title,
+        thumbnail: req.body.thumbnail,
+        content: req.body.content,
+        date: currentDateTime,
+        category: req.body.category,
+        tags: tagsFiltered
+    };
+    
+    db.collection('posts').insertOne(post, (err, result) => {
+        if(err)
+        {
+            res.send({ 'error' : 'An error occurred' });
+        }
+        else
+        {
+            //res.send(result.ops[0]);
+            req.flash('success', 'Blog Post Submitted!');
+            res.redirect('/');
+            var currentDate = new Date().toLocaleString();
+            console.log(currentDate + " | Blog Post Submitted by " + post.author + " : '" + post.title + "'")
+            //alert("Blog Post Successfully Submitted!");
+        }
+    });
 });
 
 // Search Route

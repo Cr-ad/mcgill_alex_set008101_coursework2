@@ -7,10 +7,12 @@ User Account
 		Author should be determined by the user account name
 fix flash notifications
 Fix search
+Fix bug where if article add content is not correct, user is logged out
 Search bar functionality
 Add search query validation
 Add active page to layout nav bar
 Sort search results by most tags matched
+Author page - shows all the authors articles
 Show a preview of the blog post on articles list | reveal full post
 find author page by id - not by name (incase author with same name)
 Related article tags - display articles with similar tags
@@ -26,7 +28,7 @@ Site name for the blog platform
 ----------------------
 In progress:
 
-Author page - shows all the authors articles
+Add article page validaton
 
 ----------------------
 Implemented:
