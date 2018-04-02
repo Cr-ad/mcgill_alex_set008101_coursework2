@@ -62,7 +62,7 @@ router.get('/', (req, res) => {
 });
 
 // Article Route
-router.get('/:category/:id', (req, res) => {
+router.get('/articles/:category/:id', (req, res) => {
     const category = req.params.category;
     const id = req.params.id;
     var selectedPost;
@@ -189,7 +189,7 @@ router.post('/add_article/', (req, res) => {
 });
 
 // Category Route
-router.get('/:category/', (req, res) => {
+router.get('/articles/:category/', (req, res) => {
     var selected_category = req.params.category;
     var categoryUpper;
     selected_category = selected_category.toLowerCase();
