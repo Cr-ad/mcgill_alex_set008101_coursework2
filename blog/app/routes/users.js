@@ -7,7 +7,7 @@ var path = require('path');
 
 var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
-
+var passport = require('passport');
 var db = mongoose.connection;
 
 // Import User Model
@@ -63,7 +63,6 @@ router.post('/register', function(req, res){
                     console.log(err);
                 }
                 newUser.password = hash;
-                console.log("set password to hash" + hash);
                 newUser.save(function(err){
                     if(err)
                     {
@@ -73,7 +72,7 @@ router.post('/register', function(req, res){
                     else
                     {
                         req.flash('success','Account successfully registered. Log in to get started!');
-                        res.redirect('users/login');
+                        res.redirect('/users/login');
                     }
                 })
             });
@@ -81,16 +80,19 @@ router.post('/register', function(req, res){
     }
 });
 
+// Login Route
 router.get('/login', function(req, res){
     res.render('login');
 });
 
-router.post('/login', function(req, res){
-    req.flash('success','Log in successful. Log in to get started!');
-    res.redirect('login');
-    
-    //res.render('login');
-});
+// Login Process
+router.post('/login', function(req, res, next){
+    passport.authenticate('local', {
+      successRedirect:'/',
+      failureRedirect:'/users/login',
+      failureFlash: true
+    })(req, res, next);
+  });
 
 function capitaliseFirstLetter(string)
 {

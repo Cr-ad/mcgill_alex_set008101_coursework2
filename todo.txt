@@ -6,7 +6,7 @@ User Account
 	Add a blog post - need a way of accessing the add page
 		Author should be determined by the user account name
 Show only a preview of the blog post on articles list - click to reveal full post
-Author page - shows all the authors articles
+
 
 Switch article to use mongoose article schema
 put nav bar in layout pug
@@ -21,17 +21,17 @@ Sort search results by most tags matched
 Add article input validation
 Add article view counter - used for popular article sorting
 Related article tags - display articles with similar tags
-Responsive design - page scaling on smaller windows
 Split articles page into different pages (x blog posts per page)
 Site name for the blog platform
 ----------------------
 In progress:
 
-User account registration
+Author page - shows all the authors articles
 
 ----------------------
 Implemented:
-
+User account registration
+Responsive design - page scaling on smaller windows
 Fully implement nav bar
 implement schema validation checkbody
 More categories

@@ -66,6 +66,12 @@ block content
         h1 Login
         include message
 
+        .alerts
+            != messages('message', locals)
+            if errors
+                each error, i in errors						
+                    div(class="alert alert-danger") #{error.msg}
+
     form(name="login", method="post", action='/users/login')
         .form-container
             .form-heading
