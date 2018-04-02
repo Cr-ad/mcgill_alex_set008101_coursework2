@@ -31,11 +31,11 @@ body {
 
 .active_tab {
   text-shadow: 3px 3px 5px #000;
-  border-top: 2px solid white;
+  font-size: 28px;
   margin-top: -2px !important;
   transition: all 0.4s ease;
   /*
-  border-top: 3px solid white;
+  border-top: 2px solid white;
   */
 }
 
