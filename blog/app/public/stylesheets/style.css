@@ -534,3 +534,34 @@ a {
   width: 400px;
   border-radius: 5px;
 }
+
+@media only screen and (max-width: 1000px) {
+  html {
+    min-width: 930px !important;
+  }
+
+  .nav-bar a h2 {
+    display: none;
+  }
+
+  .nav-bar .main-nav ul li {
+    width: 100px;
+  }
+
+  .nav-bar .main-nav ul {
+    margin-left: -250px;
+    padding-left: 0px;
+  }
+
+  .nav-bar .main-nav .search-container form input {
+    width: 130px;
+  }
+
+  .nav-bar ul li {
+    color: red !important;
+    padding-left: 0 !important;
+    padding-right: 5px !important;
+  }
+
+
+}
