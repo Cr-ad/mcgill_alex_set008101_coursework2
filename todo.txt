@@ -9,6 +9,7 @@ fix flash notifications
 Fix search
 Fix bug where if article add content is not correct, user is logged out
 Search bar functionality
+Bug - added article to automotive, not displaying in automotive list?
 Add search query validation
 Add active page to layout nav bar
 Sort search results by most tags matched
@@ -28,10 +29,11 @@ Site name for the blog platform
 ----------------------
 In progress:
 
-Add article page validaton
+
 
 ----------------------
 Implemented:
+Add article page validaton
 put nav bar in layout pug
 Proper error page (404 etc.)
 User account registration
