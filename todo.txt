@@ -9,8 +9,10 @@ fix flash notifications
 Fix search
 Search bar functionality
 Add search query validation
+Add active page to layout nav bar
 Sort search results by most tags matched
 Show a preview of the blog post on articles list | reveal full post
+find author page by id - not by name (incase author with same name)
 Related article tags - display articles with similar tags
 Comment section
 Add triggers

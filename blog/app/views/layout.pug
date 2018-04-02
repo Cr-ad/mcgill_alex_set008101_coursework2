@@ -14,7 +14,7 @@ html
         h2 Blog Site
       .main-nav
         ul
-          li.active_tab
+          li
             a(href="/")
               p1 Home
           li
@@ -65,6 +65,9 @@ html
         ul
 
           -if(user)
+            li
+              a(href="/articles/add_article")
+                p1 Add Article
             li
               a(href="/users/logout")
                 p1 Logout

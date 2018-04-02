@@ -76,11 +76,12 @@ body {
 .nav-bar .right-nav ul li:last-child {
   padding-top: 15px;
   margin-right: 20px;
+  margin-left: 15px;
 }
 
 .nav-bar .right-nav ul li a p1{
   margin: 0 -10px -10px -10px;
-  width: 135px;
+  width: 140px;
   float: left;
   text-align: center;
   color: white;
@@ -479,6 +480,12 @@ a {
   background-color: plum;
   */
   width: 62%;
+}
+
+.form-login-message {
+  width: 100%;
+  height: 50%;
+  font-size: 200%;
 }
 
 .form-content-inputs {
