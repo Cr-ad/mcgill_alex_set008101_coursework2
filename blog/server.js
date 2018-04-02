@@ -31,6 +31,12 @@ blog_app.set('views', path.join(__dirname, '/app/views'));
 blog_app.use(express.static(path.join(__dirname, 'app/public')));
 blog_app.set('view engine', 'pug');
 
+blog_app.use(bodyParser.json());
+blog_app.use(bodyParser.urlencoded({ extended: true }));
+ 
+blog_app.use(cookieParser());
+blog_app.use(express.static(path.join(__dirname, 'public'))); 
+
 // Express session middleware
 
 blog_app.use(session({
@@ -68,8 +74,11 @@ blog_app.use(expressValidator({
     }
 }));
 
+
+
 // Passport files
 require('./config/passport')(passport);
+
 
 // Passport middleware
 blog_app.use(passport.initialize());
@@ -113,12 +122,6 @@ blog_app.use('/', articles);
   //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
   //blog_app.use(logger('dev'));
    //blog_app.use(expressValidator);
-
-  blog_app.use(bodyParser.json());
-  blog_app.use(bodyParser.urlencoded({ extended: false }));
- 
-  blog_app.use(cookieParser());
-  blog_app.use(express.static(path.join(__dirname, 'public'))); 
 
 // 404 catch - send to error handler
 blog_app.use(function(req, res, next) {
