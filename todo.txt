@@ -7,6 +7,7 @@ User Account
 		Author should be determined by the user account name
 put nav bar in layout pug
 fix flash notifications
+Fix search
 Search bar functionality
 Add search query validation
 Sort search results by most tags matched
