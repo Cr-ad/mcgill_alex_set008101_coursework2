@@ -56,12 +56,18 @@ block content
 								i(class="fa fa-search")             
 		.right-nav
 			ul
-				li
-					a(href="/users/register")
-						p1 Register
-				li
-					a(href="/users/login")
-						p1 Login
+
+				-if(user)
+					li
+						a(href="/users/logout")
+							p1 Logout
+				-else
+					li
+						a(href="/users/register")
+							p1 Register
+					li
+						a(href="/users/login")
+							p1 Login
 	br
 	br
 	div.page

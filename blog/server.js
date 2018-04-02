@@ -84,7 +84,10 @@ require('./config/passport')(passport);
 blog_app.use(passport.initialize());
 blog_app.use(passport.session());
 
-
+blog_app.get('*', function(req, res, next){
+    res.locals.user = req.user || null;
+    next();
+})
 
 // Check connection
 db.once('open', function(){

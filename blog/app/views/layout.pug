@@ -8,5 +8,10 @@ html
     script
       include ../js/scripts.js 
   body
-    != messages('message', locals)
-    block content
+    .container
+      != messages('message', locals)
+      if errors
+        each error, i in errors
+          div(class="alert alert-danger") #{error.msg}
+
+  block content

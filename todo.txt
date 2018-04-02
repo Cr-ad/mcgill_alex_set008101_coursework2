@@ -1,26 +1,24 @@
 Todo:
 User Account
-	Register and Login?
+	Validation > Check if username / email already exists register
 	Update / edit a blog post
 	Delete a blog post
 	Add a blog post - need a way of accessing the add page
 		Author should be determined by the user account name
-Show only a preview of the blog post on articles list - click to reveal full post
-
-
-Switch article to use mongoose article schema
 put nav bar in layout pug
-Add triggers
-Trigger page audit history
-Comment section
-Proper error page (404 etc.)
+fix flash notifications
 Search bar functionality
-About page
 Add search query validation
 Sort search results by most tags matched
+Show a preview of the blog post on articles list | reveal full post
+Related article tags - display articles with similar tags
+Comment section
+Add triggers
+Trigger page audit history
+Switch article to use mongoose article schema
+About page
 Add article input validation
 Add article view counter - used for popular article sorting
-Related article tags - display articles with similar tags
 Split articles page into different pages (x blog posts per page)
 Site name for the blog platform
 ----------------------
@@ -30,7 +28,9 @@ Author page - shows all the authors articles
 
 ----------------------
 Implemented:
+Proper error page (404 etc.)
 User account registration
+User account login + logout
 Responsive design - page scaling on smaller windows
 Fully implement nav bar
 implement schema validation checkbody

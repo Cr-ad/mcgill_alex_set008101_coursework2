@@ -34,8 +34,8 @@ router.post('/register', function(req, res){
     req.checkBody('email', 'Email is not valid').isEmail();
     req.checkBody('username', 'Username is required').notEmpty();
     req.checkBody('password', 'Password is required').notEmpty();
+    req.checkBody('password', 'Password must be at least 8 characters').isLength(8);
     req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
-
     let errors = req.validationErrors();
 
     if(errors)
@@ -102,6 +102,13 @@ router.post('/login', function(req, res, next){
   });
   */
 
+
+// Logout Process
+router.get('/logout', function(req, res){
+    req.logout();
+    req.flash('success', 'You are logged out');
+    res.redirect('/users/login');
+})
 
 function capitaliseFirstLetter(string)
 {

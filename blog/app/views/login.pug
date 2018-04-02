@@ -56,12 +56,18 @@ block content
                                 i(class="fa fa-search")             
         .right-nav
             ul
-                li
-                    a(href="/users/register")
-                        p1 Register
-                li.active_tab
-                    a(href="/users/login")
-                        p1 Login
+                
+                -if(user)
+                    li
+                        a(href="/users/logout")
+                            p1 Logout
+                -else
+                    li
+                        a(href="/users/register")
+                            p1 Register
+                    li.active_tab
+                        a(href="/users/login")
+                            p1 Login
     .content
         h1 Login
         include message
@@ -71,7 +77,6 @@ block content
             if errors
                 each error, i in errors						
                     div(class="alert alert-danger") #{error.msg}
-
     form(name="login", method="post", action='/users/login')
         .form-container
             .form-heading
