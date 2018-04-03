@@ -16,9 +16,11 @@ block content
 						.blog-footer-buttons
 							.display-buttons
 								.display-button
-									input(class="blue" type="submit", value="Edit")
+									a(href='/articles/edit/'+selectedPost.id)
+										input(class="blue" type="submit", value="Edit")
 								.display-button
-									input(class="red" onclick="test()" type="button" value="Delete")
+									a(href='/articles/delete/'+selectedPost.id)
+										input(class="red" onclick="return confirm('Are you sure you want to delete this article?');" type="button" value="Delete")
 				div.blog-footer
 					p.blog-category Category: 
 						a(href='/articles/'+selectedPost.category+'/') !{selectedPost.category}
