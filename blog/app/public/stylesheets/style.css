@@ -420,6 +420,17 @@ a {
   justify-content: space-between;
 }
 
+.blog-footer-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.blog-footer-buttons .display-button {
+  margin-right: 10px;
+}
+
 .blog-info {
   text-align: right;
   font-size: 17px;
@@ -528,6 +539,7 @@ textarea:valid {
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 8px;
+  width: 80px;
 }
 
 .red {

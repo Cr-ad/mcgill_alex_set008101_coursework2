@@ -10,6 +10,15 @@ block content
 				p.blog-title !{selectedPost.title}
 				img(class="blog-thumbnail" src=selectedPost.thumbnail)
 				p.blog-text !{selectedPost.content}
+				-if(user)
+					-if((user.id == selectedPost.author_id) || (user.isAdmin))
+					.blog-footer
+						.blog-footer-buttons
+							.display-buttons
+								.display-button
+									input(class="blue" type="submit", value="Edit")
+								.display-button
+									input(class="red" onclick="test()" type="button" value="Delete")
 				div.blog-footer
 					p.blog-category Category: 
 						a(href='/articles/'+selectedPost.category+'/') !{selectedPost.category}

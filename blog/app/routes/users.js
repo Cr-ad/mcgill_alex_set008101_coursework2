@@ -47,13 +47,13 @@ router.post('/register', function(req, res){
     }
     else
     {
-        console.log("Success");
         let newUser = new User({
             first_name  : first_name,
             last_name   : last_name,
             email       : email,
             username    : username,
-            password    : password
+            password    : password,
+            isAdmin     : false
         });
 
         bcrypt.genSalt(10, function(err, salt){
@@ -71,6 +71,8 @@ router.post('/register', function(req, res){
                     }
                     else
                     {
+                        var currentDate = new Date().toLocaleString();
+                        console.log(currentDate + " | New User Registered: " + newUser.username);
                         req.flash('success','Account successfully registered. Log in to get started!');
                         res.redirect('/users/login');
                     }
