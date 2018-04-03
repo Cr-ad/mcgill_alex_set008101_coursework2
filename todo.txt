@@ -6,6 +6,7 @@ User Account
 Add a user login check function, can call on different pages
 fix flash notifications
 Fix search
+Fix author object returning undefined - req for author bio etc.
 Bug where add article not logged in shows error
 Fix bug where if article add content is not correct, user is logged out
 Search bar functionality
