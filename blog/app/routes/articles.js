@@ -221,7 +221,7 @@ function addAuthor(user_id)
     console.log("Creating new author with user id: " + user_id);
     let newAuthor = new Author({
         user_id     : user_id,
-        bio         : "Placeholder text - select 'Edit' to update your bio!",
+        bio         : "Default Bio",
         profile_pic : "default_profile_pic.jpeg"
     });
 
