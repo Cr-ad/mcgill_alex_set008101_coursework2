@@ -5,12 +5,12 @@ var assert = require('assert');
 var expressValidator = require('express-validator');
 var path = require('path');
 
-// Bring in Article Model
-let Article = require('../models/article');
+// Get Models
 let User = require('../models/user');
 let Author = require('../models/author');
-var db = mongoose.connection;
+//let Article = require('../models/article');
 
+var db = mongoose.connection;
 
 var all_categories = [
     "Technology",
@@ -305,7 +305,7 @@ router.get('/articles/:category/', (req, res) => {
     {
         selected_category = "technology";
     }
-    selected_category.charAt(0).toUpperCase();
+    selected_category = capitaliseFirstLetter(selected_category);
     var dbPosts = [];
     var cursor = db.collection('posts').find({category : selected_category});
     // Execute the each command, triggers for each document
@@ -335,7 +335,6 @@ router.get('/articles/:category/', (req, res) => {
             dbPosts.sort(function compare(a,b){
             return b.date.getTime() - a.date.getTime()
             });
-            
             res.render('category', {
                 title : 'The Category Route',
                 category : categoryUpper,
