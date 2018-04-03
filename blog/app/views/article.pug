@@ -21,7 +21,10 @@ block content
 				div.blog-footer
 					p.blog-category Category: 
 						a(href='/articles/'+selectedPost.category+'/') !{selectedPost.category}
-					p.blog-info By <a href="#">!{selectedPost.author_name}</a> | !{dateTime}
+					p.blog-info By
+						- var author_link = '/authors/'+selectedPost.author_id
+						a(href=author_link)  !{selectedPost.author_name}
+						|  | !{dateTime}
 		div.right-section
 
 			p.right-header RELATED ARTICLES

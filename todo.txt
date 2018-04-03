@@ -1,8 +1,8 @@
 Todo:
 User Account
 	Validation > Check if username / email already exists register
-	Update / edit a blog post
-	Delete a blog post
+	Update / edit a blog post - add button functionality
+	Delete a blog post - add button functionality
 Add a user login check function, can call on different pages
 fix flash notifications
 Fix search
@@ -29,10 +29,11 @@ Site name for the blog platform
 ----------------------
 In progress:
 
-Change author href link to get their author id
+
 
 ----------------------
 Implemented:
+Change author href link to get their author id
 Fix author object returning undefined - req for author bio etc.
 Author page - shows all of the authors articles
 Add article input validation
