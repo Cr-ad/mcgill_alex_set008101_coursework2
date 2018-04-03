@@ -31,14 +31,13 @@ all_categories.sort();
 // Articles Route
 router.get('/', (req, res) => {
     var dbPosts = [];
-    var dbPostAuthors = [];
     var cursor = db.collection('posts').find();
     // Execute the each command, triggers for each document
     cursor.forEach(function(doc, err) {
         assert.equal(null, err);
         // Need to add some validation
 
-        var cat = capitaliseFirstLetter(doc.category);
+        var categoryUpper = capitaliseFirstLetter(doc.category);
         var post = {
             id          : doc._id,
             author_id   : doc.author_id,
@@ -47,7 +46,7 @@ router.get('/', (req, res) => {
             thumbnail   : doc.thumbnail,
             content     : doc.content,
             date        : doc.date,
-            category    : cat,
+            category    : categoryUpper,
             tags        : doc.tags
         }
         dbPosts.push(post);
@@ -81,7 +80,7 @@ router.get('/articles/:category/:id', (req, res) => {
         assert.equal(null, err);
         // Need to add some validation
 
-        var cat = capitaliseFirstLetter(doc.category);
+        var categoryUpper = capitaliseFirstLetter(doc.category);
 
         var post = {
             id          : doc._id,
@@ -91,7 +90,7 @@ router.get('/articles/:category/:id', (req, res) => {
             thumbnail   : doc.thumbnail,
             content     : doc.content,
             date        : doc.date,
-            category    : cat,
+            category    : categoryUpper,
             tags        : doc.tags
         }
         if(post.id == id)

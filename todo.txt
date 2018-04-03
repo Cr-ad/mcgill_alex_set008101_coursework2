@@ -14,7 +14,7 @@ Add search query validation
 Add a max title length limit
 Add active page to layout nav bar
 Sort search results by most tags matched
-Author page - shows all the authors articles
+
 Show a preview of the blog post on articles list | reveal full post
 find author page by id - not by name (incase author with same name)
 Related article tags - display articles with similar tags
@@ -33,6 +33,7 @@ Change author href link to get their author id
 
 ----------------------
 Implemented:
+Author page - shows all of the authors articles
 Add article input validation
 Author should be determined by the user account name
 Add a blog post - need a way of accessing the add page
