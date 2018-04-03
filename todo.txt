@@ -5,6 +5,7 @@ User Account
 	Delete a blog post
 fix flash notifications
 Fix search
+Bug where add article not logged in shows error
 Fix bug where if article add content is not correct, user is logged out
 Search bar functionality
 Bug - added article to automotive, not displaying in automotive list?
@@ -28,7 +29,7 @@ Site name for the blog platform
 ----------------------
 In progress:
 
-
+Changing the way authors are displayed
 
 ----------------------
 Implemented:

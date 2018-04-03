@@ -31,6 +31,7 @@ all_categories.sort();
 // Articles Route
 router.get('/', (req, res) => {
     var dbPosts = [];
+    var dbPostAuthors = [];
     var cursor = db.collection('posts').find();
     // Execute the each command, triggers for each document
     cursor.forEach(function(doc, err) {
@@ -39,14 +40,15 @@ router.get('/', (req, res) => {
 
         var cat = capitaliseFirstLetter(doc.category);
         var post = {
-            id:         doc._id,
-            author:     doc.author,
-            title:      doc.title,
-            thumbnail:  doc.thumbnail,
-            content:    doc.content,
-            date:       doc.date,
-            category:   cat,
-            tags:       doc.tags
+            id          : doc._id,
+            author_id   : doc.author_id,
+            author_name : doc.author_name,
+            title       : doc.title,
+            thumbnail   : doc.thumbnail,
+            content     : doc.content,
+            date        : doc.date,
+            category    : cat,
+            tags        : doc.tags
         }
         dbPosts.push(post);
         //console.log("ID: " + post.id +  " | Title: " + post.title);
@@ -55,7 +57,11 @@ router.get('/', (req, res) => {
         dbPosts.sort(function compare(a,b){
             return b.date.getTime() - a.date.getTime()
         });
-        
+
+        for(i = 0; i < dbPosts.length; i++)
+        {
+            
+        }
         res.render('articles', {
             title : 'The Articles Route',
             "posts": dbPosts
@@ -78,14 +84,15 @@ router.get('/articles/:category/:id', (req, res) => {
         var cat = capitaliseFirstLetter(doc.category);
 
         var post = {
-            id:         doc._id,
-            author:     doc.author,
-            title:      doc.title,
-            thumbnail:  doc.thumbnail,
-            content:    doc.content,
-            date:       doc.date,
-            category:   cat,
-            tags:       doc.tags
+            id          : doc._id,
+            author_id   : doc.author_id,
+            author_name : doc.author_name,
+            title       : doc.title,
+            thumbnail   : doc.thumbnail,
+            content     : doc.content,
+            date        : doc.date,
+            category    : cat,
+            tags        : doc.tags
         }
         if(post.id == id)
         {
@@ -130,6 +137,7 @@ router.post('/add_article/', (req, res) => {
     var tagsUnfiltered = originalTagString.split(',');
     var tagsFiltered = new Array();
     var currentDateTime = new Date();
+    var display_name;
     for(i = 0; i < tagsUnfiltered.length; i++)
     {
         var current = tagsUnfiltered[i];
@@ -142,48 +150,68 @@ router.post('/add_article/', (req, res) => {
             tagsFiltered.push(current);
         }
     }
-    
-    delete req.body.id; // Avoid overwriting existing id
-    // Create the blog post
-    const post = {
-        author: user_id,
-        title: req.body.title,
-        thumbnail: req.body.thumbnail,
-        content: req.body.content,
-        date: currentDateTime,
-        category: req.body.category,
-        tags: tagsFiltered
-    };
-    var flag = false;
-    db.collection('posts').insertOne(post, (err, result) => {
+    //db.collection('users').find({_id : user_id}, function(err, doc){
+    var cursor = db.collection('users').find({_id : user_id});
+    // Execute the each command, triggers for each document
+    cursor.forEach(function(doc, err) {
+        assert.equal(null, err);
         if(err)
         {
-            res.render('error', {
-                'message' : 'Failed to add blog post'
-            })
+            console.log(err);
+            throw err;
         }
         else
         {
-            //res.send(result.ops[0]);
-            req.flash('success', 'Blog Post Submitted!');
-            res.redirect('/');
-            var currentDate = new Date().toLocaleString();
-            console.log(currentDate + " | Blog Post Submitted by " + post.author + " : '" + post.title + "'")
-            
-            // If author doesn't exist, add them to authors
-            Author.count({'user_id' : user_id}, function(err, count){
-                if(count == 0)
-                {
-                    flag = true;
-                }
-            });
-            //alert("Blog Post Successfully Submitted!");
+            display_name = doc.first_name + " " + doc.last_name;
+            console.log(display_name);
         }
-    }, function() {
-        if(flag)
-        {
-            addAuthor(user_id);
-        }
+    }, function(){
+        delete req.body.id; // Avoid overwriting existing id
+        // Create the blog post
+        const post = {
+            author_id   : user_id,
+            author_name : display_name,
+            title       : req.body.title,
+            thumbnail   : req.body.thumbnail,
+            content     : req.body.content,
+            date        : currentDateTime,
+            category    : req.body.category,
+            tags        : tagsFiltered
+        };
+        var flag = false;
+        db.collection('posts').insertOne(post, (err, result) => {
+            if(err)
+            {
+                res.render('error', {
+                    'message' : 'Failed to add blog post'
+                })
+            }
+            else
+            {
+                //res.send(result.ops[0]);
+                req.flash('success', 'Blog Post Submitted!');
+                res.redirect('/');
+                var currentDate = new Date().toLocaleString();
+                console.log(currentDate + " | Blog Post Submitted by " + post.author_name + " (" + post.author_id + ") : '" + post.title + "'")
+                
+                // If author doesn't exist, add them to authors
+                Author.count({'user_id' : user_id}, function(err, count){
+                    if(count == 0)
+                    {
+                        flag = true;
+                    }
+                });
+            }
+        }, function() {
+            if(flag)
+            {
+                addAuthor(user_id);
+            }
+            else
+            {
+                res.redirect('/');
+            }
+        });
     });
 });
 
@@ -204,7 +232,7 @@ function addAuthor(user_id)
         else
         {
             var currentDate = new Date().toLocaleString();
-            console.log(currentDate + " | New Author Added: " + user_id)
+            console.log(currentDate + " | New Author Added: " + user_id);
             req.flash('success','Blog post submitted. You have been added as a new author!');
             res.redirect('/');
         }
@@ -232,16 +260,16 @@ router.get('/search/', (req, res) => {
             // Need to add some validation to make sure all object variables are in the db
             categoryUpper = (capitaliseFirstLetter(doc.category));
             var post = {
-                id:         doc._id,
-                author:     doc.author,
-                title:      doc.title,
-                thumbnail:  doc.thumbnail,
-                content:    doc.content,
-                date:       doc.date,
-                category:   categoryUpper,
-                tags:       doc.tags
-            }
-            
+                id          : doc._id,
+                author_id   : doc.author_id,
+                author_name : doc.author_name,
+                title       : doc.title,
+                thumbnail   : doc.thumbnail,
+                content     : doc.content,
+                date        : doc.date,
+                category    : categoryUpper,
+                tags        : doc.tags
+            }            
             dbPosts.push(post);
             //console.log("ID: " + post.id +  " | Title: " + post.title);
         }, function() {
@@ -295,15 +323,16 @@ router.get('/articles/:category/', (req, res) => {
         categoryUpper = (capitaliseFirstLetter(doc.category));
         // Need to add some validation to make sure all object variables are in the db
         var post = {
-            id:         doc._id,
-            author:     doc.author,
-            title:      doc.title,
-            thumbnail:  doc.thumbnail,
-            content:    doc.content,
-            date:       doc.date,
-            category:   categoryUpper,
-            tags:       doc.tags
-        }
+            id          : doc._id,
+            author_id   : doc.author_id,
+            author_name : doc.author_name,
+            title       : doc.title,
+            thumbnail   : doc.thumbnail,
+            content     : doc.content,
+            date        : doc.date,
+            category    : categoryUpper,
+            tags        : doc.tags
+        }    
         dbPosts.push(post);
         //console.log("ID: " + post.id +  " | Title: " + post.title);
     }, function() {
