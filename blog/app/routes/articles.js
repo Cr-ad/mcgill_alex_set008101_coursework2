@@ -227,6 +227,33 @@ function addAuthor(user_id)
     });
 }
 
+// Delete Route
+router.delete('/:id', function(req, res){
+    // If user is not logged in send error
+    if(!req.user._id) {
+        res.status(500).send();
+    }
+
+    let query = {_id:params.id};
+    // Check if user should be able to delete
+    Article.findById(req.params.id, function(err, article){
+        if(article.author != req.user._id)
+        {
+            res.status(500).send();
+        }
+        else
+        {
+            Article.remove(query, function(err){
+                if(err)
+                {
+                    console.log(err);
+                }
+                res.send('Success');
+            });
+        }
+    });
+});
+
 // Search Route
 router.get('/search/', (req, res) => {
     var search_query = req.query.search_input
