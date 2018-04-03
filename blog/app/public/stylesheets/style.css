@@ -366,8 +366,12 @@ a {
   padding: 0 10px 0 10px;
   max-width: 100%;
   min-width: 60%;
-  background: white;
+  border-radius: 15px;
+  padding: 5px 8px;
   border: solid 1px rgb(4, 0, 63);
+  /*
+  
+  */
 }
 
 .blog-content a{
