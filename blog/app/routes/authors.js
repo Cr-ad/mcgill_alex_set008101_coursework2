@@ -10,23 +10,6 @@ var ObjectId = require('mongodb').ObjectID;
 let Author = require('../models/author');
 var db = mongoose.connection;
 
-
-var all_categories = [
-    "Technology",
-    "Automotive",
-    "Business",
-    "Sport",
-    "Travel",
-    "Economics",
-    "Politics",
-    "Science",
-    "Entertainment",
-    "Music",
-    "Gaming",
-    "Other"
-];
-all_categories.sort();
-
 function capitaliseFirstLetter(string)
 {
     return string.charAt(0).toUpperCase() + string.slice(1);
@@ -42,8 +25,6 @@ router.get('/test', function(req, res){
     // Execute the each command, triggers for each document
     cursor.forEach(function(doc, err) {
         assert.equal(null, err);
-        // Need to add some validation
-
         var categoryUpper = capitaliseFirstLetter(doc.category);
         var post = {
             id          : doc._id,
@@ -57,7 +38,6 @@ router.get('/test', function(req, res){
             tags        : doc.tags
         }
         dbPosts.push(post);
-        //console.log("ID: " + post.id +  " | Title: " + post.title);
     }, function() {
         // Sort articles by date descending
         dbPosts.sort(function compare(a,b){
@@ -75,11 +55,9 @@ router.get('/:id/', function(req, res){
     const id = req.params.id;
     var flag = false;
     var dbPosts = [];
-    console.log("id: " + id);
     var cursor = db.collection('posts').find({"author_id" : ObjectId(id)});
     cursor.forEach(function(doc, err) {
         assert.equal(null, err);
-        // Need to add some validation
         var categoryUpper = capitaliseFirstLetter(doc.category);
         var post = {
             id          : doc._id,
@@ -113,17 +91,11 @@ router.get('/:id/', function(req, res){
                 }
             }
         }, function(){
-            for(i = 0; i < dbPosts.length; i++)
-            {
-                console.log("Post Title: "+ dbPosts[i].title);
-            }
             res.render('author', {
                 title : 'The Author Route',
                 "posts": dbPosts,
                 "author": author
             });
-            console.log("Displaying author page: " + author.user_id);
-            //console.log("Author bio: " + author.bio);
         });
     });
 });

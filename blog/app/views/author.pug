@@ -5,7 +5,9 @@ block content
         .author-banner
             .inner
                 .display
-                    img(src="https://scontent-lhr3-1.xx.fbcdn.net/v/t1.0-9/12745620_10205689741110953_7145775315793063436_n.jpg?_nc_cat=0&oh=b3dc9896c0c52e9c617f549ea518c1bb&oe=5B6E644D")
+                    - var profilepic = '/images/'+author.profile_pic
+                    img(src=profilepic)
+                    //-img(src="https://scontent-lhr3-1.xx.fbcdn.net/v/t1.0-9/12745620_10205689741110953_7145775315793063436_n.jpg?_nc_cat=0&oh=b3dc9896c0c52e9c617f549ea518c1bb&oe=5B6E644D")
                     h1=posts[0].author_name
                     .bio
                         p=author.bio
