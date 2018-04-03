@@ -3,6 +3,7 @@ User Account
 	Validation > Check if username / email already exists register
 	Update / edit a blog post
 	Delete a blog post
+Add a user login check function, can call on different pages
 fix flash notifications
 Fix search
 Bug where add article not logged in shows error
@@ -22,7 +23,6 @@ Add triggers
 Trigger page audit history
 Switch article to use mongoose article schema
 About page
-Add article input validation
 Add article view counter - used for popular article sorting
 Split articles page into different pages (x blog posts per page)
 Site name for the blog platform
@@ -33,6 +33,7 @@ Change author href link to get their author id
 
 ----------------------
 Implemented:
+Add article input validation
 Author should be determined by the user account name
 Add a blog post - need a way of accessing the add page
 Add article page validaton
