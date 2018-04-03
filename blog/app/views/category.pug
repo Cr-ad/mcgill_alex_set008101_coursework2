@@ -15,7 +15,8 @@ block content
 				- dateTime = posts[i].date.toLocaleDateString() + " " + posts[i].date.toLocaleTimeString();
 				div.blog-content
 					a(href='/articles/' + category+'/'+id)
-						p(class="blog-title") !{posts[i].title}
+						.blog-title
+							p !{posts[i].title}
 						img(class="blog-thumbnail" src=thumbnail)
 					p.blog-text !{posts[i].content}
 					div.blog-footer
@@ -34,7 +35,7 @@ block content
 				- id = posts[i].id
 				- thumbnail = posts[i].thumbnail
 			div.right-content
-				a(href=category+'/'+id)
+				a(href=id)
 					img(class="right-thumbnail" src=thumbnail)
-				a(href=category+'/'+id) !{posts[i].title}
+				a(href=id) !{posts[i].title}
 			-}

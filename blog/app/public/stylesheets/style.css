@@ -327,6 +327,12 @@ a {
   text-align: left;
   font-size: 17px;
   font-family: 'Merriweather', serif;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  hyphens: auto;;
 }
 
 .right-content {
@@ -386,9 +392,15 @@ a {
 
 .blog-title {
   text-align: center;
+}
+
+.blog-title p {
   font-size: 38px;
   font-family: 'Merriweather', serif;
   margin-bottom: 6px;
+  display: inline-block;
+  word-wrap: break-word;
+  max-width: 100%;
 }
 
 .blog-thumbnail {

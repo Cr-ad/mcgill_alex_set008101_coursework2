@@ -6,17 +6,12 @@ User Account
 Add a user login check function, can call on different pages
 fix flash notifications
 Fix search
-
-Bug where add article not logged in shows error
-Fix bug where if article add content is not correct, user is logged out
+change small screen media query for search bar
 Search bar functionality
-Bug - added article to automotive, not displaying in automotive list?
 Add search query validation
-Add a max title length limit
 Add active page to layout nav bar
 Sort search results by most tags matched
 Show a preview of the blog post on articles list | reveal full post
-find author page by id - not by name (incase author with same name)
 Related article tags - display articles with similar tags
 Comment section
 Add triggers
@@ -33,8 +28,13 @@ In progress:
 
 ----------------------
 Implemented:
+Add a max title length limit
+Fix bug where if article add content is not correct, user is logged out
+Bug where add article not logged in shows error
+Bug - added article to automotive, not displaying in automotive list?
 Change author href link to get their author id
 Fix author object returning undefined - req for author bio etc.
+find author page by id - not by name (incase author with same name)
 Author page - shows all of the authors articles
 Add article input validation
 Author should be determined by the user account name
