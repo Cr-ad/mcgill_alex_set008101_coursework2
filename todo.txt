@@ -29,7 +29,7 @@ Site name for the blog platform
 ----------------------
 In progress:
 
-Changing the way authors are displayed
+Change author href link to get their author id
 
 ----------------------
 Implemented:
