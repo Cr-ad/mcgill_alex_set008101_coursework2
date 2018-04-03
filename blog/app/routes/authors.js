@@ -96,6 +96,8 @@ router.get('/:id/', function(req, res){
                 "posts": dbPosts,
                 "author": author
             });
+            //console.log("author id: " + author.id);
+            //console.log("author profile pic: "+ author.profile_pic);
         });
     });
 });

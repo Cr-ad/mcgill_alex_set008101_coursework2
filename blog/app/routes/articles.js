@@ -132,6 +132,7 @@ router.get('/add_article/', (req, res) => {
 
 router.post('/add_article/', (req, res) => {
     var user_id = req.user._id;
+    var flag = false;
     var originalTagString = req.body.tags;
     var tagsUnfiltered = originalTagString.split(',');
     var tagsFiltered = new Array();
@@ -177,7 +178,7 @@ router.post('/add_article/', (req, res) => {
             category    : req.body.category,
             tags        : tagsFiltered
         };
-        var flag = false;
+        
         db.collection('posts').insertOne(post, (err, result) => {
             if(err)
             {
@@ -198,17 +199,18 @@ router.post('/add_article/', (req, res) => {
                     if(count == 0)
                     {
                         flag = true;
+                        console.log("Flag set to true. Author with that user id does not exist");
+                        if(flag)
+                        {
+                            addAuthor(user_id);
+                            //res.redirect('/');
+                        }
+                        else
+                        {
+                            res.redirect('/');
+                        }
                     }
                 });
-            }
-        }, function() {
-            if(flag)
-            {
-                addAuthor(user_id);
-            }
-            else
-            {
-                res.redirect('/');
             }
         });
     });
@@ -216,10 +218,11 @@ router.post('/add_article/', (req, res) => {
 
 function addAuthor(user_id)
 {
+    console.log("Creating new author with user id: " + user_id);
     let newAuthor = new Author({
         user_id     : user_id,
-        bio         : "Default text",
-        profile_pic : "default_profile_pic"
+        bio         : "Placeholder text - select 'Edit' to update your bio!",
+        profile_pic : "default_profile_pic.jpeg"
     });
 
     newAuthor.save(function(err){
@@ -232,8 +235,8 @@ function addAuthor(user_id)
         {
             var currentDate = new Date().toLocaleString();
             console.log(currentDate + " | New Author Added: " + user_id);
-            req.flash('success','Blog post submitted. You have been added as a new author!');
-            res.redirect('/');
+            //req.flash('success','Blog post submitted. You have been added as a new author!');
+            //res.redirect('/');
         }
     });
 }
