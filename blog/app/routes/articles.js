@@ -199,10 +199,6 @@ router.post('/add_article/', (req, res) => {
                     {
                         addAuthor(user_id);
                     }
-                    else
-                    {
-                        res.redirect('/');
-                    }
                 });
             }
         });

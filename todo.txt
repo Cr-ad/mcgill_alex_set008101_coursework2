@@ -3,6 +3,7 @@ User Account
 	Validation > Check if username / email already exists register
 	Update / edit a blog post - add button functionality
 	Delete a blog post - add button functionality
+Add some safeguards in blog post HTML input
 Add a user login check function, can call on different pages
 fix flash notifications
 Fix search
