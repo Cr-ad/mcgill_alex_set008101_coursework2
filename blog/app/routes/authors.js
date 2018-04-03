@@ -73,6 +73,90 @@ router.get('/test', function(req, res){
 
 router.get('/:id/', function(req, res){
     const id = req.params.id;
+    var flag = false;
+    var dbPosts = [];
+    console.log("id: " + id);
+    var cursor = db.collection('posts').find({"author_id" : ObjectId(id)});
+    var author = getAuthor(id);
+    cursor.forEach(function(doc, err) {
+        assert.equal(null, err);
+        // Need to add some validation
+        
+        var categoryUpper = capitaliseFirstLetter(doc.category);
+        var post = {
+            id          : doc._id,
+            author_id   : doc.author_id,
+            author_name : doc.author_name,
+            title       : doc.title,
+            thumbnail   : doc.thumbnail,
+            content     : doc.content,
+            date        : doc.date,
+            category    : categoryUpper,
+            tags        : doc.tags
+        }
+        
+        dbPosts.push(post);
+        //console.log("ID: " + post.id +  " | Title: " + post.title);
+    }, function() {
+        // Sort articles by date descending
+        dbPosts.sort(function compare(a,b){
+            return b.date.getTime() - a.date.getTime()
+        });
+        console.log("Dates sorted");
+        console.log("2nd Posts Length: " + dbPosts.length);
+        for(i = 0; i < dbPosts.length; i++)
+        {
+            console.log("Post Title: "+ dbPosts[i].title);
+        }
+        res.render('author', {
+            title : 'The Author Route',
+            "posts": dbPosts
+        });
+        console.log("Displaying author page: " + id);
+        //console.log("Author bio: " + author.bio);
+    });
+
+    /*Author.count({'user_id' : id}, function(err, count){
+        if(count > 0)
+        {
+            flag = true;
+            console.log("user exists");
+            //console.log("AP Length: " + getAuthorArticles(id).length);
+        } 
+    });
+    */
+    /*
+    console.log("id: " + id);
+    const authorPosts = getAuthorArticles(id);
+    for(var current in authorPosts);
+    {
+        console.log("Title: " + current.title);
+    }
+    res.render('author', {
+        title : 'The Author Route',
+        "author": getAuthor(id),
+        "posts": getAuthorArticles(id) 
+    });
+    */
+});
+
+function getAuthor(id)
+{
+    db.collection('authors').find({'user_id' : id}, function(err, doc){
+        var author = {
+            _id : doc._id,
+            user_id : doc.user_id,
+            bio : doc.bio,
+            profile_pic : doc.profile_pic
+        }
+        console.log("Author " + author._id + " found.");
+        console.log("Author bio: "+ author.bio);
+        console.log("Author profile pic: "+ author.profile_pic);
+        return author;
+    });
+}
+
+function getAuthorArticles(id) {
     var dbPosts = [];
     var cursor = db.collection('posts').find({"author_id" : ObjectId(id)});
     // Execute the each command, triggers for each document
@@ -99,12 +183,11 @@ router.get('/:id/', function(req, res){
         dbPosts.sort(function compare(a,b){
             return b.date.getTime() - a.date.getTime()
         });
-        
-        res.render('author', {
-            title : 'The Author Route',
-            "posts": dbPosts
-        });
+        console.log("Dates sorted");
+    }, function(){
+        console.log("Returning array");
+        return dbPosts;
     });
-});
+}
 
 module.exports = router;
