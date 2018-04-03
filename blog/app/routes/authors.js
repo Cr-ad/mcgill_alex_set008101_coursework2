@@ -159,8 +159,9 @@ function getAuthor(id)
         console.log("Author " + author.id + " found.");
         console.log("Author bio: "+ author.bio);
         console.log("Author profile pic: "+ author.profile_pic);
-        return author;
     });
+    // Doesn't work because return is called before forEach finishes... 
+    return author;
 }
 /*
 function getAuthorArticles(id) {
