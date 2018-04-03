@@ -7,6 +7,8 @@ var path = require('path');
 
 // Bring in Article Model
 let Article = require('../models/article');
+let User = require('../models/user');
+let Author = require('../models/author');
 var db = mongoose.connection;
 
 
@@ -123,27 +125,7 @@ router.get('/add_article/', (req, res) => {
 });
 
 router.post('/add_article/', (req, res) => {
-    /*req.checkBody('title', 'Title is required').notEmpty();
-    req.checkBody('thumbnail', 'Thumbnail is required').notEmpty();
-    req.checkBody('content', 'Content is required').notEmpty();
-    req.checkBody('category', 'Category is required').equals(!"Select...");
-    req.checkBody('tags', 'Tags is required').notEmpty();
-    
-    let errors = req.validationErrors();
-
-    if(errors)
-    {
-        res.render('add_article', {
-            title: 'Add Article',
-            errors : errors,
-            categories : all_categories
-        });
-    }
-    else
-    { 
-       
-    }*/
-    // Use JS to make sure category is not default
+    var user_id = req.user._id;
     var originalTagString = req.body.tags;
     var tagsUnfiltered = originalTagString.split(',');
     var tagsFiltered = new Array();
@@ -161,10 +143,10 @@ router.post('/add_article/', (req, res) => {
         }
     }
     
-    delete req.body.id; // for saftey (to avoid overwriting existing id)
+    delete req.body.id; // Avoid overwriting existing id
     // Create the blog post
     const post = {
-        author: req.body.author,
+        author: user_id,
         title: req.body.title,
         thumbnail: req.body.thumbnail,
         content: req.body.content,
@@ -172,11 +154,13 @@ router.post('/add_article/', (req, res) => {
         category: req.body.category,
         tags: tagsFiltered
     };
-    
+    var flag = false;
     db.collection('posts').insertOne(post, (err, result) => {
         if(err)
         {
-            res.send({ 'error' : 'An error occurred' });
+            res.render('error', {
+                'message' : 'Failed to add blog post'
+            })
         }
         else
         {
@@ -185,10 +169,47 @@ router.post('/add_article/', (req, res) => {
             res.redirect('/');
             var currentDate = new Date().toLocaleString();
             console.log(currentDate + " | Blog Post Submitted by " + post.author + " : '" + post.title + "'")
+            
+            // If author doesn't exist, add them to authors
+            Author.count({_id : user_id}, function(err, count){
+                if(count == 0)
+                {
+                    flag = true;
+                }
+            });
             //alert("Blog Post Successfully Submitted!");
+        }
+    }, function() {
+        if(flag)
+        {
+            addAuthor(user_id);
         }
     });
 });
+
+function addAuthor(user_id)
+{
+    let newAuthor = new Author({
+        user_id     : user_id,
+        bio         : "Default text",
+        profile_pic : "default_profile_pic"
+    });
+
+    newAuthor.save(function(err){
+        if(err)
+        {
+            console.log(err);
+            return;
+        }
+        else
+        {
+            var currentDate = new Date().toLocaleString();
+            console.log(currentDate + " | New Author Added: " + user_id)
+            req.flash('success','Blog post submitted. You have been added as a new author!');
+            res.redirect('/');
+        }
+    });
+}
 
 // Search Route
 router.get('/search/', (req, res) => {

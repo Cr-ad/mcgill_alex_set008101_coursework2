@@ -74,7 +74,7 @@ router.post('/register', function(req, res){
                         req.flash('success','Account successfully registered. Log in to get started!');
                         res.redirect('/users/login');
                     }
-                })
+                });
             });
         });
     }

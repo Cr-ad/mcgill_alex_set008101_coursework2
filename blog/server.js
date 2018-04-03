@@ -90,7 +90,7 @@ blog_app.get('*', function(req, res, next){
 
 // Check connection
 db.once('open', function(){
-    console.log('MongoDB Connection Successful')
+    console.log(currentDate + " | MongoDB Connection Successful")
     require('./app/routes')(blog_app, db);
     blog_app.listen(port, () => {
         console.log(currentDate + " | Listening on port " + port + " @ http://localhost:3000");

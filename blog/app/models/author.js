@@ -3,17 +3,18 @@ const mongoose = require('mongoose');
 // Author schema
 
 const AuthorSchema = mongoose.Schema({
-    first_name: {
-        type: String,
-        required: true
-    },
-    last_name: {
+    
+    user_id: {
         type: String,
         required: true
     },
     bio: {
         type: String,
         required: true
+    },
+    profile_pic: {
+        type: String,
+        required: false
     }
 });
 
