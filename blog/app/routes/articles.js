@@ -171,7 +171,7 @@ router.post('/add_article/', (req, res) => {
             console.log(currentDate + " | Blog Post Submitted by " + post.author + " : '" + post.title + "'")
             
             // If author doesn't exist, add them to authors
-            Author.count({_id : user_id}, function(err, count){
+            Author.count({'user_id' : user_id}, function(err, count){
                 if(count == 0)
                 {
                     flag = true;

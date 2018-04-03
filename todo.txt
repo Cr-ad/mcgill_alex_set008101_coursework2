@@ -3,14 +3,13 @@ User Account
 	Validation > Check if username / email already exists register
 	Update / edit a blog post
 	Delete a blog post
-	
-		
 fix flash notifications
 Fix search
 Fix bug where if article add content is not correct, user is logged out
 Search bar functionality
 Bug - added article to automotive, not displaying in automotive list?
 Add search query validation
+Add a max title length limit
 Add active page to layout nav bar
 Sort search results by most tags matched
 Author page - shows all the authors articles
@@ -29,10 +28,11 @@ Site name for the blog platform
 ----------------------
 In progress:
 
-Author should be determined by the user account name
+
 
 ----------------------
 Implemented:
+Author should be determined by the user account name
 Add a blog post - need a way of accessing the add page
 Add article page validaton
 put nav bar in layout pug
