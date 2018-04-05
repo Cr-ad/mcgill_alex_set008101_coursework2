@@ -8,7 +8,7 @@ var path = require('path');
 // Get Models
 let User = require('../models/user');
 let Author = require('../models/author');
-//let Article = require('../models/article');
+let Article = require('../models/article');
 
 var db = mongoose.connection;
 
@@ -133,6 +133,7 @@ router.get('/add_article/', (req, res) => {
 router.post('/add_article/', (req, res) => {
     var user_id = req.user._id;
     var originalTagString = req.body.tags;
+    originalTagString = originalTagString.toLowerCase();
     var tagsUnfiltered = originalTagString.split(',');
     var tagsFiltered = new Array();
     var currentDateTime = new Date();
@@ -256,18 +257,16 @@ router.delete('/:id', function(req, res){
 
 // Search Route
 router.get('/search/', (req, res) => {
-    var search_query = req.query.search_input
+    var orignal_input = req.query.search_input;
+    var search_query = req.query.search_input;
     if(search_query && search_query.length > 0)
     {
         search_query = search_query.toLowerCase();
         var categoryUpper;
         console.log(search_query);
-        var search_tags = search_query.split(/[ ,]+/);
+        var search_tags = search_query.split(/[,]+/);
         var dbPosts = [];
-        // Find articles with title that contains keywords in tags?
-        var cursor = db.collection('posts').find();
-        //var cursor = db.collection('posts').find({"tags" : {"$in" : search_tags}});
-        //var cursor = db.collection('posts').find({'tags' : { $in : search_query}});
+        var cursor = db.collection('posts').find({tags: search_tags[0]});
         // Execute the each command, triggers for each document
         cursor.forEach(function(doc, err) {
             assert.equal(null, err);
@@ -284,14 +283,23 @@ router.get('/search/', (req, res) => {
                 date        : doc.date,
                 category    : categoryUpper,
                 tags        : doc.tags
-            }            
-            dbPosts.push(post);
-            //console.log("ID: " + post.id +  " | Title: " + post.title);
-        }, function() {
+            };
+            var alreadyAdded = false;
+            for(var currentPost in dbPosts)
+            {
+                if(post.id == currentPost.id)
+                {
+                    alreadyAdded = true;
+                }
+            }
+            if(!alreadyAdded)
+            {
+                dbPosts.push(post);
+            }
+        }, function(){
             if(dbPosts.length > 0)
             {
                 // Sort articles by date descending
-                console.log("Matching Post Count: " + dbPosts.length);
                 dbPosts.sort(function compare(a,b){
                 return b.date.getTime() - a.date.getTime()
                 });
@@ -306,9 +314,8 @@ router.get('/search/', (req, res) => {
             {
                 res.render('search_empty', {
                     title : 'No Search Results',
-                    category : req.params.category
+                    "search_query" : search_query
                 });
-                //res.send("Category does not exist");
             }
         });
     }
@@ -317,6 +324,7 @@ router.get('/search/', (req, res) => {
         res.redirect('/');
     }
 });
+
 
 // Category Route
 router.get('/articles/:category/', (req, res) => {

@@ -8,7 +8,7 @@ Add a user login check function, can call on different pages
 fix flash notifications
 Fix search
 change small screen media query for search bar
-Search bar functionality
+
 Add search query validation
 Add active page to layout nav bar
 Sort search results by most tags matched
@@ -29,7 +29,9 @@ Update / edit a blog post - add button functionality
 
 ----------------------
 Implemented:
-Add a max title length limit
+Convert all tags to lowercase on article add
+Search bar functionality
+dd a max title length limit
 Fix bug where if article add content is not correct, user is logged out
 Bug where add article not logged in shows error
 Bug - added article to automotive, not displaying in automotive list?
