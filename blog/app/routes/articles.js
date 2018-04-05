@@ -248,7 +248,7 @@ router.get('/edit/:id', function(req, res){
         // Check if user should be able to edit the article
         db.collection('posts').findOne(query, function(err, article){
             // If the logged in user is the article author or an admin
-            if((req.user.isAdmin) || (article.author_id == req.user._id))
+            if((req.user.isAdmin) || (article.author_id == req.user.id))
             {
                 res.render('article_edit', {
                     article : article,
@@ -258,9 +258,8 @@ router.get('/edit/:id', function(req, res){
             }
             else
             {            
-                res.status(500);
-                res.send('error', {
-                    message : status.message,
+                res.render('error', {
+                    message : "You do not have permission to edit this article",
                     error: {}
                 })
             }
@@ -270,8 +269,13 @@ router.get('/edit/:id', function(req, res){
 
 // Edit Process
 router.post('/edit/:id', function(req, res){
+    var input_id = req.params.id;
     let query = {"_id" : ObjectId(input_id)};
     var userHasEditPermissions = false;
+    var originalDate;
+    var originalAuthorId;
+    var originalAuthorName;
+    var originalArticle;
     // Check if user should be able to edit the article
     if(!req.user)
     {
@@ -287,94 +291,71 @@ router.post('/edit/:id', function(req, res){
     {
         let query = {"_id" : ObjectId(input_id)};
         // Check if user should be able to edit the article
-        db.collection('posts').findOne(query, function(err, article){
+        var cursor = db.collection('posts').find(query);
+        cursor.forEach(function(article, err){
             // If the logged in user is the article author or an admin
-            if((req.user.isAdmin) || (article.author_id == req.user._id))
+            if((req.user.isAdmin) || (article.author_id == req.user.id))
             {
                 userHasEditPermissions = true;
-                console.log("Edit permissions granted");
             }
-        });
-    }
-    console.log("Checking edit permissions..");
-    if(userHasEditPermissions)
-    {
-        console.log("Editing article");
-        var originalDate;
-        var originalAuthor;
-        db.collection('posts').findOne(query, function(err, article){
             originalDate = article.date;
-            originalAuthor = article.author_id;
-        });
-        
-        var user_id = originalAuthor;
-        var originalTagString = req.body.tags;
-        originalTagString = originalTagString.toLowerCase();
-        var tagsUnfiltered = originalTagString.split(',');
-        var tagsFiltered = new Array();
-        var currentDateTime = originalDate;
-        var display_name;
-        for(i = 0; i < tagsUnfiltered.length; i++)
-        {
-            var current = tagsUnfiltered[i];
-            while(current.charAt(0) == ' ' || current.charAt(0) == ',')
+            originalAuthorId = article.author_id;
+            originalAuthorName = article.author_name;
+            originalArticle = article;
+
+        }, function(){
+            if(userHasEditPermissions)
             {
-                current = current.substring(1);
-            }
-            if(current.length > 2)
-            {
-                tagsFiltered.push(current);
-            }
-        }
-        var cursor = db.collection('users').find({_id : user_id});
-        // Execute the each command, triggers for each document
-        // Using foreach to get callback function (findone does not allow callbacks)
-        cursor.forEach(function(doc, err) {
-            assert.equal(null, err);
-            if(err)
-            {
-                console.log(err);
-                throw err;
+                db.collection('posts').findOne(query, function(err, article){
+                    
+                });
+                var originalTagString = req.body.tags;
+                originalTagString = originalTagString.toLowerCase();
+                var tagsUnfiltered = originalTagString.split(',');
+                var tagsFiltered = new Array();
+                for(i = 0; i < tagsUnfiltered.length; i++)
+                {
+                    var current = tagsUnfiltered[i];
+                    while(current.charAt(0) == ' ' || current.charAt(0) == ',')
+                    {
+                        current = current.substring(1);
+                    }
+                    if(current.length > 2)
+                    {
+                        tagsFiltered.push(current);
+                    }
+                }
+                // Create the blog post
+                const post = {
+                    author_id   : originalAuthorId,
+                    author_name : originalAuthorName,
+                    title       : req.body.title,
+                    thumbnail   : req.body.thumbnail,
+                    content     : req.body.content,
+                    date        : originalDate,
+                    category    : req.body.category,
+                    tags        : tagsFiltered
+                };
+                db.collection('posts').update(query, post, (err, result) => {
+                    if(err)
+                    {
+                        res.render('error', {
+                            'message' : 'Failed to edit Blog Post',
+                            error : {}
+                        });
+                    }
+                    else
+                    {
+                        res.redirect('/');
+                        var currentDate = new Date().toLocaleString();
+                        console.log(currentDate + " | Blog Post " + originalArticle._id + " : Title '" + post.title + "' : Updated by " + req.user.id);
+                    }
+                });
             }
             else
             {
-                display_name = doc.first_name + " " + doc.last_name;
-                console.log(display_name);
+                res.redirect('/');
             }
-        }, function(){
-            // Create the blog post
-            const post = {
-                author_id   : user_id,
-                author_name : display_name,
-                title       : req.body.title,
-                thumbnail   : req.body.thumbnail,
-                content     : req.body.content,
-                date        : currentDateTime,
-                category    : req.body.category,
-                tags        : tagsFiltered
-            };
-            db.collection('posts').updateOne(query, post, (err, result) => {
-                if(err)
-                {
-                    res.render('error', {
-                        'message' : 'Failed to update Blog Post'
-                    });
-                }
-                else
-                {
-                    res.redirect('/');
-                    var currentDate = new Date().toLocaleString();
-                    console.log(currentDate + " | Blog Post Updated by " + req.user_id + " (" + post.author_id + ") : '" + post.title + "'")
-                    
-                    // If author doesn't exist, add them to authors
-                    Author.count({'user_id' : user_id}, function(err, count){
-                        if(count == 0)
-                        {
-                            addAuthor(user_id);
-                        }
-                    });
-                }
-            });
         });
     }
 });
@@ -397,14 +378,14 @@ function arrayToString(array)
 router.delete('/delete/:id', function(req, res){
     var input_id = req.params.id;
     // If user is not logged in send error
-    if(!req.user._id) {
+    if(!req.user.id) {
         res.status(500).send();
     }
 
     let query = {_id : input_id};
     // Check if user should be able to delete
     Article.findById(query, function(err, article){
-        if((article.author_id != req.user._id) || (!req.user.isAdmin))
+        if((article.author_id != req.user.id) || (!req.user.isAdmin))
         {
             res.status(500).send();
         }

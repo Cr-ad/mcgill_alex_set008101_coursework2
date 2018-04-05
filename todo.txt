@@ -27,10 +27,11 @@ Site name for the blog platform
 ----------------------
 In progress:
 
-Update / edit a blog post - add button functionality
+
 
 ----------------------
 Implemented:
+Update / edit a blog post - add button functionality
 Convert all tags to lowercase on article add
 Fix search
 Search bar functionality
