@@ -617,25 +617,7 @@ textarea:valid {
   border-radius: 5px;
 }
 
-.page-author {
-  width: 85%;
-  margin: 0 auto;
-}
-
-.blog-section-author {
-  
-  padding: 0 10px 0 10px;
-  width: 70%;
-  min-width: 400px;
-  margin: 0 auto;
-  /*
-  border: solid black 2px;
-  background: plum;
-  */
-}
-
-
-.page-author h1 {
+.page-center h1 {
   font-family: 'Hammersmith One', sans-serif;
   font-size: 40px;
   margin: 10px 0;
