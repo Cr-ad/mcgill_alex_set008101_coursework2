@@ -19,8 +19,8 @@ block content
 									a(href='/articles/edit/'+selectedPost.id)
 										input(class="blue" type="submit", value="Edit")
 								.display-button
-									a(href='/articles/delete/'+selectedPost.id)
-										input(class="red" onclick="return confirm('Are you sure you want to delete this article?');" type="button" value="Delete")
+									a(href='#')
+										input(id="delete_button" class="red" type="submit" value="Delete" data-id=selectedPost.id)
 				div.blog-footer
 					p.blog-category Category: 
 						a(href='/articles/'+selectedPost.category+'/') !{selectedPost.category}

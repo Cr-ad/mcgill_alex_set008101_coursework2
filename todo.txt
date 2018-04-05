@@ -9,7 +9,6 @@ Related articles implementation - get articles with matching tags
 Add edit bio button on author page
 Authors page
 change small screen media query for search bar
-
 Add search query validation
 Add active page to layout nav bar
 Sort search results by most tags matched
@@ -27,10 +26,11 @@ Site name for the blog platform
 ----------------------
 In progress:
 
-Delete a blog post - add button functionality
+
 
 ----------------------
 Implemented:
+Delete a blog post - add button functionality
 Update / edit a blog post - add button functionality
 Convert all tags to lowercase on article add
 Fix search

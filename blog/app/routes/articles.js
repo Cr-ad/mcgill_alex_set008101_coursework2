@@ -379,22 +379,42 @@ router.delete('/delete/:id', function(req, res){
         res.status(500).send();
     }
 
-    let query = {_id : input_id};
+    let query = {_id : ObjectId(input_id)};
     // Check if user should be able to delete
-    Article.findById(query, function(err, article){
-        if((article.author_id != req.user.id) || (!req.user.isAdmin))
+    var cursor = db.collection('posts').find();
+    cursor.forEach(function(article, err){
+        console.log("in loop");
+        // Get the correct article to remove
+        if(input_id == article._id)
         {
-            res.status(500).send();
-        }
-        else
-        {
-            Article.remove(query, function(err){
-                if(err)
-                {
-                    console.log(err);
-                }
-                res.send('Success');
-            });
+            console.log("found correct article");
+            var match;
+            if(article.author_id == req.user.id)
+            {
+                match = true;
+            }
+            console.log("Match: " + match + " | isadmin: " + req.user.isAdmin);
+            // Make sure user has permission to remove the article
+            if((req.user.isAdmin) || (article.author_id == req.user.id))
+            {
+                console.log("Remove article");
+                db.collection('posts').deleteOne(query, function(err){
+                    if(err)
+                    {
+                        console.log(err);
+                    }
+                    else
+                    {
+                        res.send('Success');
+                        console.log("Article removed");
+                    }
+                });
+            }
+            else
+            {
+                console.log("permission denied");
+                res.status(500).send();
+            }
         }
     });
 });

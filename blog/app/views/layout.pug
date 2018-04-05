@@ -5,8 +5,6 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css')
     link(href="https://fonts.googleapis.com/css?family=Quicksand|Merriweather|Hammersmith+One" rel="stylesheet")
-    script
-      include ../js/scripts.js 
   body
     
     nav.nav-bar
@@ -66,7 +64,7 @@ html
 
           -if(user)
             li
-              a(href="/articles/add_article")
+              a(href="/articles/article_add")
                 p1 Add Article
             li
               a(href="/users/logout")
@@ -86,3 +84,8 @@ html
           div(class="alert alert-danger") #{error.msg}
 
       block content
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")    
+    script
+      include ../js/scripts.js
+    script
+      include ../js/main.js 
