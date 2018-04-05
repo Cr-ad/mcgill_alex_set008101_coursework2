@@ -150,7 +150,6 @@ router.post('/add_article/', (req, res) => {
             tagsFiltered.push(current);
         }
     }
-    //db.collection('users').find({_id : user_id}, function(err, doc){
     var cursor = db.collection('users').find({_id : user_id});
     // Execute the each command, triggers for each document
     cursor.forEach(function(doc, err) {

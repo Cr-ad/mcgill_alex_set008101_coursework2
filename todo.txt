@@ -5,8 +5,8 @@ User Account
 	Delete a blog post - add button functionality
 Add some safeguards in blog post HTML input
 Add a user login check function, can call on different pages
-fix flash notifications
-Fix search
+Related articles implementation - get articles with matching tags
+Authors page
 change small screen media query for search bar
 
 Add search query validation
@@ -15,10 +15,11 @@ Sort search results by most tags matched
 Show a preview of the blog post on articles list | reveal full post
 Related article tags - display articles with similar tags
 Comment section
+implement flash notifications?
 Add triggers
 Trigger page audit history
 Switch article to use mongoose article schema
-About page
+
 Add article view counter - used for popular article sorting
 Split articles page into different pages (x blog posts per page)
 Site name for the blog platform
@@ -30,6 +31,7 @@ Update / edit a blog post - add button functionality
 ----------------------
 Implemented:
 Convert all tags to lowercase on article add
+Fix search
 Search bar functionality
 dd a max title length limit
 Fix bug where if article add content is not correct, user is logged out
