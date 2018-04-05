@@ -508,6 +508,7 @@ textarea:valid {
 .form-heading-input {
   font-size: 25px;
   font-family: 'Merriweather', serif;
+  padding-left: 2px;
 }
 
 .form-heading p {

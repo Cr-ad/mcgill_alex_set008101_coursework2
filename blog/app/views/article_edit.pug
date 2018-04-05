@@ -1,0 +1,50 @@
+extends layout
+
+block content
+	.content
+		-if(user)
+			h1 Edit Article
+			form(name="edit_blog_post", method="post")
+				.form-container
+					.form-heading
+						p Title:
+					.form-content
+						input(class="form-heading-input" type="text", name="title" size="47" required value=article.title)
+				.form-container
+					.form-heading
+						p Thumbnail:
+					.form-content
+						input(class="form-heading-input" type="url", name="thumbnail" size="47" required value=article.thumbnail)
+				.form-container
+					.form-heading
+						p Content:
+					.form-content
+						textarea(class="blog-text" name="content", cols="72", rows="25" required) !{article.content}
+				.form-container
+					.form-heading
+						p Tags:
+					.form-content
+						input(class="form-content-inputs" type="text", name="tags" size="54" placeholder="Seperate tags with commas (tag1, tag2)" required value=tags)
+				.form-container
+					.form-heading
+						p Category:
+					.form-content
+						select(class="form-content-inputs" name="category" required)
+							option(value="default") Select...
+							- for (i = 0; i < categories.length; i++)
+								- if(categories[i] != "Other")
+									-if(article.category == categories[i])
+										option(value=categories[i] selected) !{categories[i]}
+									-else
+										option(value=categories[i]) !{categories[i]}
+							option(value="other") Other
+				.form-container
+					.form-heading
+						p  
+					.form-content
+						.display-button
+							input(class="blue" type="submit", onclick="return validateBlogPostSubmission()" value="Submit")
+		-else
+			h1 Error
+			.form-login-message
+				p Please login to your account to add a new blog post

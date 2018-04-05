@@ -3,8 +3,8 @@ const mongoose = require('mongoose');
 // Article schema
 
 const ArticleSchema = mongoose.Schema({
-    author: {
-        type: String,
+    author_id: {
+        type: mongoose.Schema.Types.ObjectId,
         required: true
     },
     title: {

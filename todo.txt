@@ -6,6 +6,7 @@ User Account
 Add some safeguards in blog post HTML input
 Add a user login check function, can call on different pages
 Related articles implementation - get articles with matching tags
+Add edit bio button on author page
 Authors page
 change small screen media query for search bar
 
