@@ -1,16 +1,17 @@
 Todo (20):
 
-Add some safeguards in blog post HTML input
 Add a user login check function, can call on different pages
 Related articles implementation - get articles with matching tags
 Add edit bio button on author page
 Authors page
 change small screen media query for search bar and add article
+Show a preview of the blog post on articles list | reveal full post
 Npm alert plugin?
+Add some safeguards in blog post HTML input
 Add search query validation
 Add active page to layout nav bar
 Sort search results by most tags matched
-Show a preview of the blog post on articles list | reveal full post
+
 Related article tags - display articles with similar tags
 Comment section
 implement flash notifications?

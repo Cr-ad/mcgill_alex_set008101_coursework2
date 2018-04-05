@@ -398,9 +398,16 @@ a {
   border-radius: 15px;
   padding: 5px 8px;
   border: solid 1px rgb(4, 0, 63);
-  /*
-  
-  */
+}
+
+.blog-content img {
+  margin-top: 10px;
+  width: auto;
+  max-height: 400px;
+  max-width: 90%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .blog-content a{
