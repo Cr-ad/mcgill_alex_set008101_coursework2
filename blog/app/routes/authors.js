@@ -5,9 +5,8 @@ var assert = require('assert');
 var expressValidator = require('express-validator');
 var path = require('path');
 var ObjectId = require('mongodb').ObjectID;
-
-// Bring in Article Model
 let Author = require('../models/author');
+
 var db = mongoose.connection;
 
 function capitaliseFirstLetter(string)
@@ -96,8 +95,6 @@ router.get('/:id/', function(req, res){
                 "posts": dbPosts,
                 "author": author
             });
-            //console.log("author id: " + author.id);
-            //console.log("author profile pic: "+ author.profile_pic);
         });
     });
 });

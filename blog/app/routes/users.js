@@ -13,7 +13,6 @@ var db = mongoose.connection;
 // Import User Model
 let User = require('../models/user');
 
-
 // Register Route
 router.get('/register', function(req, res){
     res.render('register');
@@ -121,7 +120,6 @@ router.get('/login', function(req, res){
 });
 
 // Login Process
-
 router.post('/login', function(req, res, next){
     passport.authenticate('local', {
       successRedirect:'/',
@@ -129,14 +127,6 @@ router.post('/login', function(req, res, next){
       failureFlash: true
     })(req, res, next);
   });
-
-  /*
-  router.post('/login', function(req, res){
-    console.log("body parsing", req.body);
-    res.redirect('/');
-  });
-  */
-
 
 // Logout Process
 router.get('/logout', function(req, res){

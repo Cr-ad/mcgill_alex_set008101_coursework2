@@ -9,7 +9,6 @@ var ObjectId = require('mongodb').ObjectID;
 // Get Models
 let User = require('../models/user');
 let Author = require('../models/author');
-let Article = require('../models/article');
 
 var db = mongoose.connection;
 
@@ -36,8 +35,6 @@ router.get('/', (req, res) => {
     // Execute the each command, triggers for each document
     cursor.forEach(function(doc, err) {
         assert.equal(null, err);
-        // Need to add some validation
-
         var categoryUpper = capitaliseFirstLetter(doc.category);
         var post = {
             id          : doc._id,
@@ -51,17 +48,11 @@ router.get('/', (req, res) => {
             tags        : doc.tags
         }
         dbPosts.push(post);
-        //console.log("ID: " + post.id +  " | Title: " + post.title);
     }, function() {
         // Sort articles by date descending
         dbPosts.sort(function compare(a,b){
             return b.date.getTime() - a.date.getTime()
         });
-
-        for(i = 0; i < dbPosts.length; i++)
-        {
-            
-        }
         res.render('articles', {
             title : 'The Articles Route',
             "posts": dbPosts
@@ -79,8 +70,6 @@ router.get('/articles/:category/:id', (req, res) => {
     // Execute the each command, triggers for each document
     cursor.forEach(function(doc, err) {
         assert.equal(null, err);
-        // Need to add some validation
-
         var categoryUpper = capitaliseFirstLetter(doc.category);
 
         var post = {
@@ -96,14 +85,12 @@ router.get('/articles/:category/:id', (req, res) => {
         }
         if(post.id == id)
         {
-            //console.log("Matched POST ID: " + post.id);
             selectedPost = post;
         }
         else
         {
             dbPosts.push(post);
         }
-        //console.log("ID: " + post.id +  " | Title: " + post.title);
     }, function() {
         // Sort articles by date descending
         dbPosts.sort(function compare(a,b){
@@ -188,13 +175,11 @@ router.post('/article_add/', (req, res) => {
             }
             else
             {
-                //res.send(result.ops[0]);
-                req.flash('success', 'Blog Post Submitted!');
                 res.redirect('/');
                 var currentDate = new Date().toLocaleString();
                 console.log(currentDate + " | Blog Post Submitted by " + post.author_name + " (" + post.author_id + ") : '" + post.title + "'")
                 
-                // If author doesn't exist, add them to authors
+                // If user isn't already an author, add them to authors
                 Author.count({'user_id' : user_id}, function(err, count){
                     if(count == 0)
                     {
@@ -357,6 +342,7 @@ router.post('/edit/:id', function(req, res){
     }
 });
 
+// Used for splitting the array of tags into one long string
 function arrayToString(array)
 {
     var output = "";
@@ -493,7 +479,7 @@ router.get('/articles/:category/', (req, res) => {
     var selected_category = req.params.category;
     var categoryUpper;
     selected_category = selected_category.toLowerCase();
-    // Nearly correct url redirects:
+    // Redirect shortened category urls to the full category
     if(selected_category == "tech")
     {
         selected_category = "technology";
