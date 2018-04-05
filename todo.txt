@@ -1,8 +1,5 @@
 Todo:
-User Account
-	Validation > Check if username / email already exists register
-	
-	
+
 Add some safeguards in blog post HTML input
 Add a user login check function, can call on different pages
 Related articles implementation - get articles with matching tags
@@ -26,7 +23,7 @@ Site name for the blog platform
 ----------------------
 In progress:
 
-
+Validation > Check if username / email already exists register
 
 ----------------------
 Implemented:

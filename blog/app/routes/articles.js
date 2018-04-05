@@ -383,11 +383,9 @@ router.delete('/delete/:id', function(req, res){
     // Check if user should be able to delete
     var cursor = db.collection('posts').find();
     cursor.forEach(function(article, err){
-        console.log("in loop");
         // Get the correct article to remove
         if(input_id == article._id)
         {
-            console.log("found correct article");
             var match;
             if(article.author_id == req.user.id)
             {
@@ -397,7 +395,9 @@ router.delete('/delete/:id', function(req, res){
             // Make sure user has permission to remove the article
             if((req.user.isAdmin) || (article.author_id == req.user.id))
             {
-                console.log("Remove article");
+                var article_id = article._id;
+                var article_author = article.author_id;
+                var article_title = article.title;
                 db.collection('posts').deleteOne(query, function(err){
                     if(err)
                     {
@@ -406,13 +406,12 @@ router.delete('/delete/:id', function(req, res){
                     else
                     {
                         res.send('Success');
-                        console.log("Article removed");
+                        console.log("Blog Post " + article_id + " : Title '" + article_title + "' : Deleted by " + req.user.id);
                     }
                 });
             }
             else
             {
-                console.log("permission denied");
                 res.status(500).send();
             }
         }
