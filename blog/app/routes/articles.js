@@ -306,9 +306,6 @@ router.post('/edit/:id', function(req, res){
         }, function(){
             if(userHasEditPermissions)
             {
-                db.collection('posts').findOne(query, function(err, article){
-                    
-                });
                 var originalTagString = req.body.tags;
                 originalTagString = originalTagString.toLowerCase();
                 var tagsUnfiltered = originalTagString.split(',');
