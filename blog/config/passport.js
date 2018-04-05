@@ -11,7 +11,7 @@ module.exports = function(passport){
     // Local Strategy
     passport.use(new LocalStrategy(function(username, password, done){
         // Match Username
-        let query = {username:username};
+        let query = {username:username.toLowerCase()};
         User.findOne(query, function(err, user){
             if(err)
             {
@@ -19,6 +19,7 @@ module.exports = function(passport){
             }
             if(!user)
             {
+                // It is bad practice to be specific about whether it is the username or password that is incorrect
                 return done(null, false, {message: 'Error: Username or Password is incorrect.'});
             }
 

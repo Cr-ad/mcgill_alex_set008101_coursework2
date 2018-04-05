@@ -1,12 +1,12 @@
-Todo (22):
-Convert all username entries to lowercase
-Convert first letter of first+last name to uppercase
+Todo (20):
+
 Add some safeguards in blog post HTML input
 Add a user login check function, can call on different pages
 Related articles implementation - get articles with matching tags
 Add edit bio button on author page
 Authors page
 change small screen media query for search bar and add article
+Npm alert plugin?
 Add search query validation
 Add active page to layout nav bar
 Sort search results by most tags matched
@@ -17,7 +17,6 @@ implement flash notifications?
 Add triggers
 Trigger page audit history
 Switch article to use mongoose article schema
-
 Add article view counter - used for popular article sorting
 Split articles page into different pages (x blog posts per page)
 Site name for the blog platform
@@ -26,8 +25,9 @@ In progress:
 
 
 ----------------------
-Implemented (29):
-Validation > Check if username / email already exists register
+Implemented (30):
+Convert first letter of first+last name to uppercase
+Convert all username entries to lowercaseValidation > Check if username / email already exists register
 Delete a blog post - add button functionality
 Update / edit a blog post - add button functionality
 Convert all tags to lowercase on article add

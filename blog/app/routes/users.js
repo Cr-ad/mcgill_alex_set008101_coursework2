@@ -24,7 +24,7 @@ router.post('/register', function(req, res){
     const first_name = req.body.first_name;
     const last_name = req.body.last_name;
     const email = req.body.email;
-    const username = req.body.username;
+    const username = req.body.username.toLowerCase();
     const password = req.body.password;
     const password2 = req.body.password2;
     
@@ -38,7 +38,8 @@ router.post('/register', function(req, res){
     req.checkBody('password', 'Password is required').notEmpty();
     req.checkBody('password', 'Password must be at least 8 characters').isLength(8);
     req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
-    const invalid = "a";
+    // A value that is invalid for a username or email
+    const invalid = "_";
     
     var cursor = db.collection('users').find();
     var usernameAlreadyExists = false;
@@ -55,14 +56,14 @@ router.post('/register', function(req, res){
     }, function(){
         if(usernameAlreadyExists && username.length > 2)
         {
-            // equals something that is not the input, so an error is thrown..
-            console.log("Username already exists...");
+            // If the username already exists, throw an error by forcing the username to be
+            // equal to something that is not valid
             req.checkBody('username', 'Username already exists, try again with a different username.').equals(invalid);
         }
         if(emailAlreadyExists && email.length > 3)
         {
-            // tell user email already exists
-            console.log("Email already exists...");
+            // If the email already exists, throw an error by forcing the email to be
+            // equal to something that is not valid
             req.checkBody('email', 'Email address already exists, try again with a different email.').equals(invalid);
         }
         if(usernameAlreadyExists || emailAlreadyExists)
@@ -79,8 +80,8 @@ router.post('/register', function(req, res){
         else
         {
             let newUser = new User({
-                first_name  : first_name,
-                last_name   : last_name,
+                first_name  : capitaliseFirstLetter(first_name),
+                last_name   : capitaliseFirstLetter(last_name),
                 email       : email,
                 username    : username,
                 password    : password,
