@@ -426,7 +426,6 @@ router.get('/search/', (req, res) => {
     {
         search_query = search_query.toLowerCase();
         var categoryUpper;
-        console.log(search_query);
         var search_tags = search_query.split(/[,]+/);
         var dbPosts = [];
         var cursor = db.collection('posts').find({tags: search_tags[0]});
@@ -520,7 +519,6 @@ router.get('/articles/:category/', (req, res) => {
             tags        : doc.tags
         }    
         dbPosts.push(post);
-        //console.log("ID: " + post.id +  " | Title: " + post.title);
     }, function() {
         
         if(dbPosts.length > 0)
@@ -541,7 +539,6 @@ router.get('/articles/:category/', (req, res) => {
                 title : 'Category Unavailable',
                 category : req.params.category
             });
-            //res.send("Category does not exist");
         }
     });
 });

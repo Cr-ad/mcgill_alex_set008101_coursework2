@@ -276,6 +276,10 @@ a {
   */
 }
 
+.centered {
+  justify-content: center !important;
+}
+
 .page-header h1 {
   font-family: 'Hammersmith One', sans-serif;
   font-size: 38px;
@@ -296,6 +300,14 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+}
+
+.page-center {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .right-section {
@@ -359,6 +371,17 @@ a {
   
   padding: 0 10px 0 10px;
   width: 70%;
+  min-width: 400px;
+  /*
+  border: solid black 2px;
+  background: plum;
+  */
+}
+
+.blog-section-center {
+  
+  padding: 0 10px 0 10px;
+  width: 80%;
   min-width: 400px;
   /*
   border: solid black 2px;

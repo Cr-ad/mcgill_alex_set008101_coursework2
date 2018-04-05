@@ -1,13 +1,11 @@
 extends layout
 
 block content
-	.page-header
+	.page-header.centered
 		h1 Showing search results for '!{search_query}'
-		.page-header-spacer
-			p   
 
-	div.page
-		div.blog-section
+	div.page-center
+		div.blog-section-center
 			-for(i = 0; i < posts.length; i++){
 				- category = posts[i].category
 				- id = posts[i].id
@@ -25,16 +23,4 @@ block content
 							- var author_link = '/authors/' + posts[i].author_id
 							a(href=author_link)  !{posts[i].author_name}
 							|  | !{dateTime}
-			-}
-		div.right-section
-			p.right-header POPULAR ARTICLES
-
-			-for(i = posts.length - 1; i >= 0; i--){
-				- category = posts[i].category
-				- id = posts[i].id
-				- thumbnail = posts[i].thumbnail
-			div.right-content
-				a(href='/articles/'+category+'/'+id)
-					img(class="right-thumbnail" src=thumbnail)
-				a(href='/articles/'+category+'/'+id) !{posts[i].title}
 			-}
