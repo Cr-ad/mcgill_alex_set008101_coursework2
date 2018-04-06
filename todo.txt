@@ -1,8 +1,7 @@
-Todo (19):
+Todo (18):
 
 Related articles implementation - get articles with matching tags
 make nav bar fixed?
-
 Npm alert plugin?
 Add some safeguards in blog post HTML input
 Add search query validation
@@ -25,7 +24,8 @@ In progress:
 Add edit bio button on author page
 
 ----------------------
-Implemented (31):
+Implemented (32):
+Sort author names alphabetically
 change author page from displaying ids to names
 Authors page
 change small screen media query for search bar and add article

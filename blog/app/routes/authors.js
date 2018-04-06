@@ -44,6 +44,12 @@ router.get('/', function(req, res){
     }, function() {
         if(authors.length > 1)
         {
+            authors.sort(function compare(a,b){
+                var name_a = a.displayname.toUpperCase();
+                var name_b = b.displayname.toUpperCase();
+                return (name_a < name_b) ? -1 : (name_a > name_b) ? 1 : 0;
+            });
+            
             res.render('authors', {
                 title : 'Authors',
                 "authors": authors,
