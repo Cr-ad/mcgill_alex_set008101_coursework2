@@ -1,8 +1,8 @@
 Todo (20):
-Add a user login check function, can call on different pages
+
 Related articles implementation - get articles with matching tags
 Add edit bio button on author page
-Authors page
+
 make nav bar fixed?
 change small screen media query for search bar and add article
 Npm alert plugin?
@@ -12,6 +12,7 @@ Add active page to layout nav bar
 Sort search results by most tags matched
 Related article tags - display articles with similar tags
 Comment section
+Add a user login check function, can call on different pages
 implement flash notifications?
 Add triggers
 Trigger page audit history
@@ -23,7 +24,7 @@ filter out line breaks in post preview
 ----------------------
 In progress:
 
-
+Authors page
 
 ----------------------
 Implemented (30):

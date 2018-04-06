@@ -4,32 +4,7 @@ block content
 	br
 	br
 	h1 Authors
-	//-div.page
-		div.blog-section
-			-for(i = 0; i < posts.length; i++){
-				- category = posts[i].category
-				- id = posts[i].id
-				- thumbnail = posts[i].thumbnail
-				- dateTime = posts[i].date.toLocaleDateString() + " " + posts[i].date.toLocaleTimeString();
-				div.blog-content
-					a(href='/articles/' + category+'/'+id)
-						p(class="blog-title") !{posts[i].title}
-						img(class="blog-thumbnail" src=thumbnail)
-					p.blog-text !{posts[i].content}
-					div.blog-footer
-						p.blog-category Category: 
-							a(href='/articles/'+posts[i].category+'/') !{posts[i].category}
-						p.blog-info By <a href="#">!{posts[i].author}</a> | !{dateTime}
-			-}
-		div.right-section
-			p.right-header POPULAR ARTICLES
-
-			-for(i = posts.length - 1; i >= 0; i--){
-				- category = posts[i].category
-				- id = posts[i].id
-				- thumbnail = posts[i].thumbnail
-			div.right-content
-				a(href='articles/'+category+'/'+id)
-					img(class="right-thumbnail" src=thumbnail)
-				a(href='articles/'+category+'/'+id) !{posts[i].title}
-			-}
+	.authors-page
+		.authors-content
+			img(src="https://i.imgur.com/lnwiMdh.jpg")
+			h1 Alex McGill
