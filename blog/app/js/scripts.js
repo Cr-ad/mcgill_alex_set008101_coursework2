@@ -21,10 +21,9 @@ function validateBlogPostSubmission()
     
 }
 
-function test()
+function homepage()
 {
-    
-    alert("Cancel");
+    window.location.href = '/';
 }
 
 

@@ -64,40 +64,6 @@ router.get('/', function(req, res){
     });
 });
 
-/*
-function getAuthorName(author_user_id)
-{
-    var display_name;
-    db.collection('users').findOne({_id : ObjectId(author_user_id)}, function(err, doc){
-        assert.equal(null, err);
-        if(err)
-        {
-            console.log(err);
-            throw err;
-        }
-        else
-        {
-            display_name = doc.first_name + " " + doc.last_name;
-            //console.log("Got Name: " + display_name);
-            //console.log("Returning name:" + display_name);
-            return display_name;
-        }
-    });
-}
-
-function getAuthorNames(authors)
-{
-    var authorNames = [];
-    for(i = 0; i < authors.length; i++)
-    {
-        var name = getAuthorName(authors[i].user_id);
-        console.log(name);
-        authorNames.push(name);
-    }
-    return authorNames;
-}
-*/
-
 router.get('/:id/', function(req, res){
     const id = req.params.id;
     var flag = false;
@@ -145,6 +111,47 @@ router.get('/:id/', function(req, res){
             });
         });
     });
+});
+
+// Edit Route
+router.get('/edit/:id', function(req, res){
+    
+    var input_id = req.params.id;
+    // If user is not logged in send an error
+    if(!req.user)
+    {
+        console.log("1 - User is not logged in");
+        res.redirect('/');
+        res.status(500).send();
+    }
+    // If the input is not a valid id send an error
+    else if(input_id.length != 24)
+    {
+        console.log("2 - Input ID is not valid");
+        res.redirect('/');
+        res.status(500).send();
+    }
+    else
+    {
+        let query = {"user_id" : input_id};
+        // Check if user should be able to edit the article
+        db.collection('authors').findOne(query, function(err, author){
+            // If the logged in user is an admin or it is their author profile
+            if((req.user.isAdmin) || (author.user_id == req.user.id))
+            {
+                res.render('author_edit', {
+                    author : author,
+                });
+            }
+            else
+            {            
+                res.render('error', {
+                    message : "You do not have permission to edit this article",
+                    error: {}
+                })
+            }
+        });
+    }
 });
 
 module.exports = router;

@@ -19,7 +19,7 @@ block content
 					.form-heading
 						p Content:
 					.form-content
-						textarea(class="blog-text" name="content", cols="72", rows="25" required) !{article.content}
+						textarea(class="blog-text" name="content", style="resize:none" cols="72", rows="25" required) !{article.content}
 				.form-container
 					.form-heading
 						p Tags:
@@ -42,8 +42,11 @@ block content
 					.form-heading
 						p  
 					.form-content
-						.display-button
-							input(class="blue" type="submit", onclick="return validateBlogPostSubmission()" value="Submit")
+						.display-buttons
+							.display-button
+								input(class="blue" type="submit", onclick="return validateBlogPostSubmission()" value="Submit")
+							.display-button
+                        		input(class="red" onclick="homepage()" type="button" value="Cancel")
 		-else
 			h1 Error
 			.form-login-message
