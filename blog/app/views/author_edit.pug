@@ -14,12 +14,15 @@ block content
 					.form-heading
 						p Profile Picture:
 					.form-content
-						input(class="form-heading-input" type="url", name="profile_picture" size="47" placeholder="Profile Picture URL (none = default)")
+						-if(author.profile_pic == "default_profile_pic.jpeg")
+							input(class="form-heading-input" type="url", name="profile_pic" size="47" placeholder="Profile Picture URL (none = default)")
+						-else
+							input(class="form-heading-input" type="url", name="profile_pic" size="47" placeholder="Profile Picture URL (none = default)" value=author.profile_pic)
 				.form-container
 					.form-heading
 						p Bio:
 					.form-content
-						textarea(class="blog-text" name="content", style="resize:none" cols="72", rows="4" required) !{author.bio}
+						textarea(class="blog-text" name="bio", style="resize:none" cols="72", rows="4" required) !{author.bio}
 				.form-container
 					.form-heading
 						p  

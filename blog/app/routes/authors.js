@@ -152,4 +152,69 @@ router.get('/edit/:id', function(req, res){
     }
 });
 
+router.post('/edit/:id', function(req, res){
+    var input_id = req.params.id;
+    // If user is not logged in send an error
+    if(!req.user)
+    {
+        res.redirect('/');
+        res.status(500).send();
+    }
+    // If the input is not a valid id send an error
+    else if(input_id.length != 24)
+    {
+        res.redirect('/');
+        res.status(500).send();
+    }
+    else
+    {
+        let query = {"user_id" : input_id};
+        var author;
+        var cursor = db.collection('authors').find(query);
+        cursor.forEach(function(doc, err){
+            assert.equal(null, err);
+            author = doc;
+            var default_profile_pic = "default_profile_pic.jpeg";
+            if(typeof req.body.profile_pic == 'undefined')
+            {
+                author.profile_pic = default_profile_pic;
+            }
+            else
+            {
+                author.profile_pic = req.body.profile_pic;
+            }
+            
+            author.bio = req.body.bio;
+        }, function(){
+            // Check if user should be able to edit the article
+            if((req.user.isAdmin) || (author.user_id == req.user.id))
+            {
+                db.collection('authors').update(query, author, (err, result) => {
+                    // If the logged in user is an admin or it is their author profile
+                    if(err)
+                    {
+                        res.render('error', {
+                            'message' : 'Failed to edit Blog Post',
+                            error : {}
+                        });
+                    }
+                    else
+                    {
+                        res.redirect('/');
+                        var currentDate = new Date().toLocaleString();
+                        console.log(currentDate + " | Author " + author.displayname + " : User ID " + author.user_id + "' : Updated by " + req.user.id);
+                    }
+                });
+            }
+            else
+            {            
+                res.render('error', {
+                    message : "You do not have permission to edit this authors profile",
+                    error: {}
+                });
+            }
+        });
+    }
+});
+
 module.exports = router;
