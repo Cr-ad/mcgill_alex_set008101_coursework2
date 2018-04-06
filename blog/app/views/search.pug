@@ -22,8 +22,8 @@ block content
 						p.blog-text !{postPreviews[i]}
 					div.blog-footer
 						p.blog-category Category: <a href="#">!{posts[i].category}</a>
-						p.blog-info By
+						p.blog-info By 
 							- var author_link = '/authors/' + posts[i].author_id
-							a(href=author_link)  !{posts[i].author_name}
+							a(href=author_link) !{posts[i].author_name}
 							|  | !{dateTime}
 			-}
