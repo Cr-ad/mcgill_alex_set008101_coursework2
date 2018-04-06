@@ -1,62 +1,62 @@
 Todo (18):
-
-Related articles implementation - get articles with matching tags
-make nav bar fixed?
-Npm alert plugin?
-Add some safeguards in blog post HTML input
-Add search query validation
-Add active page to layout nav bar
-Sort search results by most tags matched
-Related article tags - display articles with similar tags
-Comment section
-Add a user login check function, can call on different pages
-implement flash notifications?
-Add triggers
-Trigger page audit history
-Switch article to use mongoose article schema
-Add article view counter - used for popular article sorting
-Split articles page into different pages (x blog posts per page)
-Site name for the blog platform
-filter out line breaks in post preview
+18 Related articles implementation - get articles with matching tags
+17 make nav bar fixed?
+16 Npm alert plugin?
+15 Add some safeguards in blog post HTML input
+14 Add search query validation
+13 Add active page to layout nav bar
+12 Sort search results by most tags matched
+11 Related article tags - display articles with similar tags
+10 Comment section
+9 Add a user login check function, can call on different pages
+8 implement flash notifications?
+7 Add triggers
+6 Trigger page audit history
+5 Switch article to use mongoose article schema
+4 Add article view counter - used for popular article sorting
+3 Split articles page into different pages (x blog posts per page)
+2 Site name for the blog platform
+1 filter out line breaks in post preview
 ----------------------
 In progress:
 
-Add edit bio button on author page
+
 
 ----------------------
 Implemented (32):
-Sort author names alphabetically
-change author page from displaying ids to names
-Authors page
-change small screen media query for search bar and add article
-Show a preview of the blog post on articles list | reveal full post
-Convert first letter of first+last name to uppercase
-Convert all username entries to lowercaseValidation > Check if username / email already exists register
-Delete a blog post - add button functionality
-Update / edit a blog post - add button functionality
-Convert all tags to lowercase on article add
-Fix search
-Search bar functionality
-dd a max title length limit
-Fix bug where if article add content is not correct, user is logged out
-Bug where add article not logged in shows error
-Bug - added article to automotive, not displaying in automotive list?
-Change author href link to get their author id
-Fix author object returning undefined - req for author bio etc.
-find author page by id - not by name (incase author with same name)
-Author page - shows all of the authors articles
-Add article input validation
-Author should be determined by the user account name
-Add a blog post - need a way of accessing the add page
-Add article page validaton
-put nav bar in layout pug
-Proper error page (404 etc.)
-User account registration
-User account login + logout
-Responsive design - page scaling on smaller windows
-Fully implement nav bar
-implement schema validation checkbody
-More categories
-Sort articles by date
-Make category page title look nice
-split routes into different js files instead of all in blog_routes
+36 Add edit bio + profile pic button on author page
+35 Sort author names alphabetically
+34 change author page from displaying ids to names
+33 Authors page
+32 change small screen media query for search bar and add article
+31 Show a preview of the blog post on articles list | reveal full post
+30 Convert first letter of first+last name to uppercase
+29 Convert all username entries to lowercaseValidation > Check if username / email already exists register
+28 Delete a blog post - add button functionality
+27 Update / edit a blog post - add button functionality
+26 Convert all tags to lowercase on article add
+25 Fix search
+24 Search bar functionality
+23 Add a max title length limit
+22 Fix bug where if article add content is not correct, user is logged out
+21 Bug where add article not logged in shows error
+20 Bug - added article to automotive, not displaying in automotive list?
+19 Change author href link to get their author id
+18 Fix author object returning undefined - req for author bio etc.
+17 find author page by id - not by name (incase author with same name)
+16 Author page - shows all of the authors articles
+15 Add article input validation
+14 Author should be determined by the user account name
+13 Add a blog post - need a way of accessing the add page
+12 Add article page validaton
+11 put nav bar in layout pug
+10 Proper error page (404 etc.)
+9 User account registration
+8 User account login + logout
+7 Responsive design - page scaling on smaller windows
+6 Fully implement nav bar
+5 implement schema validation checkbody
+4 More categories
+3 Sort articles by date
+2 Make category page title look nice
+1 split routes into different js files instead of all in blog_routes
