@@ -180,7 +180,6 @@ router.post('/article_add/', (req, res) => {
         else
         {
             display_name = doc.first_name + " " + doc.last_name;
-            console.log(display_name);
         }
     }, function(){
         delete req.body.id; // Avoid overwriting existing id

@@ -3,18 +3,17 @@ extends layout
 block content
 	br
 	br
-	h1 Authors
-	.authors-container
-		.authors-page
-			.authors-content
-				img(src="https://i.imgur.com/lnwiMdh.jpg")
-				h1 Alex McGill
-			.authors-content
-				img(src="https://i.imgur.com/lnwiMdh.jpg")
-				h1 Alex McGill
-			.authors-content
-				img(src="https://i.imgur.com/lnwiMdh.jpg")
-				h1 Alex McGill
-			.authors-content
-				img(src="https://i.imgur.com/lnwiMdh.jpg")
-				h1 Alex McGill
+	.page-center
+		h1=title
+	-if(authors.length > 1)
+		.authors-container
+			.authors-page
+				-for(i = 0; i < authors.length; i++)
+					.authors-content
+						a(href='/authors/'+authors[i].user_id)
+							-if(authors[i].profile_pic =="default_profile_pic.jpeg")
+								- var profilepic = '/images/'+authors[i].profile_pic
+								img(src=profilepic)
+							-else
+								img(src=authors[i].profile_pic)
+							h1 !{authors[i].full_name}

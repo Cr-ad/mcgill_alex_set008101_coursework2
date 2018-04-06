@@ -633,7 +633,6 @@ textarea:valid {
   display: flex;
   justify-content: space-around;
   flex-flow: row wrap;
-  background: plum;
 }
 
 .authors-content {
@@ -784,7 +783,7 @@ textarea:valid {
     margin: 0 auto;
   }
   .nav-bar .right-nav {
-    margin-right: -70px;
+    margin-right: -40px;
     justify-content: flex-end;
   }
 
@@ -816,5 +815,11 @@ textarea:valid {
     width: 100%;
     justify-content: space-between;
   }
+}
+
+  @media only screen and (max-width: 1200px) {
+    .nav-bar .main-nav .search-container form input[type=text] {
+      width: 130px;
+    }
 
 }

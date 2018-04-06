@@ -1,8 +1,8 @@
 Todo (19):
 
 Related articles implementation - get articles with matching tags
-Add edit bio button on author page
 make nav bar fixed?
+change author page from displaying ids to names
 Npm alert plugin?
 Add some safeguards in blog post HTML input
 Add search query validation
@@ -22,10 +22,11 @@ filter out line breaks in post preview
 ----------------------
 In progress:
 
-Authors page
+Add edit bio button on author page
 
 ----------------------
 Implemented (31):
+Authors page
 change small screen media query for search bar and add article
 Show a preview of the blog post on articles list | reveal full post
 Convert first letter of first+last name to uppercase
