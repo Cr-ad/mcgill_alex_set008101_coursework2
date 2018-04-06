@@ -22,9 +22,9 @@ block content
 					div.blog-footer
 						p.blog-category Category: 
 							a(href='/articles/'+posts[i].category+'/') !{posts[i].category}
-						p.blog-info By
+						p.blog-info By 
 							- var author_link = '/authors/' + posts[i].author_id
-							a(href=author_link)  !{posts[i].author_name}
+							a(href=author_link) !{posts[i].author_name}
 							|  | !{dateTime}
 			-}
 		div.right-section

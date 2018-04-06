@@ -120,14 +120,12 @@ router.get('/edit/:id', function(req, res){
     // If user is not logged in send an error
     if(!req.user)
     {
-        console.log("1 - User is not logged in");
         res.redirect('/');
         res.status(500).send();
     }
     // If the input is not a valid id send an error
     else if(input_id.length != 24)
     {
-        console.log("2 - Input ID is not valid");
         res.redirect('/');
         res.status(500).send();
     }
@@ -146,7 +144,7 @@ router.get('/edit/:id', function(req, res){
             else
             {            
                 res.render('error', {
-                    message : "You do not have permission to edit this article",
+                    message : "You do not have permission to edit this authors profile",
                     error: {}
                 })
             }
