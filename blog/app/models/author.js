@@ -15,6 +15,10 @@ const AuthorSchema = mongoose.Schema({
     profile_pic: {
         type: String,
         required: false
+    },
+    displayname: {
+        type: String,
+        required: true
     }
 });
 

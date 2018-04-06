@@ -212,7 +212,7 @@ router.post('/article_add/', (req, res) => {
                 Author.count({'user_id' : user_id}, function(err, count){
                     if(count == 0)
                     {
-                        addAuthor(user_id);
+                        addAuthor(user_id, post.author_name);
                     }
                 });
             }
@@ -225,7 +225,8 @@ function addAuthor(user_id)
     let newAuthor = new Author({
         user_id     : user_id,
         bio         : "Default Bio",
-        profile_pic : "default_profile_pic.jpeg"
+        profile_pic : "default_profile_pic.jpeg",
+        displayname : post.author_name
     });
 
     newAuthor.save(function(err){

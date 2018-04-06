@@ -38,6 +38,7 @@ router.get('/', function(req, res){
             user_id     : doc.user_id,
             bio         : doc.bio,
             profile_pic : doc.profile_pic,
+            displayname : doc.displayname
         }
         authors.push(author);
     }, function() {
@@ -57,6 +58,7 @@ router.get('/', function(req, res){
     });
 });
 
+/*
 function getAuthorName(author_user_id)
 {
     var display_name;
@@ -88,6 +90,7 @@ function getAuthorNames(authors)
     }
     return authorNames;
 }
+*/
 
 router.get('/:id/', function(req, res){
     const id = req.params.id;
