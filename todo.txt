@@ -1,17 +1,15 @@
 Todo (20):
-
 Add a user login check function, can call on different pages
 Related articles implementation - get articles with matching tags
 Add edit bio button on author page
 Authors page
+make nav bar fixed?
 change small screen media query for search bar and add article
-Show a preview of the blog post on articles list | reveal full post
 Npm alert plugin?
 Add some safeguards in blog post HTML input
 Add search query validation
 Add active page to layout nav bar
 Sort search results by most tags matched
-
 Related article tags - display articles with similar tags
 Comment section
 implement flash notifications?
@@ -21,12 +19,15 @@ Switch article to use mongoose article schema
 Add article view counter - used for popular article sorting
 Split articles page into different pages (x blog posts per page)
 Site name for the blog platform
+filter out line breaks in post preview
 ----------------------
 In progress:
 
 
+
 ----------------------
 Implemented (30):
+Show a preview of the blog post on articles list | reveal full post
 Convert first letter of first+last name to uppercase
 Convert all username entries to lowercaseValidation > Check if username / email already exists register
 Delete a blog post - add button functionality

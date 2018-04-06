@@ -16,7 +16,10 @@ block content
 						.blog-title
 							p !{posts[i].title}
 						img(class="blog-thumbnail" src=thumbnail)
-					p.blog-text !{posts[i].content}
+					-if(postPreviews[i].length > 20)
+						p.blog-text !{postPreviews[i]}...
+					-else
+						p.blog-text !{postPreviews[i]}
 					div.blog-footer
 						p.blog-category Category: <a href="#">!{posts[i].category}</a>
 						p.blog-info By

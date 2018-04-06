@@ -1,38 +1,41 @@
 extends layout
 
 block content
-    .container
-        .author-banner
-            .inner
-                .display
-                    -if(author.profile_pic =="default_profile_pic.jpeg")
-                        - var profilepic = '/images/'+author.profile_pic
-                        img(src=profilepic)
-                    -else
-                        img(src=author.profile_pic)
-                    h1=posts[0].author_name
-                    .bio
-                        p=author.bio
+	.container
+		.author-banner
+			.inner
+				.display
+					-if(author.profile_pic =="default_profile_pic.jpeg")
+						- var profilepic = '/images/'+author.profile_pic
+						img(src=profilepic)
+					-else
+						img(src=author.profile_pic)
+					h1=posts[0].author_name
+					.bio
+						p=author.bio
 
-    .page-center
-        .blog-section-center
-            h1 Recent Posts:
-            -for(i = 0; i < posts.length; i++){
-                - category = posts[i].category
-                - id = posts[i].id
-                - thumbnail = posts[i].thumbnail
-                - dateTime = posts[i].date.toLocaleDateString() + " " + posts[i].date.toLocaleTimeString();
-                .blog-content
-                    a(href='/articles/' + category+'/'+id)
-                        .blog-title
-                            p !{posts[i].title}
-                        img(class="blog-thumbnail" src=thumbnail)
-                    p.blog-text !{posts[i].content}
-                    .blog-footer
-                        p.blog-category Category: 
-                            a(href='/articles/'+posts[i].category+'/') !{posts[i].category}
-                        p.blog-info By
-                            - var author_link = '/authors/' + posts[i].author_id
-                            a(href=author_link)  !{posts[i].author_name}
-                            |  | !{dateTime}
-            -}
+	.page-center
+		.blog-section-center
+			h1 Recent Posts:
+			-for(i = 0; i < posts.length; i++){
+				- category = posts[i].category
+				- id = posts[i].id
+				- thumbnail = posts[i].thumbnail
+				- dateTime = posts[i].date.toLocaleDateString() + " " + posts[i].date.toLocaleTimeString();
+				.blog-content
+					a(href='/articles/' + category+'/'+id)
+						.blog-title
+							p !{posts[i].title}
+						img(class="blog-thumbnail" src=thumbnail)
+					-if(postPreviews[i].length > 20)
+						p.blog-text !{postPreviews[i]}...
+					-else
+						p.blog-text !{postPreviews[i]}
+					.blog-footer
+						p.blog-category Category: 
+							a(href='/articles/'+posts[i].category+'/') !{posts[i].category}
+						p.blog-info By
+							- var author_link = '/authors/' + posts[i].author_id
+							a(href=author_link)  !{posts[i].author_name}
+							|  | !{dateTime}
+			-}

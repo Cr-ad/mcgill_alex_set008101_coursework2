@@ -28,6 +28,40 @@ var all_categories = [
 ];
 all_categories.sort();
 
+function capitaliseFirstLetter(string)
+{
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function getPostPreviews(dbPosts)
+{
+    var dbPostPreviews = [];
+    for(i = 0; i < dbPosts.length; i++)
+    {
+        dbPostPreviews.push(getWords(dbPosts[i].content, 45));
+    }
+    return dbPostPreviews;
+}
+
+function getWords(str, numWords) {
+    return str.split(/\s+/).slice(0,numWords).join(" ");
+}
+
+// Used for splitting the array of tags into one long string
+function arrayToString(array)
+{
+    var output = "";
+    for(i = 0; i < array.length; i++)
+    {
+        output += array[i];
+        if(i < array.length - 1)
+        {
+            output += ", ";
+        }
+    }
+    return output;
+}
+
 // Articles Route
 router.get('/', (req, res) => {
     var dbPosts = [];
@@ -55,7 +89,8 @@ router.get('/', (req, res) => {
         });
         res.render('articles', {
             title : 'The Articles Route',
-            "posts": dbPosts
+            "posts": dbPosts,
+            "postPreviews": getPostPreviews(dbPosts)
         });
     });
 });
@@ -104,11 +139,6 @@ router.get('/articles/:category/:id', (req, res) => {
         });
     });
 });
-
-function capitaliseFirstLetter(string)
-{
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
 
 // Add Article Route
 router.get('/article_add/', (req, res) => {
@@ -342,21 +372,6 @@ router.post('/edit/:id', function(req, res){
     }
 });
 
-// Used for splitting the array of tags into one long string
-function arrayToString(array)
-{
-    var output = "";
-    for(i = 0; i < array.length; i++)
-    {
-        output += array[i];
-        if(i < array.length - 1)
-        {
-            output += ", ";
-        }
-    }
-    return output;
-}
-
 // Delete Route
 router.delete('/delete/:id', function(req, res){
     var input_id = req.params.id;
@@ -455,7 +470,8 @@ router.get('/search/', (req, res) => {
                 res.render('search', {
                     title : 'The Search Route',
                     "search_query" : search_query,
-                    "posts": dbPosts
+                    "posts": dbPosts,
+                    "postPreviews": getPostPreviews(dbPosts)
                 });
             }
             else
@@ -503,7 +519,7 @@ router.get('/articles/:category/', (req, res) => {
             date        : doc.date,
             category    : categoryUpper,
             tags        : doc.tags
-        }    
+        }
         dbPosts.push(post);
     }, function() {
         
@@ -516,7 +532,8 @@ router.get('/articles/:category/', (req, res) => {
             res.render('category', {
                 title : 'The Category Route',
                 category : categoryUpper,
-                "posts": dbPosts
+                "posts": dbPosts,
+                "postPreviews": getPostPreviews(dbPosts)
             });
         }
         else

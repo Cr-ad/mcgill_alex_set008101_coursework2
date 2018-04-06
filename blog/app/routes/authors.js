@@ -14,40 +14,22 @@ function capitaliseFirstLetter(string)
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+function getPostPreviews(dbPosts)
+{
+    var dbPostPreviews = [];
+    for(i = 0; i < dbPosts.length; i++)
+    {
+        dbPostPreviews.push(getWords(dbPosts[i].content, 45));
+    }
+    return dbPostPreviews;
+}
+
+function getWords(str, numWords) {
+    return str.split(/\s+/).slice(0,numWords).join(" ");
+}
+
 router.get('/', function(req, res){
     res.render('authors');
-});
-
-router.get('/test', function(req, res){
-    var dbPosts = [];
-    var cursor = db.collection('posts').find();
-    // Execute the each command, triggers for each document
-    cursor.forEach(function(doc, err) {
-        assert.equal(null, err);
-        var categoryUpper = capitaliseFirstLetter(doc.category);
-        var post = {
-            id          : doc._id,
-            author_id   : doc.author_id,
-            author_name : doc.author_name,
-            title       : doc.title,
-            thumbnail   : doc.thumbnail,
-            content     : doc.content,
-            date        : doc.date,
-            category    : categoryUpper,
-            tags        : doc.tags
-        }
-        dbPosts.push(post);
-    }, function() {
-        // Sort articles by date descending
-        dbPosts.sort(function compare(a,b){
-            return b.date.getTime() - a.date.getTime()
-        });
-        
-        res.render('author_sample', {
-            title : 'The Author Route',
-            "posts": dbPosts
-        });
-    });
 });
 
 router.get('/:id/', function(req, res){
@@ -69,7 +51,6 @@ router.get('/:id/', function(req, res){
             category    : categoryUpper,
             tags        : doc.tags
         }
-        
         dbPosts.push(post);
     }, function() {
         // Sort articles by date descending
@@ -93,6 +74,7 @@ router.get('/:id/', function(req, res){
             res.render('author', {
                 title : 'The Author Route',
                 "posts": dbPosts,
+                "postPreviews": getPostPreviews(dbPosts),
                 "author": author
             });
         });
