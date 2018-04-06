@@ -623,10 +623,17 @@ textarea:valid {
   margin: 10px 0;
 }
 
-.authors-page {
-  width: 90%;
+.authors-container {
   display: flex;
   justify-content: center;
+}
+
+.authors-page {
+  width: 70%;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: row wrap;
+  background: plum;
 }
 
 .authors-content {
@@ -634,6 +641,7 @@ textarea:valid {
   min-height: 384px;
   background: rgb(17, 24, 37);
   border-radius: 10px;
+  margin: 30px 30px;
 }
 
 .authors-content img {
@@ -720,13 +728,17 @@ textarea:valid {
   .nav-bar a h2 {
     display: none;
   }
+
+  .nav-bar .main-nav {
+    justify-content: center;
+  }
 .nav-bar .main-nav ul {
   margin-left: -210px;
   padding-left: 0;
 }
 
 .nav-bar .main-nav .search-container form input[type=text] {
-  width: 130px;
+  width: 200px;
 }
 
 .nav-bar .main-nav ul li {
@@ -750,21 +762,41 @@ textarea:valid {
 
   .nav-bar .main-nav ul {
     margin-left: -230px;
-    padding-left: 0px;
+    padding-left: 20px;
   }
 
   .nav-bar .main-nav .search-container form input[type=text] {
-    width: 130px;
+    width: 180px;
   }
 
   .nav-bar ul li {
-    color: red !important;
     padding-left: 0 !important;
     padding-right: 5px !important;
   }
 
+  .nav-bar .main-nav {
+    justify-content: center;
+    margin-left: 60px;
+    width: 100%;
+  }
+
+  .nav-bar .main-nav ul {
+    margin: 0 auto;
+  }
   .nav-bar .right-nav {
-    margin-right: -30px;
+    margin-right: -70px;
+    justify-content: flex-end;
+  }
+
+  .nav-bar .right-nav ul li {
+    margin-right: -20px;
+  }
+  .nav-bar .right-nav ul li:last-child {
+    padding-right: 0;
+  }
+
+  .inner-mega-menu {
+    margin-right: 20px;
   }
 
   .right-section {
@@ -782,6 +814,7 @@ textarea:valid {
   .nav-bar {
     padding-right: 40px !important;
     width: 100%;
+    justify-content: space-between;
   }
 
 }

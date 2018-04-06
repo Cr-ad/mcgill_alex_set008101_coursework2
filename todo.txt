@@ -1,10 +1,8 @@
-Todo (20):
+Todo (19):
 
 Related articles implementation - get articles with matching tags
 Add edit bio button on author page
-
 make nav bar fixed?
-change small screen media query for search bar and add article
 Npm alert plugin?
 Add some safeguards in blog post HTML input
 Add search query validation
@@ -27,7 +25,8 @@ In progress:
 Authors page
 
 ----------------------
-Implemented (30):
+Implemented (31):
+change small screen media query for search bar and add article
 Show a preview of the blog post on articles list | reveal full post
 Convert first letter of first+last name to uppercase
 Convert all username entries to lowercaseValidation > Check if username / email already exists register
