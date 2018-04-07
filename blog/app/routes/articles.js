@@ -102,6 +102,7 @@ router.get('/articles/:category/:id', (req, res) => {
     const id = req.params.id;
     var selectedPost;
     var dbPosts = [];
+    var relatedPosts = [];
     var cursor = db.collection('posts').find();
     // Execute the each command, triggers for each document
     cursor.forEach(function(doc, err) {
@@ -132,11 +133,31 @@ router.get('/articles/:category/:id', (req, res) => {
         dbPosts.sort(function compare(a,b){
             return b.date.getTime() - a.date.getTime()
         });
-
+        var flag = false;
+        // Get the related articles (articles with at least 1 matching tag)
+        for(i = 0; i < dbPosts.length; i++)
+        {
+            flag = false;
+            for(j = 0; j < dbPosts[i].tags.length; j++)
+            {
+                for(k = 0; k < selectedPost.tags.length; k++)
+                {
+                    if(selectedPost.tags[k] == dbPosts[i].tags[j])
+                    {
+                        flag = true;
+                    }
+                }
+            }
+            if(flag)
+            {
+                relatedPosts.push(dbPosts[i]);
+            }
+            
+        }
         res.render('article', {
             title : 'The Article Route',
             "selectedPost": selectedPost,
-            "posts": dbPosts
+            "posts": relatedPosts
         });
     });
 });

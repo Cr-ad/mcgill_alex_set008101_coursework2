@@ -1,20 +1,18 @@
-Todo (17):
-16 Related articles implementation - get articles with matching tags
-15 Look into popular articles implementation or use alternative
-14 Site name for the blog platform 
-13 Add some safeguards in blog post HTML input
-12 Add search query validation
-11 Add active page to layout nav bar
-10 Sort search results by most tags matched
-9 Comment section
-8 Add a user login check function, can call on different pages
-7 implement flash notifications?
-6 Add triggers
-5 Trigger page audit history
-4 Remove article schema
-3 Split articles page into different pages (x blog posts per page)
-2 Npm alert plugin?
-1 
+Todo (14):
+14 Look into popular articles implementation or use alternative
+13 Site name for the blog platform 
+12 Add more blog posts
+11 Add search query validation
+10 Add active page to layout nav bar
+9 Sort search results by most tags matched
+8 Comment section
+7 Add some safeguards in blog post HTML input
+6 implement flash notifications?
+5 Add triggers
+4 Trigger page audit history
+3 Remove article schema
+2 Split articles page into different pages (x blog posts per page)
+1 Npm alert plugin?
 ----------------------
 In progress:
 
@@ -22,6 +20,7 @@ In progress:
 
 ----------------------
 Implemented (32):
+39 Related articles implementation - get articles with matching tags
 38 filter out line breaks in post preview
 37 Make nav bar fixed
 36 Add edit bio + profile pic button on author page
