@@ -36,9 +36,6 @@ body {
   font-size: 28px;
   margin-top: -2px !important;
   transition: all 0.4s ease;
-  /*
-  border-top: 2px solid white;
-  */
 }
 
 .nav-bar ul {
@@ -52,9 +49,6 @@ body {
   font-family: 'Hammersmith One', sans-serif;
   font-weight: 80;
   font-size: 25px;
-  /*
-  float: center;
-  */
 }
 
 .nav-bar .main-nav {
@@ -63,9 +57,6 @@ body {
 
 .nav-bar .right-nav {
   float:right;
-  /*
-  background: orange !important;
-  */
 }
 
 .nav-bar .right-nav ul {
@@ -105,7 +96,6 @@ body {
 
 .nav-bar .right-nav ul li a p1:hover {
   color: #18bc9c;
-  /* border-bottom: 3px solid black; */
   margin-top: -3px;
   transition: all 0.4s ease;
 }
@@ -119,10 +109,6 @@ body {
   padding: 15px 0;
   color: white;
   transition: all 0.4s ease;
-  /*
-  background: plum;
-  cursor: pointer;
-  */
 }
 
 .nav-bar .main-nav ul li a{
@@ -170,7 +156,6 @@ body {
 
 .nav-bar .main-nav ul li a p1:hover {
   color: #18bc9c;
-  /* border-bottom: 3px solid black; */
   margin-top: -3px;
   transition: all 0.4s ease;
 }
@@ -312,7 +297,6 @@ a {
   margin-left: 70px;
   max-width: 300px;
   min-width: 200px;
-  /* background: rgb(187, 187, 247); */
 }
 
 .right-header {
@@ -328,9 +312,6 @@ a {
   height: 230px;
   width: 100%;
   object-fit: cover;
-  /* 
-  margin-top: -15px;
-  */
 }
 
 .right-content a {
@@ -349,12 +330,6 @@ a {
   width: 100%;
   margin-bottom: 50px;
   padding-bottom: -5px;
-  
-  /*
-  border: solid black 2px;
-  border-radius: 3px;
-  background:rgb(53, 100, 153);
-  */
 }
 
 .right-content a{
@@ -370,10 +345,6 @@ a {
   padding: 0 10px 0 10px;
   width: 70%;
   min-width: 400px;
-  /*
-  border: solid black 2px;
-  background: plum;
-  */
 }
 
 .blog-section-center {
@@ -381,10 +352,6 @@ a {
   padding: 0 10px 0 10px;
   width: 80%;
   min-width: 400px;
-  /*
-  border: solid black 2px;
-  background: plum;
-  */
 }
 
 .blog-content {
@@ -528,9 +495,6 @@ textarea:valid {
   width: 250px;
   text-align: right;
   padding-right: 20px;
-  /*
-  background-color: pink;
-  */
 }
 
 .form-heading-input {
@@ -548,9 +512,6 @@ textarea:valid {
 }
 
 .form-content {
-  /*
-  background-color: plum;
-  */
   width: 62%;
 }
 
