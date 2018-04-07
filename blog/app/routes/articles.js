@@ -44,6 +44,7 @@ function getPostPreviews(dbPosts)
 }
 
 function getWords(str, numWords) {
+    str = str.replace('<br />', ' ');
     return str.split(/\s+/).slice(0,numWords).join(" ");
 }
 

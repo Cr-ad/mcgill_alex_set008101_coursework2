@@ -1,21 +1,20 @@
 Todo (17):
-17 Related articles implementation - get articles with matching tags
-16 Npm alert plugin?
-15 Add some safeguards in blog post HTML input
-14 Add search query validation
-13 Add active page to layout nav bar
-12 Sort search results by most tags matched
-11 Related article tags - display articles with similar tags
-10 Comment section
-9 Add a user login check function, can call on different pages
-8 implement flash notifications?
-7 Add triggers
-6 Trigger page audit history
-5 Switch article to use mongoose article schema
-4 Add article view counter - used for popular article sorting
+16 Related articles implementation - get articles with matching tags
+15 Look into popular articles implementation or use alternative
+14 Site name for the blog platform 
+13 Add some safeguards in blog post HTML input
+12 Add search query validation
+11 Add active page to layout nav bar
+10 Sort search results by most tags matched
+9 Comment section
+8 Add a user login check function, can call on different pages
+7 implement flash notifications?
+6 Add triggers
+5 Trigger page audit history
+4 Remove article schema
 3 Split articles page into different pages (x blog posts per page)
-2 Site name for the blog platform
-1 filter out line breaks in post preview
+2 Npm alert plugin?
+1 
 ----------------------
 In progress:
 
@@ -23,6 +22,7 @@ In progress:
 
 ----------------------
 Implemented (32):
+38 filter out line breaks in post preview
 37 Make nav bar fixed
 36 Add edit bio + profile pic button on author page
 35 Sort author names alphabetically
