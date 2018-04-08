@@ -1,32 +1,32 @@
 extends layout
 
 block content
-    .content
-        h1 Login
-        include message
+	.content
+		h1 Login
+		include message
 
-        .alerts
-            != messages('message', locals)
-            if errors
-                each error, i in errors						
-                    div(class="alert alert-danger") #{error.msg}
-    form(name="login", method="post", action='/users/login')
-        .form-container
-            .form-heading
-                p Username:
-            .form-content
-                input(class="form-heading-input" type="text", name="username" size="25")
-        .form-container
-            .form-heading
-                p Password:
-            .form-content
-                input(class="form-heading-input" type="password", name="password" size="25")
-        .form-container
-            .form-heading
-                p 
-            .form-content
-                .display-buttons
-                    .display-button
-                        input(class="blue" type="submit", value="Submit")
-                    .display-button
-                        input(class="red" onclick="homepage()" type="button" value="Cancel")
+		.alerts
+			!= messages('message', locals)
+			if errors
+				each error, i in errors						
+					div(class="alert alert-danger") #{error.msg}
+	form(name="login", method="post", action='/users/login')
+		.form-container
+			.form-heading
+				p Username:
+			.form-content
+				input(class="form-heading-input" type="text", name="username" size="25")
+		.form-container
+			.form-heading
+				p Password:
+			.form-content
+				input(class="form-heading-input" type="password", name="password" size="25")
+		.form-container
+			.form-heading
+				p 
+			.form-content
+				.display-buttons
+					.display-button
+						input(class="blue" type="submit", value="Submit")
+					.display-button
+						input(class="red" onclick="homepage()" type="button" value="Cancel")
