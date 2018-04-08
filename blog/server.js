@@ -133,7 +133,7 @@ blog_app.use(function(req, res, next) {
 });
 
 // Development environment error handler (Stacktrace)
-
+/*
 if (blog_app.get('env') === 'development') {
     blog_app.use(function(err, req, res, next) {
         res.status(err.status || 500);
@@ -143,12 +143,14 @@ if (blog_app.get('env') === 'development') {
         });
     });
 }
+*/
 
 // Production environment error handler (No stacktrace)
 blog_app.use(function(err, req, res, next) {
     res.status(err.status || 500);
+    var msg = err.status + " " + err.message;
     res.render('error', {
-        message: err.message,
+        message: msg,
         error: {}
     });
 });

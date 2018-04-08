@@ -6,7 +6,7 @@ var expressValidator = require('express-validator');
 var path = require('path');
 var ObjectId = require('mongodb').ObjectID;
 
-// Get Models
+// Get Required Models
 let User = require('../models/user');
 let Author = require('../models/author');
 
