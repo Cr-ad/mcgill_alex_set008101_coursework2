@@ -12,7 +12,6 @@ body {
 
 .nav-bar {
   margin: -8px -10px 0 -10px !important;
-  position: fixed;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -794,9 +793,6 @@ textarea:valid {
   @media only screen and (max-width: 1200px) {
     .nav-bar .main-nav .search-container form input[type=text] {
       width: 130px;
-    }
-    .nav-bar {
-      position: relative;
     }
     .authors-content
     {

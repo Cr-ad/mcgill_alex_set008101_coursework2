@@ -65,16 +65,13 @@ router.post('/register', function(req, res){
             // equal to something that is not valid
             req.checkBody('email', 'Email address already exists, try again with a different email.').equals(invalid);
         }
-        if(usernameAlreadyExists || emailAlreadyExists)
+        let errors = req.validationErrors();
+        if(errors)
         {
-            let errors = req.validationErrors();
-            if(errors)
-            {
-                req.flash('error', 'Registration failed. Please try again');
-                res.render('register', {
-                    errors:errors
-                });
-            }
+            req.flash('error', 'Registration failed. Please try again');
+            res.render('register', {
+                errors:errors
+            });
         }
         else
         {
