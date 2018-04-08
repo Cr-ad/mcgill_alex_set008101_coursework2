@@ -14,11 +14,11 @@ body {
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
-  background: #2c3e50;
+  background: #3e5770;
   height: 75px;
   padding: 10px 0;
   box-sizing: border-box;
-  border-bottom: 1px solid #1a252f;
+  border-bottom: 1px solid #33485c;
 }
 
 .nav-bar h2 {
@@ -95,7 +95,7 @@ body {
 }
 
 .nav-bar .right-nav ul li a p1:hover {
-  color: #18bc9c;
+  color: #60dabf;
   margin-top: -3px;
   transition: all 0.4s ease;
 }
@@ -155,7 +155,7 @@ body {
 }
 
 .nav-bar .main-nav ul li a p1:hover {
-  color: #18bc9c;
+  color: #60dabf;
   margin-top: -3px;
   transition: all 0.4s ease;
 }
@@ -165,7 +165,7 @@ body {
 }
 
 .nav-bar .main-nav ul li .mega-menu p:hover {
-  color: #18bc9c;
+  color: #60dabf;
   transition: all 0.4s ease;
 }
 

@@ -1,4 +1,5 @@
-Todo (14):
+Todo (15):
+15 Change popoular to suggested (randomly chooses an article)
 14 Look into popular articles implementation or use alternative
 13 Site name for the blog platform 
 12 Add more blog posts
