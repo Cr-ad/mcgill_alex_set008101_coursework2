@@ -28,14 +28,12 @@ block content
 							|  | !{dateTime}
 			-}
 		div.right-section
-			p.right-header POPULAR ARTICLES
-
-			-for(i = posts.length - 1; i >= 0; i--){
-				- category = posts[i].category
-				- id = posts[i].id
-				- thumbnail = posts[i].thumbnail
+			p.right-header SUGGESTED ARTICLE
+			- category = suggested.category
+			- id = suggested.id
+			- thumbnail = suggested.thumbnail
 			div.right-content
-				a(href='articles/'+category+'/'+id)
-					img(class="right-thumbnail" src=thumbnail)
-				a(href='articles/'+category+'/'+id) !{posts[i].title}
-			-}
+					a(href='articles/'+category+'/'+id)
+						img(class="right-thumbnail" src=thumbnail)
+					a(href='articles/'+category+'/'+id) !{suggested.title}
+			

@@ -88,13 +88,21 @@ router.get('/', (req, res) => {
         dbPosts.sort(function compare(a,b){
             return b.date.getTime() - a.date.getTime()
         });
+        var suggested = getRandomArticle(dbPosts);
         res.render('articles', {
             title : 'The Articles Route',
             "posts": dbPosts,
-            "postPreviews": getPostPreviews(dbPosts)
+            "postPreviews": getPostPreviews(dbPosts),
+            suggested : suggested
         });
     });
 });
+
+function getRandomArticle(array)
+{
+    var random = Math.floor(Math.random() * ((array.length-1) - 1 + 1) + 1);
+    return array[random];
+}
 
 // Article Route
 router.get('/articles/:category/:id', (req, res) => {
@@ -152,7 +160,6 @@ router.get('/articles/:category/:id', (req, res) => {
             {
                 relatedPosts.push(dbPosts[i]);
             }
-            
         }
         res.render('article', {
             title : 'The Article Route',
@@ -549,13 +556,15 @@ router.get('/articles/:category/', (req, res) => {
         {
             // Sort articles by date descending
             dbPosts.sort(function compare(a,b){
-            return b.date.getTime() - a.date.getTime()
+                return b.date.getTime() - a.date.getTime()
             });
+            var suggested = getRandomArticle(dbPosts);
             res.render('category', {
                 title : 'The Category Route',
                 category : categoryUpper,
                 "posts": dbPosts,
-                "postPreviews": getPostPreviews(dbPosts)
+                "postPreviews": getPostPreviews(dbPosts),
+                suggested : suggested
             });
         }
         else
