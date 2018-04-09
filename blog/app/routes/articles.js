@@ -33,6 +33,7 @@ function capitaliseFirstLetter(string)
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+// Gets the first 45 words of each post in the array  
 function getPostPreviews(dbPosts)
 {
     var dbPostPreviews = [];
@@ -43,7 +44,9 @@ function getPostPreviews(dbPosts)
     return dbPostPreviews;
 }
 
+// Get the first x words from an input string
 function getWords(str, numWords) {
+    // Remove any occurrences of a HTML line break (<br / >)
     str = str.replace('<br />', ' ');
     return str.split(/\s+/).slice(0,numWords).join(" ");
 }
@@ -98,9 +101,11 @@ router.get('/', (req, res) => {
     });
 });
 
+// Return a randomly selected article
 function getRandomArticle(array)
 {
-    var random = Math.floor(Math.random() * ((array.length-1) - 1 + 1) + 1);
+    // Set a random number between 1 and the length of the input array - 1
+    var random = Math.floor(Math.random() * ((array.length-1)) + 1);
     return array[random];
 }
 
@@ -145,19 +150,25 @@ router.get('/articles/:category/:id', (req, res) => {
         // Get the related articles (articles with at least 1 matching tag)
         for(i = 0; i < dbPosts.length; i++)
         {
+            // Reset the flag
             flag = false;
+            // Loop through each tag in the current post
             for(j = 0; j < dbPosts[i].tags.length; j++)
             {
+                // Loop through each tag in the selected post
                 for(k = 0; k < selectedPost.tags.length; k++)
                 {
+                    // If the tag in the selected post matches the tag in the current post
                     if(selectedPost.tags[k] == dbPosts[i].tags[j])
                     {
                         flag = true;
                     }
                 }
             }
+            // If a tag match was found
             if(flag)
             {
+                // Add the post to the related posts list
                 relatedPosts.push(dbPosts[i]);
             }
         }
@@ -185,15 +196,18 @@ router.post('/article_add/', (req, res) => {
     var tagsFiltered = new Array();
     var currentDateTime = new Date();
     var display_name;
+    // Loop through each of the tags
     for(i = 0; i < tagsUnfiltered.length; i++)
     {
         var current = tagsUnfiltered[i];
+        // Loop until the first character isn't a space or a comma
         while(current.charAt(0) == ' ' || current.charAt(0) == ',')
         {
             current = current.substring(1);
         }
         if(current.length > 2)
         {
+            // Add the tag to the list of tags
             tagsFiltered.push(current);
         }
     }
@@ -452,18 +466,19 @@ router.delete('/delete/:id', function(req, res){
 router.get('/search/', (req, res) => {
     var orignal_input = req.query.search_input;
     var search_query = req.query.search_input;
+    // Make sure search query was entered
     if(search_query && search_query.length > 0)
     {
         search_query = search_query.toLowerCase();
         var categoryUpper;
         var search_tags = search_query.split(/[,]+/);
         var dbPosts = [];
+        // Search for the first query entered
         var cursor = db.collection('posts').find({tags: search_tags[0]});
         // Execute the each command, triggers for each document
         cursor.forEach(function(doc, err) {
             assert.equal(null, err);
             // Convert the first letter of the category to uppercase to look nicer
-            // Need to add some validation to make sure all object variables are in the db
             categoryUpper = (capitaliseFirstLetter(doc.category));
             var post = {
                 id          : doc._id,
@@ -477,6 +492,7 @@ router.get('/search/', (req, res) => {
                 tags        : doc.tags
             };
             var alreadyAdded = false;
+            // Check to see if post is already in the array
             for(var currentPost in dbPosts)
             {
                 if(post.id == currentPost.id)
