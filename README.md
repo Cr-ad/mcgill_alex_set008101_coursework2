@@ -1,5 +1,4 @@
 # Blog Central
-> A multi-user blog platform built using Node.JS, JavaScript, Pug & CSS
 
 ![](misc/demo/screenshots/article_fullscreen.png)
 
