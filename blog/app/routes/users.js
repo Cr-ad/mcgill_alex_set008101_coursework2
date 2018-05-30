@@ -13,6 +13,11 @@ var db = mongoose.connection;
 // Import User Model
 let User = require('../models/user');
 
+function capitaliseFirstLetter(string)
+{
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 // Register Route
 router.get('/register', function(req, res){
     res.render('register');
@@ -53,19 +58,23 @@ router.post('/register', function(req, res){
             emailAlreadyExists = true;
         }
     }, function(){
+        // Minimum valid length is 3, checking if more than 2 to ensure something valid was entered
         if(usernameAlreadyExists && username.length > 2)
         {
             // If the username already exists, throw an error by forcing the username to be
             // equal to something that is not valid
             req.checkBody('username', 'Username already exists, try again with a different username.').equals(invalid);
         }
+        // Minimum valid length is 4, checking if more than 3 to ensure something valid was entered
         if(emailAlreadyExists && email.length > 3)
         {
             // If the email already exists, throw an error by forcing the email to be
             // equal to something that is not valid
             req.checkBody('email', 'Email address already exists, try again with a different email.').equals(invalid);
         }
+        // Get all of the checkbody errors if any
         let errors = req.validationErrors();
+        // Display the errors in a flash message above the inputs
         if(errors)
         {
             req.flash('error', 'Registration failed. Please try again');
@@ -73,6 +82,7 @@ router.post('/register', function(req, res){
                 errors:errors
             });
         }
+        // All inputs valid...
         else
         {
             let newUser = new User({
@@ -83,14 +93,16 @@ router.post('/register', function(req, res){
                 password    : password,
                 isAdmin     : false
             });
-
+            // Hash the password input by the user
             bcrypt.genSalt(10, function(err, salt){
                 bcrypt.hash(newUser.password, salt, function(err, hash){
                     if(err)
                     {
                         console.log(err);
                     }
+                    // Set the password equal to the hashed password
                     newUser.password = hash;
+                    // Add the user to the database collection of users
                     newUser.save(function(err){
                         if(err)
                         {
@@ -131,11 +143,5 @@ router.get('/logout', function(req, res){
     req.flash('success', 'You are logged out');
     res.redirect('/users/login');
 })
-
-function capitaliseFirstLetter(string)
-{
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
 
 module.exports = router;

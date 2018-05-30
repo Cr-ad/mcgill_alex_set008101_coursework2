@@ -1,10 +1,7 @@
 const express = require ('express');
-//const MongoClient = require('mongodb').MongoClient;
 const bodyParser = require('body-parser');
 const path = require('path');
-//var logger = require('morgan');
 var cookieParser = require('cookie-parser');
-
 const expressValidator = require('express-validator');
 const flash = require('connect-flash');
 const session = require('express-session');
@@ -22,10 +19,9 @@ var currentDate = new Date().toLocaleString();
 var index = require('./app/routes/index');
 const blog_app = express();
 
-
 const port = 3000;
 
-// view engine setup
+// View engine setup
 blog_app.set('views', path.join(__dirname, '/app/views'));
 blog_app.use(express.static(path.join(__dirname, 'app/public')));
 blog_app.set('view engine', 'pug');
@@ -51,8 +47,6 @@ blog_app.use(function (req, res, next) {
     next();
 });
 
-//blog_app.use(flash());
-
 // Express validator middleware
 blog_app.use(expressValidator({
     errorFormatter : function(param, msg, value) {
@@ -73,11 +67,8 @@ blog_app.use(expressValidator({
     }
 }));
 
-
-
 // Passport files
 require('./config/passport')(passport);
-
 
 // Passport middleware
 blog_app.use(passport.initialize());
@@ -103,7 +94,8 @@ db.on('error', function(err){
     res.render('error');
     console.log(err);
 });
-  
+
+// Unknown Route Redirect
 blog_app.get('*', function(req, res, next){
     res.locals.user = req.user || null;
     next();
@@ -120,10 +112,6 @@ blog_app.use('/authors', authors);
 let articles = require('./app/routes/articles');
 blog_app.use('/articles', articles);
 blog_app.use('/', articles);
-  // uncomment after placing your favicon in /public
-  //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-  //blog_app.use(logger('dev'));
-   //blog_app.use(expressValidator);
 
 // 404 catch - send to error handler
 blog_app.use(function(req, res, next) {

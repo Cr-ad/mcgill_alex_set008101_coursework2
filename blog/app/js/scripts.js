@@ -20,6 +20,7 @@ function validateBlogPostSubmission()
     
 }
 
+// Redirect the browser to the homepage of the website
 function homepage()
 {
     window.location.href = '/';

@@ -13,7 +13,7 @@ function capitaliseFirstLetter(string)
 {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
-
+// Get first 45 words from each post in the array
 function getPostPreviews(dbPosts)
 {
     var dbPostPreviews = [];
@@ -24,11 +24,13 @@ function getPostPreviews(dbPosts)
     return dbPostPreviews;
 }
 
+// Get the first x words from an input string
 function getWords(str, numWords) {
-    str = str.replace('<br />', ' ');
+    // Remove any occurrences of a HTML line break (<br / >)
     return str.split(/\s+/).slice(0,numWords).join(" ");
 }
 
+// Authors Route
 router.get('/', function(req, res){
     var authors = [];
     var cursor = db.collection('authors').find();
@@ -43,8 +45,10 @@ router.get('/', function(req, res){
         }
         authors.push(author);
     }, function() {
+        // If any authors were found
         if(authors.length > 1)
         {
+            // Sort alphabetically by name
             authors.sort(function compare(a,b){
                 var name_a = a.displayname.toUpperCase();
                 var name_b = b.displayname.toUpperCase();
@@ -65,10 +69,13 @@ router.get('/', function(req, res){
     });
 });
 
+// Author Route
 router.get('/:id/', function(req, res){
     const id = req.params.id;
     var flag = false;
     var dbPosts = [];
+    // Find the author using the provided ID
+    // Using a cursor to allow a callback function
     var cursor = db.collection('posts').find({"author_id" : ObjectId(id)});
     cursor.forEach(function(doc, err) {
         assert.equal(null, err);
@@ -94,6 +101,7 @@ router.get('/:id/', function(req, res){
         var cursor = db.collection('authors').find();
         cursor.forEach(function(doc, err) {
             assert.equal(null, err);
+            // If the current author user ID matches the ID of the user
             if(doc.user_id == id)
             {
                 author = {
@@ -153,6 +161,7 @@ router.get('/edit/:id', function(req, res){
     }
 });
 
+// Edit Process
 router.post('/edit/:id', function(req, res){
     var input_id = req.params.id;
     // If user is not logged in send an error
@@ -171,11 +180,13 @@ router.post('/edit/:id', function(req, res){
     {
         let query = {"user_id" : input_id};
         var author;
+        // Find the author with the matching user ID
         var cursor = db.collection('authors').find(query);
         cursor.forEach(function(doc, err){
             assert.equal(null, err);
             author = doc;
             var default_profile_pic = "default_profile_pic.jpeg";
+            // If a profile picture input was not entered (undefined)
             if(typeof req.body.profile_pic == 'undefined')
             {
                 author.profile_pic = default_profile_pic;
@@ -184,12 +195,12 @@ router.post('/edit/:id', function(req, res){
             {
                 author.profile_pic = req.body.profile_pic;
             }
-            
             author.bio = req.body.bio;
         }, function(){
             // Check if user should be able to edit the article
             if((req.user.isAdmin) || (author.user_id == req.user.id))
             {
+                // Find the author with the matching user ID, update the author with the new inputs
                 db.collection('authors').update(query, author, (err, result) => {
                     // If the logged in user is an admin or it is their author profile
                     if(err)

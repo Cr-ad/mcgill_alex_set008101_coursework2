@@ -188,6 +188,7 @@ router.get('/article_add/', (req, res) => {
     });
 });
 
+// Add Article Process
 router.post('/article_add/', (req, res) => {
     var user_id = req.user._id;
     var originalTagString = req.body.tags;
@@ -263,6 +264,7 @@ router.post('/article_add/', (req, res) => {
     });
 });
 
+// Add specified user to the database of authors
 function addAuthor(user_id)
 {
     let newAuthor = new Author({
