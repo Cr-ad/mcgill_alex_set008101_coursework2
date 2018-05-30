@@ -93,7 +93,7 @@ router.get('/', (req, res) => {
         });
         var suggested = getRandomArticle(dbPosts);
         res.render('articles', {
-            title : 'The Articles Route',
+            title : 'Blog Central',
             "posts": dbPosts,
             "postPreviews": getPostPreviews(dbPosts),
             suggested : suggested
@@ -173,7 +173,7 @@ router.get('/articles/:category/:id', (req, res) => {
             }
         }
         res.render('article', {
-            title : 'The Article Route',
+            title : 'Article',
             "selectedPost": selectedPost,
             "posts": relatedPosts
         });
@@ -183,7 +183,7 @@ router.get('/articles/:category/:id', (req, res) => {
 // Add Article Route
 router.get('/article_add/', (req, res) => {
     res.render('article_add', {
-        title : 'The Add Article Route',
+        title : 'Add Article',
         categories : all_categories
     });
 });
@@ -515,7 +515,7 @@ router.get('/search/', (req, res) => {
                 });
 
                 res.render('search', {
-                    title : 'The Search Route',
+                    title : 'Search',
                     "search_query" : search_query,
                     "posts": dbPosts,
                     "postPreviews": getPostPreviews(dbPosts)
@@ -524,7 +524,7 @@ router.get('/search/', (req, res) => {
             else
             {
                 res.render('search_empty', {
-                    title : 'No Search Results',
+                    title : 'Search',
                     "search_query" : search_query
                 });
             }
@@ -578,7 +578,7 @@ router.get('/articles/:category/', (req, res) => {
             });
             var suggested = getRandomArticle(dbPosts);
             res.render('category', {
-                title : 'The Category Route',
+                title : 'Category',
                 category : categoryUpper,
                 "posts": dbPosts,
                 "postPreviews": getPostPreviews(dbPosts),

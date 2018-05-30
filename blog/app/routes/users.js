@@ -20,7 +20,9 @@ function capitaliseFirstLetter(string)
 
 // Register Route
 router.get('/register', function(req, res){
-    res.render('register');
+    res.render('register', {
+        title : 'Register'
+    });
 })
 
 // Register Process
@@ -125,7 +127,9 @@ router.post('/register', function(req, res){
 
 // Login Route
 router.get('/login', function(req, res){
-    res.render('login');
+    res.render('login', {
+        title : 'Login'
+    });
 });
 
 // Login Process

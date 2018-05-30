@@ -28,11 +28,12 @@ block content
 							|  | !{dateTime}
 			-}
 		div.right-section
-			p.right-header SUGGESTED ARTICLE
-			- category = suggested.category
-			- id = suggested.id
-			- thumbnail = suggested.thumbnail
-			div.right-content
-				a(href='articles/'+category+'/'+id)
-					img(class="right-thumbnail" src=thumbnail)
-				a(href='articles/'+category+'/'+id) !{suggested.title}
+			-if(suggested)
+				p.right-header SUGGESTED ARTICLE
+				- category = suggested.category
+				- id = suggested.id
+				- thumbnail = suggested.thumbnail
+				div.right-content
+					a(href='articles/'+category+'/'+id)
+						img(class="right-thumbnail" src=thumbnail)
+					a(href='articles/'+category+'/'+id) !{suggested.title}

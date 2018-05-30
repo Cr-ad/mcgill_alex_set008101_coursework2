@@ -113,7 +113,7 @@ router.get('/:id/', function(req, res){
             }
         }, function(){
             res.render('author', {
-                title : 'The Author Route',
+                title : 'Author',
                 "posts": dbPosts,
                 "postPreviews": getPostPreviews(dbPosts),
                 "author": author
@@ -147,7 +147,8 @@ router.get('/edit/:id', function(req, res){
             if((req.user.isAdmin) || (author.user_id == req.user.id))
             {
                 res.render('author_edit', {
-                    author : author,
+                    title : 'Edit Author',
+                    author : author
                 });
             }
             else
