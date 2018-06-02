@@ -44,7 +44,7 @@ Search Functionality:
 ## Required Development Setup
 
 * Install Node.JS 
-* Use the following commands to install the required Node.JS packages into 'blog/node_modules':
+* Use the following commands to install the required Node.JS packages into the 'blog/node_modules/' directory:
 
 ```sh
 npm install bcryptjs
